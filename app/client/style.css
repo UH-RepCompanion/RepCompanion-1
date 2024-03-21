@@ -3,15 +3,20 @@
 
 /* Set up some CSS variables to theme the application. */
 :root {
-  --matr-navbar-bg: #ECECEC;
-  --matr-navbar-bg-rgb: 236, 236, 236;
+  --matr-navbar-bg: darkblue;
+  --matr-navbar-bg-rgb: 0, 0, 139;
+  --matr-navbar-text-color: white;
+  --matr-navbar-highlight-text: khaki;
 }
 
 /* Change bootstrap variable values.
  See https://getbootstrap.com/docs/5.2/customize/css-variables/
  */
 body {
-  --bs-light-rgb: var(--matr-navbar-bg-rgb);
+  --bs-dark: var(--matr-navbar-bg);
+  --bs-dark-rgb: var(--matr-navbar-bg-rgb);
+  background: fixed center url("images/sea-and-sky.jpg");
+  background-size: cover;
 }
 
 /* Set the alert background on the signin and signup pages. */
@@ -25,4 +30,17 @@ body {
   color: var(--bs-dark);
   padding-top: 10px;
   padding-bottom: 20px;
+}
+footer, footer a {
+  color: var(--matr-navbar-text-color);
+}
+body .navbar {
+  --bs-navbar-active-color: var(--matr-navbar-highlight-text);
+  --bs-navbar-brand-color: var(--matr-navbar-text-color);
+  --bs-navbar-brand-hover-color: var(--matr-navbar-highlight-text);
+  --bs-navbar-color: var(--matr-navbar-text-color);
+  --bs-navbar-hover-color: var(--matr-navbar-highlight-text);
+}
+.bg-dark a.dropdown-item {
+  color: var(--matr-navbar-bg);
 }
