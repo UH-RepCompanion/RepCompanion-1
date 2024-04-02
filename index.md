@@ -1,1 +1,1 @@
-<img src="doc/Landing.png">
+<img src="doc/Landing.png" alt="#">
