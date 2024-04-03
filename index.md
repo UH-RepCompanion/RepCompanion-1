@@ -10,7 +10,7 @@ Digits is an application that allows users to:
   </ul>
 </div>
 
-## **Installation**
+## *Installation*
 
 First, install [Meteor](https://docs.meteor.com/install.html)
 
