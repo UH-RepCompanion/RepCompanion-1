@@ -26,7 +26,7 @@ Once the libraries are installed, you can run the application by invoking:
 
 The first time you run the app, it will create some default users and data. Here is the output:
 
-```terminal
+```
 % meteor npm run start
 
 > meteor-application-template-react@ start /Users/brandonnelson/GitHub/bksnelson/digits/app
