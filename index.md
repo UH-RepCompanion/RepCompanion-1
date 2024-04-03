@@ -10,17 +10,24 @@ Digits is an application that allows users to:
   </ul>
 </div>
 
-Installation
+## Installation
+
 First, install [Meteor](https://docs.meteor.com/install.html)
 
 Second, download a copy of [Digits](https://github.com/bksnelson/digits/tree/main). 
 
 Third, cd into the app directory install the required libraries with:
+
 ```$ meteor npm install```
+
 Once the libraries are installed, you can run the application by invoking:
+
 ```$ meteor npm run start```
+
 The first time you run the app, it will create some default users and data. Here is the output:
-```% meteor npm run start
+
+```terminal
+% meteor npm run start
 
 > meteor-application-template-react@ start /Users/brandonnelson/GitHub/bksnelson/digits/app
 > meteor --no-release-check --exclude-archs web.browser.legacy,web.cordova --settings ../config/settings.development.json
