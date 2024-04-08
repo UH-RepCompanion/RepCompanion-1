@@ -8,17 +8,20 @@ const ProfileCard = ({ profile }) => (
       <Card.Header>
         <Image src={profile.picture} width={50} />
         <Card.Title>{profile.firstName} {profile.lastName}</Card.Title>
-        <Card.Subtitle><span className="date">{profile.title}</span></Card.Subtitle>
+        <Card.Subtitle><span className="date">{profile.major}</span></Card.Subtitle>
       </Card.Header>
       <Card.Body>
         <Card.Text>
           {profile.bio}
         </Card.Text>
         <Card.Text>
+          <h5>Interests</h5>
           {profile.interests.map((interest, index) => <Badge key={index} bg="info">{interest}</Badge>)}
         </Card.Text>
-        <h5>Projects</h5>
-        {profile.projects.map((project, index) => <Image key={index} src={project} width={50} />)}
+        <Card.Text>
+          <h5>Tags</h5>
+          {profile.tags.map((tag, index) => <Badge key={index} bg="info">{tag}</Badge>)}
+        </Card.Text>
       </Card.Body>
     </Card>
   </Col>
@@ -30,9 +33,9 @@ ProfileCard.propTypes = {
     lastName: PropTypes.string,
     bio: PropTypes.string,
     picture: PropTypes.string,
-    title: PropTypes.string,
+    major: PropTypes.string,
     interests: PropTypes.arrayOf(PropTypes.string),
-    projects: PropTypes.arrayOf(PropTypes.string),
+    tags: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };
 

@@ -1,9 +1,10 @@
 import { Meteor } from 'meteor/meteor';
-import { Projects } from '../../api/projects/Projects';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
-import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
+import { ProfilesTags } from '../../api/profiles/ProfilesTags';
+import { TagsInterests } from '../../api/tags/TagsInterests';
+// eslint-disable-next-line import/named
+import { Tags } from '../../api/tags/Tags';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -37,12 +38,12 @@ const updateProfileMethod = 'Profiles.update';
  * updated situation specified by the user.
  */
 Meteor.methods({
-  'Profiles.update'({ email, firstName, lastName, bio, title, picture, interests, projects }) {
+  'Profiles.update'({ email, firstName, lastName, bio, title, picture, interests, tags }) {
     Profiles.collection.update({ email }, { $set: { email, firstName, lastName, bio, title, picture } });
     ProfilesInterests.collection.remove({ profile: email });
-    ProfilesProjects.collection.remove({ profile: email });
+    ProfilesTags.collection.remove({ profile: email });
     interests.map((interest) => ProfilesInterests.collection.insert({ profile: email, interest }));
-    projects.map((project) => ProfilesProjects.collection.insert({ profile: email, project }));
+    tags.map((tag) => ProfilesTags.collection.insert({ profile: email, tag }));
   },
 });
 
@@ -50,17 +51,17 @@ const addProjectMethod = 'Projects.add';
 
 /** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsInterests. */
 Meteor.methods({
-  'Projects.add'({ name, description, picture, interests, participants, homepage }) {
-    Projects.collection.insert({ name, description, picture, homepage });
-    ProfilesProjects.collection.remove({ project: name });
-    ProjectsInterests.collection.remove({ project: name });
+  'Projects.add'({ name, picture, interests, participants }) {
+    Tags.collection.insert({ name, picture });
+    ProfilesTags.collection.remove({ tag: name });
+    TagsInterests.collection.remove({ tag: name });
     if (interests) {
-      interests.map((interest) => ProjectsInterests.collection.insert({ project: name, interest }));
+      interests.map((interest) => TagsInterests.collection.insert({ tag: name, interest }));
     } else {
       throw new Meteor.Error('At least one interest is required.');
     }
     if (participants) {
-      participants.map((participant) => ProfilesProjects.collection.insert({ project: name, profile: participant }));
+      participants.map((participant) => ProfilesTags.collection.insert({ tag: name, profile: participant }));
     }
   },
 });

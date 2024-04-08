@@ -4,14 +4,13 @@
       "firstName": "Philip",
       "lastName": "Johnson",
       "bio": "I am a Professor and like to paddle outrigger canoes.",
-      "title": "Professor",
+      "major": "Computer Science",
       "interests": [
-        "Software Engineering",
-        "Climate Change"
+        "Strength Training",
+        "Cardio"
       ],
-      "projects":[
-        "RadGrad",
-        "Open Power Quality"
+      "tags":[
+        "Trainer"
       ],
       "picture": "https://github.com/philipmjohnson.png",
       "email": "johnson@hawaii.edu"
@@ -20,13 +19,12 @@
       "firstName": "Henri",
       "lastName": "Casanova",
       "bio": "In my spare time, I like to scuba dive.",
-      "title": "Professor",
+      "major": "Electrical Engineering",
       "interests": [
-        "HPC",
-        "Distributed Computing"
+        "Core Training"
       ],
-      "projects":[
-        "WRENCH"
+      "tags":[
+        "Trainer"
       ],
       "picture": "http://www.ics.hawaii.edu/wp-content/uploads/2013/08/Henri_Casanova1.jpg",
       "email": "henric@hawaii.edu"
@@ -35,13 +33,12 @@
       "firstName": "Carleton",
       "lastName": "Moore",
       "bio": "Every summer, I enjoy visiting Portland, Oregon.",
-      "title": "Assistant Professor",
+      "major": "Business",
       "interests": [
-        "Software Engineering",
-        "Renewable Energy"
+        "Cardio"
       ],
-      "projects":[
-        "RadGrad"
+      "tags":[
+        "Trainer"
       ],
       "picture": "https://github.com/cammoore.png",
       "email": "cmoore@hawaii.edu"
@@ -50,13 +47,12 @@
       "firstName": "Anthony",
       "lastName": "Christe",
       "bio": "I enjoy competitive bicycle racing.",
-      "title": "Ph.D. (2020))",
+      "major": "Psychology",
       "interests": [
-        "AI",
-        "Distributed Computing"
+        "Yoga"
       ],
-      "projects":[
-        "Open Power Quality"
+      "tags":[
+        "Newbie"
       ],
       "picture": "https://anthonyjchriste.github.io/images/me.png",
       "email": "achriste@hawaii.edu"
@@ -65,12 +61,12 @@
       "firstName": "Jason",
       "lastName": "Leigh",
       "bio": "I escaped from Chicago and moved to Hawaii in 2014.",
-      "title": "Professor",
+      "major": "Biology",
       "interests": [
-        "Visualization"
+        "Balance Training"
       ],
-      "projects":[
-        "Cyber Canoe"
+      "tags":[
+        "Intermediate"
       ],
       "picture": "http://www.ics.hawaii.edu/wp-content/uploads/2013/08/Jason_Leigh-2014.jpg",
       "email": "leighj@hawaii.edu"
@@ -79,55 +75,39 @@
       "firstName": "Serge",
       "lastName": "Negrashov",
       "bio": "Most weekends, you can find me on my 8 foot dinghy.",
-      "title": "Ph.D. (2020)",
+      "major": "Finance",
       "interests": [
-        "Scalable IP Networks"
+        "Power Lifting"
       ],
-      "projects":[
-        "Open Power Quality"
+      "tags":[
+        "Intermediate"
       ],
       "picture": "https://sergey-negrashov.github.io/images/serge.jpg",
       "email": "sin8@hawaii.edu"
     }
   ],
-  "defaultProjects": [
+  "defaultTags": [
     {
-      "name": "Open Power Quality",
-      "homepage": "https://openpowerquality.org",
-      "description": "Open source hardware and software for distributed power quality data collection, analysis, and visualization.",
+      "name": "Trainer",
       "interests": [
         "Software Engineering",
         "Renewable Energy"
       ],
-      "picture": "https://avatars0.githubusercontent.com/u/4641939"
+      "picture": "Trainer"
     },
     {
-      "name": "RadGrad",
-      "homepage": "https://radgrad.org",
-      "description": "Growing awesome computer scientists, one graduate at a time.",
+      "name": "Intermediate",
       "interests": [
         "Educational Technology"
       ],
-      "picture": "https://www.radgrad.org/img/radgrad_logo.png"
+      "picture": "Intermediate"
     },
     {
-      "name": "WRENCH",
-      "homepage": "https://wrench-project.org",
-      "description": "WRENCH is an open-source library for developing simulators for large-scale scientific computation",
+      "name": "Newbie",
       "interests": [
         "Distributed computing"
       ],
-      "picture": "https://wrench-project.org/images/logo-vertical.png"
-    },
-    {
-      "name": "Cyber Canoe",
-      "homepage": "http://lava.manoa.hawaii.edu/blog/2014/07/11/cyber-canoe-cyber-infrastructure-enabled-collaborative-analysis-navigation-and-observation-environment/",
-      "description": "Software for Unity projects involving stereoscopic resolution driven by 9 PCs with a GeForce 980 graphics card.",
-      "interests": [
-        "Unity",
-        "Visualization"
-      ],
-      "picture": "https://www.hawaii.edu/its/wp-content/uploads/sites/2/2019/01/LAVAlogo-300x192-300x192.png"
+      "picture": "Newbie"
     }
   ],
   "loadAssetsFile":  false

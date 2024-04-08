@@ -5,21 +5,22 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { _ } from 'meteor/underscore';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
-import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-import { Projects } from '../../api/projects/Projects';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
 import { PageIDs } from '../utilities/ids';
 import ProfileCard from '../components/ProfileCard';
+import { ProfilesTags } from '../../api/profiles/ProfilesTags';
+// eslint-disable-next-line import/named
+import { Tags } from '../../api/tags/Tags';
 
 /* Returns the Profile and associated Projects and Interests associated with the passed user email. */
 function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
   const interests = _.pluck(ProfilesInterests.collection.find({ profile: email }).fetch(), 'interest');
-  const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
-  const projectPictures = projects.map(project => Projects.collection.findOne({ name: project })?.picture);
+  const tags = _.pluck(ProfilesTags.collection.find({ profile: email }).fetch(), 'tag');
+  const tagPictures = tags.map(tag => Tags.collection.findOne({ name: tag })?.picture);
   // console.log(_.extend({ }, data, { interests, projects: projectPictures }));
-  return _.extend({}, data, { interests, projects: projectPictures });
+  return _.extend({}, data, { interests, tags: tagPictures });
 }
 
 /* Renders the Profile Collection as a set of Cards. */
@@ -29,8 +30,8 @@ const ProfilesPage = () => {
     // Ensure that minimongo is populated with all collections prior to running render().
     const sub1 = Meteor.subscribe(Profiles.userPublicationName);
     const sub2 = Meteor.subscribe(ProfilesInterests.userPublicationName);
-    const sub3 = Meteor.subscribe(ProfilesProjects.userPublicationName);
-    const sub4 = Meteor.subscribe(Projects.userPublicationName);
+    const sub3 = Meteor.subscribe(ProfilesTags.userPublicationName);
+    const sub4 = Meteor.subscribe(Tags.userPublicationName);
     return {
       ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready(),
     };
