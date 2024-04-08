@@ -34,6 +34,7 @@ body {
 }
 footer, footer a {
   color: var(--matr-navbar-text-color);
+  font-family: 'Poppins', sans-serif;
 }
 body .navbar {
   --bs-navbar-active-color: var(--matr-navbar-highlight-text);
