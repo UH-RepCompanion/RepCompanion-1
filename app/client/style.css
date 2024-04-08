@@ -1,10 +1,10 @@
 /* Use Open Sans as the default sans serif font. */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700|Source+Code+Pro:300,400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Poppins:300,400,500,700|Source+Code+Pro:300,400,500,700");
 
 /* Set up some CSS variables to theme the application. */
 :root {
-  --matr-navbar-bg: darkblue;
-  --matr-navbar-bg-rgb: 0, 0, 139;
+  --matr-navbar-bg: seagreen;
+  --matr-navbar-bg-rgb: 46, 139, 87;
   --matr-navbar-text-color: white;
   --matr-navbar-highlight-text: khaki;
 }
@@ -15,8 +15,9 @@
 body {
   --bs-dark: var(--matr-navbar-bg);
   --bs-dark-rgb: var(--matr-navbar-bg-rgb);
-  background: fixed center url("images/sea-and-sky.jpg");
+  background: fixed center url("/images/uh-gym.jpeg");
   background-size: cover;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Set the alert background on the signin and signup pages. */
@@ -40,7 +41,20 @@ body .navbar {
   --bs-navbar-brand-hover-color: var(--matr-navbar-highlight-text);
   --bs-navbar-color: var(--matr-navbar-text-color);
   --bs-navbar-hover-color: var(--matr-navbar-highlight-text);
+  font-family: 'Poppins', sans-serif;
 }
 .bg-dark a.dropdown-item {
   color: var(--matr-navbar-bg);
+}
+
+.landing-page-button {
+  height: 10px;
+  width: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.square-card {
+  width: 300px;
+  height: 300px;
+  font-family: 'Poppins', sans-serif;
 }

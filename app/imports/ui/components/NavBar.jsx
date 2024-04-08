@@ -16,7 +16,7 @@ const NavBar = () => {
     <Navbar bg="dark" expand="lg">
       <Container>
         <Navbar.Brand as={NavLink} to="/">
-          <h2>digits</h2>
+          <h2>UH RepCompanion</h2>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
