@@ -8,14 +8,14 @@ const Landing = () => (
   <Container id="landing-page" className="py-3 justify-content-center">
     <Row className="text-center">
       <Col>
-        <h1 style={{ color: 'white' }}>Welcome to</h1>
-        <h1 style={{ color: 'white' }}>UH RepCompanion!</h1>
+        <h1 style={{ color: 'white' }}><strong>Welcome to</strong></h1>
+        <h1 style={{ color: 'white' }}><strong>UH RepCompanion!</strong></h1>
         <Image width={350} height={350} style={{ marginTop: '20px', marginBottom: '20px' }} className="rounded-circle" src="../images/uh-repcompanion.png" />
         <Row className="justify-content-center">
-          <Button className="py-3 justify-content-center" variant="dark" id="landing-page-button" style={{ marginTop: '20px', marginBottom: '20px', width: '150px' }} as={Link} to="/signin"> Login </Button>
+          <Button className="py-3 justify-content-center" variant="dark" id="landing-page-button" style={{ marginTop: '20px', marginBottom: '20px', width: '150px' }} as={Link} to="/signin"><strong> Login </strong></Button>
         </Row>
         <Row className="justify-content-center">
-          <Button className="py-3 justify-content-center" variant="dark" style={{ marginTop: '20px', marginBottom: '20px', width: '150px' }} as={Link} to="/signup"> Register </Button>
+          <Button className="py-3 justify-content-center" variant="dark" style={{ marginTop: '20px', marginBottom: '20px', width: '150px' }} as={Link} to="/signup"><strong> Register </strong></Button>
         </Row>
       </Col>
       <LandingPageCard />
