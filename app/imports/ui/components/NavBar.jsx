@@ -16,7 +16,7 @@ const NavBar = () => {
     <Navbar bg="dark" expand="lg">
       <Container>
         <Navbar.Brand as={NavLink} to="/">
-          <h2>digits</h2>
+          <h2><strong>UH RepCompanion</strong></h2>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -31,16 +31,14 @@ const NavBar = () => {
           </Nav>
           <Nav className="justify-content-end">
             {currentUser === '' ? (
-              <NavDropdown id="login-dropdown" title="Login">
+              <NavDropdown id="login-dropdown" title="Connect Now!">
                 <NavDropdown.Item id="login-dropdown-sign-in" as={NavLink} to="/signin">
                   <PersonFill />
-                  Sign
-                  in
+                  Login
                 </NavDropdown.Item>
                 <NavDropdown.Item id="login-dropdown-sign-up" as={NavLink} to="/signup">
                   <PersonPlusFill />
-                  Sign
-                  up
+                  Register
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (

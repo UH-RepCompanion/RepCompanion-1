@@ -1,27 +1,24 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import { Calendar2CheckFill, FileEarmarkTextFill, PeopleFill } from 'react-bootstrap-icons';
+import { Col, Container, Row, Image, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import LandingPageCard from '../components/LandingPageCard';
 
-/* A simple static component to render some text for the landing page. */
+/* A simple component that welcomes users to the app. */
 const Landing = () => (
-  <Container id="landing-page" className="py-3">
-    <Row className="align-middle text-center">
-      <Col xs={4}>
-        <PeopleFill size={100} />
-        <h1>Multiple Users</h1>
-        <h5>This address book enables any number of users to register and save their business contacts. You can only see the contacts you have created.</h5>
+  <Container id="landing-page" className="py-3 justify-content-center">
+    <Row className="text-center">
+      <Col>
+        <h1 style={{ color: 'white' }}><strong>Welcome to</strong></h1>
+        <h1 style={{ color: 'white' }}><strong>UH RepCompanion!</strong></h1>
+        <Image width={350} height={350} style={{ marginTop: '20px', marginBottom: '20px' }} className="rounded-circle" src="../images/uh-repcompanion.png" />
+        <Row className="justify-content-center">
+          <Button className="py-3 justify-content-center" variant="dark" id="landing-page-button" style={{ marginTop: '20px', marginBottom: '20px', width: '150px' }} as={Link} to="/signin"><strong> Login </strong></Button>
+        </Row>
+        <Row className="justify-content-center">
+          <Button className="py-3 justify-content-center" variant="dark" style={{ marginTop: '20px', marginBottom: '20px', width: '150px' }} as={Link} to="/signup"><strong> Register </strong></Button>
+        </Row>
       </Col>
-      <Col xs={4}>
-        <FileEarmarkTextFill size={100} />
-        <h1>Contact Details</h1>
-        <h5>For each contact, you can save their name, address, and phone number.</h5>
-      </Col>
-      <Col xs={4}>
-        <Calendar2CheckFill size={100} />
-        <h1>Timestamped Notes</h1>
-        <h5>Each time you make contact with a contact, you can write a note that summarizes the conversation. This note is saved along with a timestamp with the contact.</h5>
-      </Col>
-
+      <LandingPageCard />
     </Row>
   </Container>
 );

@@ -57,7 +57,7 @@ const SignUp = () => {
           <Alert variant="secondary">
             Already have an account? Login
             {' '}
-            <Link to="/signin">here</Link>
+            <Link to="/signin" style={{ color: 'darkblue' }}>here</Link>
           </Alert>
           {error === '' ? (
             ''
