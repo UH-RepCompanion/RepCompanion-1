@@ -3,7 +3,7 @@
 <img src="doc/uh-repcompanion-logo.png">
 [UH RepCompanion Github Organization Page](https://github.com/UH-RepCompanion)
 
-<img src="doc/landing-page.png">
+<img src="../images/uh-repcompanion.png">
 
 UH RepCompanion is an application that allows users to:
 
