@@ -19,7 +19,7 @@ const ProfileCard = ({ profile }) => (
           {profile.interests.map((interest, index) => <Badge key={index} bg="info">{interest}</Badge>)}
         </Card.Text>
         <Card.Text>
-          <h5>Tags</h5>
+          <h5>Level</h5>
           {profile.tags.map((tag, index) => <Badge key={index} bg="info">{tag}</Badge>)}
         </Card.Text>
       </Card.Body>

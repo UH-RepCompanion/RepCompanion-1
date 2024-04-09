@@ -10,7 +10,6 @@ import { TagsInterests } from '../../api/tags/TagsInterests';
 // eslint-disable-next-line import/named
 import { Tags } from '../../api/tags/Tags';
 
-
 const addContacts = (contact) => {
   console.log(`  Adding: ${contact.lastName} (${contact.owner})`);
   Contacts.collection.insert(contact);

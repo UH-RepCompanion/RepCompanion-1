@@ -7,7 +7,6 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 // eslint-disable-next-line import/named
 import { Tags } from '../../api/tags/Tags';
-import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 import { TagsInterests } from '../../api/tags/TagsInterests';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 
@@ -61,7 +60,7 @@ Meteor.publish(ProfilesTags.userPublicationName, () => ProfilesTags.collection.f
 Meteor.publish(Tags.userPublicationName, () => Tags.collection.find());
 
 /** Define a publication to publish this collection. */
-Meteor.publish(TagsInterests.userPublicationName, () => ProjectsInterests.collection.find());
+Meteor.publish(TagsInterests.userPublicationName, () => TagsInterests.collection.find());
 
 // alanning:roles publication
 // Recommended code to publish roles for each user.

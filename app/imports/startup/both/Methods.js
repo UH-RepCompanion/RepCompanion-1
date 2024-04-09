@@ -33,13 +33,13 @@ import { Tags } from '../../api/tags/Tags';
 const updateProfileMethod = 'Profiles.update';
 
 /**
- * The server-side Profiles.update Meteor Method is called by the client-side Home page after pushing the update button.
+ * The server-side Profiles.update Meteor Method is called by the client-side EditProfile page after pushing the update button.
  * Its purpose is to update the Profiles, ProfilesInterests, and ProfilesProjects collections to reflect the
  * updated situation specified by the user.
  */
 Meteor.methods({
-  'Profiles.update'({ email, firstName, lastName, bio, title, picture, interests, tags }) {
-    Profiles.collection.update({ email }, { $set: { email, firstName, lastName, bio, title, picture } });
+  'Profiles.update'({ email, firstName, lastName, bio, major, picture, interests, tags }) {
+    Profiles.collection.update({ email }, { $set: { email, firstName, lastName, bio, major, picture } }, { upsert: true });
     ProfilesInterests.collection.remove({ profile: email });
     ProfilesTags.collection.remove({ profile: email });
     interests.map((interest) => ProfilesInterests.collection.insert({ profile: email, interest }));

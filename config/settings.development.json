@@ -7,6 +7,8 @@
       "major": "Computer Science",
       "interests": [
         "Strength Training",
+        "Power Lifting",
+        "Core Training",
         "Cardio"
       ],
       "tags":[
@@ -21,10 +23,11 @@
       "bio": "In my spare time, I like to scuba dive.",
       "major": "Electrical Engineering",
       "interests": [
-        "Core Training"
+        "Core Training",
+        "Cardio"
       ],
       "tags":[
-        "Trainer"
+        "Advanced"
       ],
       "picture": "http://www.ics.hawaii.edu/wp-content/uploads/2013/08/Henri_Casanova1.jpg",
       "email": "henric@hawaii.edu"
@@ -77,7 +80,8 @@
       "bio": "Most weekends, you can find me on my 8 foot dinghy.",
       "major": "Finance",
       "interests": [
-        "Power Lifting"
+        "Power Lifting",
+        "Balance Training"
       ],
       "tags":[
         "Intermediate"
@@ -90,22 +94,18 @@
     {
       "name": "Trainer",
       "interests": [
-        "Software Engineering",
-        "Renewable Energy"
       ],
       "picture": "Trainer"
     },
     {
       "name": "Intermediate",
       "interests": [
-        "Educational Technology"
       ],
       "picture": "Intermediate"
     },
     {
       "name": "Newbie",
       "interests": [
-        "Distributed computing"
       ],
       "picture": "Newbie"
     }

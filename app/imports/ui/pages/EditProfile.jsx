@@ -32,20 +32,33 @@ const makeSchema = (allInterests, allTags) => new SimpleSchema({
   'tags.$': { type: String, allowedValues: allTags },
 });
 
-/* Renders the Home Page: what appears after the user logs in. */
-const Home = () => {
+/* Renders the EditProfile Page: what appears after the user logs in. */
+const EditProfile = () => {
 
   /* On submit, insert the data. */
   const submit = (data) => {
-    Meteor.call(updateProfileMethod, data, (error) => {
-      if (error) {
-        swal('Error', error.message, 'error');
-      } else {
-        swal('Success', 'Profile updated successfully', 'success');
-      }
-    });
-  };
+    // Created by chatgpt
+    // Assume you have email stored in the component's state or fetched from Meteor.user()
+    // For simplicity, let's fetch it directly from Meteor.user() if not already available
+    // eslint-disable-next-line no-use-before-define
+    const userEmail = email || Meteor.user()?.emails[0].address;
 
+    // Append the email to the data object. Ensure userEmail is not undefined.
+    if (userEmail) {
+      const dataWithEmail = { ...data, email: userEmail };
+
+      Meteor.call(updateProfileMethod, dataWithEmail, (error) => {
+        if (error) {
+          swal('Error', error.message, 'error');
+        } else {
+          swal('Success', 'Profile updated successfully', 'success');
+        }
+      });
+    } else {
+      // Handle the case where the email is somehow still undefined
+      swal('Error', 'Email is undefined.', 'error');
+    }
+  };
   const { ready, email } = useTracker(() => {
     // Ensure that minimongo is populated with all collections prior to running render().
     const sub1 = Meteor.subscribe(Interests.userPublicationName);
@@ -98,4 +111,4 @@ const Home = () => {
   ) : <LoadingSpinner />;
 };
 
-export default Home;
+export default EditProfile;
