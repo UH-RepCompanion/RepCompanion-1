@@ -43,8 +43,8 @@ const SignIn = () => {
   return (
     <Container id="signin-page" className="py-3">
       <Row className="justify-content-center">
-        <Col xs={5}>
-          <Col className="text-center" style={{ color: 'white' }}>
+        <Col xs={9}>
+          <Col className="text-center">
             <h2>Login to your account</h2>
           </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
@@ -57,8 +57,8 @@ const SignIn = () => {
               </Card.Body>
             </Card>
           </AutoForm>
-          <Alert variant="light">
-            <Link to="/signup" style={{ color: 'darkblue' }}>Click here to Register</Link>
+          <Alert variant="secondary">
+            <Link to="/signup">Click here to Register</Link>
           </Alert>
           {error === '' ? (
             ''

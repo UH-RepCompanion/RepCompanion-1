@@ -42,8 +42,8 @@ const SignUp = ({ location }) => {
   return (
     <Container id="signup-page" className="py-3">
       <Row className="justify-content-center">
-        <Col xs={5}>
-          <Col className="text-center" style={{ color: 'white' }}>
+        <Col xs={9}>
+          <Col className="text-center">
             <h2>Register your account</h2>
           </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
@@ -56,7 +56,7 @@ const SignUp = ({ location }) => {
               </Card.Body>
             </Card>
           </AutoForm>
-          <Alert variant="light" style={{ color: 'white' }}>
+          <Alert variant="secondary">
             Already have an account? Login
             {' '}
             <Link to="/signin" style={{ color: 'darkblue' }}>here</Link>
