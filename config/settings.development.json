@@ -104,6 +104,12 @@
       "picture": "Intermediate"
     },
     {
+      "name": "Advanced",
+      "interests": [
+      ],
+      "picture": "Advanced"
+    },
+    {
       "name": "Newbie",
       "interests": [
       ],
