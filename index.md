@@ -1,101 +1,139 @@
-<img src="doc/Landing.png" alt="">
+[Contract Link](https://docs.google.com/document/d/1tp4QYSD7dfjYHTd03d5IHFc6_XyA9PcVLbLC0lbu9PU/edit)
 
-Digits is an application that allows users to:
+<img src="doc/uh-repcompanion-logo.png">
+[UH RepCompanion Github Organization Page](https://github.com/UH-RepCompanion)
 
-- Register an account.
-- Create and manage a set of contacts.
-- Add a set of timestamped notes regarding their interactions with each contact
+<img src="doc/landing-page.png">
+
+UH RepCompanion is an application that allows users to:
+
+* Make an account and connect with other people who need a workout companion
 
 
-## *Installation*
+## Installation
 
-First, install [Meteor](https://docs.meteor.com/install.html)
+First, [install Meteor](https://www.meteor.com/install).
 
-Second, download a copy of [Digits](https://github.com/bksnelson/digits/tree/main). 
+Second, cd into the app/ directory of your local copy of the repo, and install third party libraries with:
 
-Third, cd into the app directory install the required libraries with:
+```
+$ meteor npm install
+```
 
-```$ meteor npm install```
+## Running the system
 
-Once the libraries are installed, you can run the application by invoking:
+Once the libraries are installed, you can run the application by invoking the "start" script.
 
-```$ meteor npm run start```
+```
+$ meteor npm run start
+```
 
 The first time you run the app, it will create some default users and data. Here is the output:
 
 ```
-% meteor npm run start
+ meteor npm run start 
 
-> meteor-application-template-react@ start /Users/brandonnelson/GitHub/bksnelson/digits/app
+> meteor-application-template-react@ start /Users/carletonmoore/GitHub/ICS314/meteor-application-template-react/app
 > meteor --no-release-check --exclude-archs web.browser.legacy,web.cordova --settings ../config/settings.development.json
 
-[[[[[ ~/GitHub/bksnelson/digits/app ]]]]]     
+[[[[[ ~/Documents/GitHub/digits/app ]]]]]  
 
 => Started proxy.                             
 => Started HMR server.                        
 => Started MongoDB.                           
-I20240402-16:44:35.552(-10)? Creating the default user(s)
-I20240402-16:44:35.590(-10)?   Creating user admin@foo.com.
-I20240402-16:44:35.868(-10)?   Creating user john@foo.com.
-I20240402-16:44:36.018(-10)? Creating default contacts.
-I20240402-16:44:36.018(-10)?   Adding: Johnson (john@foo.com)
-I20240402-16:44:36.057(-10)?   Adding: Casanova (john@foo.com)
-I20240402-16:44:36.059(-10)?   Adding: Binsted (admin@foo.com)
+I20240403-15:07:07.591(-10)? Creating the default user(s)
+I20240403-15:07:07.622(-10)?   Creating user admin@foo.com.
+I20240403-15:07:10.059(-10)?   Creating user john@foo.com.
+I20240403-15:07:10.438(-10)? Creating default contacts.
+I20240403-15:07:10.438(-10)?   Adding: Johnson (john@foo.com)
+I20240403-15:07:10.595(-10)?   Adding: Casanova (john@foo.com)
+I20240403-15:07:10.598(-10)?   Adding: Binsted (admin@foo.com)
 => Started your app.
+
 
 => App running at: http://localhost:3000/
 ```
 
-If all goes well, the template application will appear at [http://localhost:3000](http://localhost:3000). You can login using the credentials in settings.development.json, or else register a new account.
+### Viewing the running app
 
-Lastly, you can run ESLint over the code in the imports/ directory with:
+If all goes well, the template application will appear at [http://localhost:3000](http://localhost:3000).  You can login using the credentials in [settings.development.json](https://github.com/blakewatanabe/digits/blob/main/config/settings.development.json), or else register a new account.
 
-```meteor npm run lint```
+### ESLint
 
-# User Interface Walkthrough
+You can verify that the code obeys our coding standards by running ESLint over the code in the imports/ directory with:
 
-### Landing Page
+```
+meteor npm run lint
+```
 
-When you first bring up the application, you will see the landing page that provides a brief introduction to the capabilities of Digits:
+## Walkthrough
 
-<img src="doc/Landing.png" alt="">
+The following sections describe the major features of this template.
 
-### Register
+#### Landing page
 
-If you do not yet have an account on the system, you can register by clicking on “Login”, then “Sign Up”:
+When you retrieve the app at http://localhost:3000, this is what should be displayed:
 
-<img src="doc/Register.png" alt="">
+<img src="doc/landing-page.png">
 
-### Sign in
+The next step is to use the Login menu to either Login to an existing account or register a new account.
 
-Click on the Login link, then click on the Signin link to bring up the Sign In page which allows you to login:
+#### Login page
 
-<img src="doc/Login.png" alt="">
+Clicking on the Login link, then on the Sign In menu item displays this page:
 
-### User home page
+<img src="doc/login-page.png">
 
-After successfully logging in, the system takes you to your home page. It is just like the landing page, but the NavBar contains links to list contact and add new contacts:
+#### Register page
 
-<img src="doc/Loggedin.png" alt="">
+Alternatively, clicking on the Login link, if you dont have an account yet, you can click the register link to make an account:
 
-### List Contacts
+<img src="doc/register.png">
 
-Clicking on the List Contacts link brings up a page that lists all of the contacts associated with the logged in user:
 
-<img src="doc/ListContacts.png" alt="">
+#### Landing (after Login) page, non-Admin user
 
-This page also allows the user to add timestamped “notes” detailing interactions they’ve had with the Contact. For example:
+Once logged in you will be directed into the landing page with a new navbar section called Finder page.
 
-<img src="doc/Note.png" alt="">
+<img src="doc/signedin-landing-page.png">
 
-### Edit Contacts
+#### Profile page
 
-From the List Contacts page, the user can click the “Edit” link associated with any Contact to bring up a page that allows that Contact information to be edited:
+After logging in, here is the page that allows you to view and edit your profile.
 
-<img src="doc/EditContact.png" alt="">
+<img src="doc/profile-page.png">
 
-### Admin mode
+#### Finder Page
 
-It is possible to designate one or more users as “Admins” through the settings file. When a user has the Admin role, they get access to a special NavBar link that retrieves a page listing all Contacts associated with all users:
+This page allows you to see a group of students who are available for workouts, here you can view their workout for that day and request to join them. You can also filter this page by different workouts and it will only shows students who assigned their workout for that day.
 
-<img src="doc/ListContactsAdmin.png" alt="">
+<img src="doc/finder-page.png">
+
+#### Filter list
+
+In this section admins are able to see all the events listed in the Finder page and delete events listed in the page.
+
+<img src="doc/filter-list.png">
+
+#### Admin page (list all users contact)
+
+To provide a simple example of a "super power" for Admin users, the Admin page lists shows all the users and has the authority to remove any accounts:
+
+<img src="doc/admin-finder-page.png">
+
+Note that non-admin users cannot get access to this page.
+
+### Quality Assurance
+
+#### ESLint
+
+The application includes a [.eslintrc](https://github.com/ics-software-engineering/meteor-application-template-react/blob/main/app/.eslintrc) file to define the coding style adhered to in this application. You can invoke ESLint from the command line as follows:
+
+```
+[~/meteor-application-template-react/app]-> meteor npm run lint
+
+> meteor-application-template-react@ lint /Users/philipjohnson/meteor-application-template-react/app
+> eslint --quiet ./imports
+```
+
+ESLint should run without generating any errors.
