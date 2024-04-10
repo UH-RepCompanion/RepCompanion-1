@@ -8,7 +8,9 @@
     }
 </style>
 
-<img src="app/public/images/uh-repcompanion.png" class="rounded-image" width="300" height="300">
+<p align="center">
+<img src="app/public/images/uh-repcompanion.png" class="rounded-image" width="400" height="400">
+</p>
 
 ## GitHub Organization
 [UH RepCompanion GitHub Organization](https://github.com/UH-RepCompanion)
@@ -87,7 +89,7 @@ Note that non-admin users cannot get access to this page.
 ## Milestones
 
 ### M1
-__(link to M1 Project page here!!!)__
+[Milestone 1 Completion](https://github.com/orgs/UH-RepCompanion/projects/1)
 
 ### M2
 __(link to M2 Project page here!!!)__
