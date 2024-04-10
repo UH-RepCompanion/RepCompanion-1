@@ -16,6 +16,10 @@ UH RepCompanion is an application that allows users to:
 
 The following sections describe the major features of the UH RepCompanion application.
 
+### Deployment
+
+To access UH RepCompanion, please visit (link to site here!!!)
+
 #### Landing Page
 
 Upon arriving, you will be greeted with the UH RepCompanion landing page, which should look something like this:
@@ -70,3 +74,11 @@ This application also contains admin supervision. To provide a simple example of
 <img src="doc/admin-finder-page.png">
 
 Note that non-admin users cannot get access to this page.
+
+### Milestones
+
+## M1
+(link to M1 Project page here!!!)
+
+## M2
+(link to M2 Project page here!!!)
