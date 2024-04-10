@@ -8,7 +8,7 @@
     }
 </style>
 
-<img src="app/public/images/uh-repcompanion.png" class="rounded-image">
+<img src="app/public/images/uh-repcompanion.png" class="rounded-image" width="300" height="300">
 
 ## GitHub Organization
 [UH RepCompanion GitHub Organization](https://github.com/UH-RepCompanion)
