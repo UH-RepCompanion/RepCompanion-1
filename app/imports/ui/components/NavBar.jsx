@@ -13,7 +13,7 @@ const NavBar = () => {
   }), []);
 
   return (
-    <Navbar bg="dark" expand="lg">
+    <Navbar bg="dark" expand="lg" className="gradient">
       <Container>
         <Navbar.Brand as={NavLink} to="/">
           <h2><strong>UH RepCompanion</strong></h2>
