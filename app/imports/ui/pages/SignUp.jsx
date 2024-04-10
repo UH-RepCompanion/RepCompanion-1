@@ -42,7 +42,7 @@ const SignUp = () => {
       <Row className="justify-content-center">
         <Col xs={9}>
           <Col className="text-center">
-            <h2>Register your account</h2>
+            <h2 style={{ color: 'white' }}>Register your account</h2>
           </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
             <Card>

@@ -7,7 +7,7 @@ const NotFound = () => (
     <Row className="justify-content-center">
       <Col xs={4} className="text-center">
         <h2>
-          <p>Page not found</p>
+          <p style={{ color: 'white' }}>Page not found</p>
         </h2>
       </Col>
     </Row>
