@@ -9,7 +9,7 @@ import AddNote from './AddNote';
 const Contact = ({ contact, notes }) => (
   <Card className="h-100">
     <Card.Header>
-      <Image src={contact.image} width={75} />
+      <Image src={contact.image} width={70} />
       <Card.Title>{contact.firstName} {contact.lastName}</Card.Title>
       <Card.Subtitle>{contact.address}</Card.Subtitle>
     </Card.Header>
