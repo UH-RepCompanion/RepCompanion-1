@@ -76,7 +76,7 @@ This page allows users to filter through other users profiles based on search fi
 
 <img src="doc/filter-list.png">
 
-### Admin page (List All Users Contact)
+### Admin page (List All Users)
 
 This application also contains admin supervision. To provide a simple example of a "super power" for Admin users, the Admin page lists shows all the users and has the authority to remove any accounts:
 
