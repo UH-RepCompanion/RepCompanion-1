@@ -1,16 +1,25 @@
-import { Badge, Card, Col, Image, Button } from 'react-bootstrap';
+import { Badge, Card, Col, Image, Button, ProgressBar } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { ChatDotsFill, HeartFill, TrophyFill } from 'react-bootstrap-icons';
 
 const ProfileCard = ({ profile }) => (
   <Col>
     <Card className="h-100">
       <Card.Header className="text-center">
-        <Image src={profile.picture} width={150} roundedCircle={profile.picture} />
+        <div className="image-border">
+          <Image src={profile.picture} width={150} roundedCircle />
+        </div>
         <Card.Title>{profile.firstName} {profile.lastName}</Card.Title>
         <Card.Subtitle><span className="date">{profile.major}</span></Card.Subtitle>
       </Card.Header>
       <Card.Body>
+        <div className="icon-box p-3 my-3 border rounded d-flex justify-content-around">
+          <HeartFill size={24} />
+          <TrophyFill size={24} />
+          <ChatDotsFill size={24} />
+        </div>
+
         <Card.Text>
           <h5>Interest</h5>
           {profile.interests.map((interest, index) => <Badge key={index} bg="info">{interest}</Badge>)}
@@ -19,6 +28,8 @@ const ProfileCard = ({ profile }) => (
           <h5>Level</h5>
           {profile.tags.map((tag, index) => <Badge key={index} bg="secondary">{tag}</Badge>)}
         </Card.Text>
+        <h5>Activity Bar</h5>
+        <ProgressBar now={profile.progress} label={`${profile.progress}%`} animated />
         <Card.Text>
           {profile.bio}
         </Card.Text>
@@ -38,6 +49,7 @@ ProfileCard.propTypes = {
     major: PropTypes.string,
     interests: PropTypes.arrayOf(PropTypes.string),
     tags: PropTypes.arrayOf(PropTypes.string),
+    progress: PropTypes.number,
   }).isRequired,
 };
 
