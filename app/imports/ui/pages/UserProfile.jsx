@@ -5,6 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import { Interests } from '../../api/interests/Interests';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
+import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 import { Tags } from '../../api/tags/Tags';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
@@ -18,19 +19,24 @@ const UserProfile = () => {
     const sub2 = Meteor.subscribe(Profiles.userPublicationName);
     const sub3 = Meteor.subscribe(ProfilesInterests.userPublicationName);
     const sub4 = Meteor.subscribe(Tags.userPublicationName);
+    const sub5 = Meteor.subscribe(ProfilesTags.userPublicationName);
     const userProfile = Profiles.collection.findOne({ email: Meteor.user()?.username });
     const userInterests = ProfilesInterests.collection.find({ profile: userProfile?.email }).fetch();
-    const userTags = userInterests.map(({ tag }) => tag);
+    const userTags = ProfilesTags.collection.find({ profile: userProfile?.email }).fetch();
     const userInterestsNames = userInterests.map(({ interest }) => {
-      const interestDoc = Interests.collection.findOne({ _id: interest });
+      const interestDoc = Interests.collection.findOne({ name: interest });
       return interestDoc?.name;
     });
+    const userTagsNames = userTags.map(({ tag }) => {
+      const tagDoc = Tags.collection.findOne({ name: tag });
+      return tagDoc?.name;
+    });
     return {
-      ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready(),
+      ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
       email: Meteor.user()?.username,
       profile: userProfile,
       interests: userInterestsNames,
-      tags: userTags,
+      tags: userTagsNames,
     };
   }, []);
 
@@ -42,7 +48,7 @@ const UserProfile = () => {
           <Card style={{ width: '600px', height: '600px' }}>
             <Card.Body style={{ width: '800', height: 'auto' }}>
               <Row>
-                <Col xs={6}><Image src={profile?.picture} style={{ width: '200px', height: 'auto', marginBottom: '10px' }} />
+                <Col xs={6}><Image className="rounded-circle" src={profile?.picture} style={{ width: '200px', height: 'auto', marginBottom: '10px', borderRadius: '50%', border: '2px solid black' }} />
                   <Card.Title>{profile?.firstName} {profile?.lastName}</Card.Title>
                   <Card.Text style={{ marginTop: '50px', marginBottom: '20px' }}><strong>Major:</strong> {profile?.major}</Card.Text>
                 </Col>
@@ -53,7 +59,7 @@ const UserProfile = () => {
               </Row>
               <Row>
                 <Col xs={6}><Card.Text style={{ marginBottom: '20px' }}><strong>Interests:</strong> {interests.join(', ')}</Card.Text></Col>
-                <Col xs={6}><Card.Text style={{ marginBottom: '20px' }}><strong>Tags:</strong> {tags.join(', ')}</Card.Text></Col>
+                <Col xs={6}><Card.Text style={{ marginBottom: '20px', color: 'black' }}><strong>Tags:</strong> {tags.join(', ')}</Card.Text></Col>
               </Row>
             </Card.Body>
           </Card>
