@@ -4,7 +4,7 @@ import { Container, Row, Col, Image } from 'react-bootstrap';
 const About = () => (
   <Container className="aboutBackground w-50">
     <Row className="text-center">
-      <Col>
+      <Col className="pt-5">
         <h1>About Us</h1>
         <Image width={100} height={100} className="rounded-circle mt-5" src="../images/uh-repcompanion.png" />
         {/* eslint-disable-next-line max-len */}
