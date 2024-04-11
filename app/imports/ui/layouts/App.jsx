@@ -15,6 +15,7 @@ import NotAuthorized from '../pages/NotAuthorized';
 import LoadingSpinner from '../components/LoadingSpinner';
 import EditProfile from '../pages/EditProfile';
 import Profiles from '../pages/Profiles';
+import UserProfile from '../pages/UserProfile';
 import About from '../pages/About';
 import Filter from '../pages/Filter';
 
@@ -33,6 +34,7 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<Landing />} />
           <Route path="/profiles" element={<Profiles />} />
+          <Route path="userprofile" element={<UserProfile />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
