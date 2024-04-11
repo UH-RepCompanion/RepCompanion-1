@@ -67,3 +67,7 @@ body .navbar {
   background-size: cover;
   height: 200vh;
 }
+
+.first-custom {
+  height: 500px;
+}
