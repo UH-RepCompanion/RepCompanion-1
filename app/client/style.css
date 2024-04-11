@@ -9,6 +9,11 @@
   --matr-navbar-highlight-text: khaki;
 }
 
+.gradient {
+  background: linear-gradient(to right, rgb(1, 50, 32), rgb(46, 139, 87), rgb(0, 0, 0));
+}
+
+
 /* Change bootstrap variable values.
  See https://getbootstrap.com/docs/5.2/customize/css-variables/
  */
@@ -60,6 +65,12 @@ body .navbar {
   height: 300px;
   font-family: 'Poppins', sans-serif;
   font-size: large;
+}
+/* About Page style */
+.aboutBackground {
+  background-color: white;
+  background-size: cover;
+  height: 200vh;
 }
 .image-border {
   display: inline-block;
