@@ -82,7 +82,6 @@ const Filter = () => {
       profileInterests: ProfilesInterests.collection.find().fetch(),
     };
   }, []);
-
   const submit = (data) => {
     setInterests(data.interests || []);
   };
