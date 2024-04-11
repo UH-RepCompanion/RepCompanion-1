@@ -2,9 +2,8 @@ import React from 'react';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
-import { Container, Card, Image, Badge, Row, Col } from 'react-bootstrap';
+import { Container, Card, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import { AutoForm, SelectField, SubmitField } from 'uniforms-bootstrap5';
 import { Interests } from '../../api/interests/Interests';
@@ -16,6 +15,7 @@ import { pageStyle } from './pageStyles';
 import { ComponentIDs, PageIDs } from '../utilities/ids';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 import { Tags } from '../../api/tags/Tags';
+import ProfileCard from '../components/ProfileCard';
 
 /* Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allInterests) => new SimpleSchema({
@@ -30,41 +30,6 @@ function getProfileData(email) {
   const projectPictures = tags.map(tag => Tags.collection.findOne({ name: tag }).picture);
   return _.extend({}, data, { interests, tags: projectPictures });
 }
-
-/* Component for layout out a Profile Card. */
-const MakeCard = ({ profile }) => (
-  <Col>
-    <Card className="h-100">
-      <Card.Header><Image src={profile.picture} width={50} /></Card.Header>
-      <Card.Body>
-        <Card.Title>{profile.firstName} {profile.lastName}</Card.Title>
-        <Card.Subtitle><span className="date">{profile.major}</span></Card.Subtitle>
-        <Card.Text>{profile.bio}</Card.Text>
-      </Card.Body>
-      <Card.Body>
-        {profile.interests.map((interest, index) => <Badge key={index} bg="info">{interest}</Badge>)}
-      </Card.Body>
-      <Card.Footer>
-        <h5>Projects</h5>
-        {profile.tags.map((tag, index) => <Badge key={index} bg="info">{tag}</Badge>)}
-      </Card.Footer>
-    </Card>
-  </Col>
-);
-
-/* Properties */
-MakeCard.propTypes = {
-  profile: PropTypes.shape({
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    picture: PropTypes.string,
-    major: PropTypes.string,
-    bio: PropTypes.string,
-    interests: PropTypes.arrayOf(PropTypes.string),
-    tags: PropTypes.arrayOf(PropTypes.string),
-  }).isRequired,
-};
-
 /* Renders the Profile Collection as a set of Cards. */
 const Filter = () => {
   const [interests, setInterests] = useStickyState('interests', []);
@@ -105,7 +70,7 @@ const Filter = () => {
         </Card>
       </AutoForm>
       <Row xs={1} md={2} lg={4} className="g-2" style={{ paddingTop: '10px' }}>
-        {profileData.map((profile, index) => <MakeCard key={index} profile={profile} />)}
+        {profileData.map((profile, index) => <ProfileCard key={index} profile={profile} />)}
       </Row>
     </Container>
   ) : <LoadingSpinner />;
