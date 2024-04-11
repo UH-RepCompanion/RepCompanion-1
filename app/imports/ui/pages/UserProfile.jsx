@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Col, Card, Row } from 'react-bootstrap';
+import { Container, Col, Card, Row, Image } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Interests } from '../../api/interests/Interests';
@@ -35,27 +35,30 @@ const UserProfile = () => {
   }, []);
 
   return ready ? (
-    <Container id={PageIDs.homePage} className="justify-content-center" style={pageStyle}>
-      <Col>
-        <Col className="justify-content-center text-center"><h2 style={{ color: 'white' }}>Your Profile</h2></Col>
-        <Card>
-          <Card.Body>
-            <Row>
-              <Col xs={4}><Card.Title>{profile?.firstName} {profile?.lastName}</Card.Title></Col>
-              <Col xs={4}><Card.Subtitle className="mb-2 text-muted">{profile?.email}</Card.Subtitle></Col>
-            </Row>
-            <Card.Text>{profile?.bio}</Card.Text>
-            <Row>
-              <Col xs={6}><Card.Text><strong>Major:</strong> {profile?.major}</Card.Text></Col>
-              <Col xs={6}><Card.Text><strong>Picture URL:</strong> {profile?.picture}</Card.Text></Col>
-            </Row>
-            <Row>
-              <Col xs={6}><Card.Text><strong>Interests:</strong> {interests.join(', ')}</Card.Text></Col>
-              <Col xs={6}><Card.Text><strong>Tags:</strong> {tags.join(', ')}</Card.Text></Col>
-            </Row>
-          </Card.Body>
-        </Card>
-      </Col>
+    <Container id={PageIDs.homePage} className="d-flex justify-content-center align-items-center" style={pageStyle}>
+      <Row className="justify-content-center align-items-center">
+        <Col>
+          <Col className="justify-content-center text-center"><h2 style={{ color: 'white' }}>{profile?.firstName}&apos;s Profile</h2></Col>
+          <Card style={{ width: '600px', height: '600px' }}>
+            <Card.Body style={{ width: '800', height: 'auto' }}>
+              <Row>
+                <Col xs={6}><Image src={profile?.picture} style={{ width: '200px', height: 'auto', marginBottom: '10px' }} />
+                  <Card.Title>{profile?.firstName} {profile?.lastName}</Card.Title>
+                  <Card.Text style={{ marginTop: '50px', marginBottom: '20px' }}><strong>Major:</strong> {profile?.major}</Card.Text>
+                </Col>
+                <Col xs={6}><Card.Subtitle className="mb-2 text-muted">{profile?.email}</Card.Subtitle>
+                  <Card.Text><strong>About Me: </strong></Card.Text>
+                  {profile?.bio}
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={6}><Card.Text style={{ marginBottom: '20px' }}><strong>Interests:</strong> {interests.join(', ')}</Card.Text></Col>
+                <Col xs={6}><Card.Text style={{ marginBottom: '20px' }}><strong>Tags:</strong> {tags.join(', ')}</Card.Text></Col>
+              </Row>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
     </Container>
   ) : <LoadingSpinner />;
 };
