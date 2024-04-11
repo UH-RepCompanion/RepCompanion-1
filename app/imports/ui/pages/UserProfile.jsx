@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Col, Card, Row, Image } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Interests } from '../../api/interests/Interests';
@@ -60,6 +61,7 @@ const UserProfile = () => {
               <Row>
                 <Col xs={6}><Card.Text style={{ marginBottom: '20px' }}><strong>Interests:</strong> {interests.join(', ')}</Card.Text></Col>
                 <Col xs={6}><Card.Text style={{ marginBottom: '20px', color: 'black' }}><strong>Tags:</strong> {tags.join(', ')}</Card.Text></Col>
+                <Link to="/editprofile" style={{ position: 'absolute', bottom: '10px', left: '500px' }}>Edit Profile</Link>
               </Row>
             </Card.Body>
           </Card>
