@@ -72,3 +72,9 @@ body .navbar {
   background-size: cover;
   height: 200vh;
 }
+.image-border {
+  display: inline-block;
+  border: 3px solid #000;
+  border-radius: 50%;
+  padding: 5px;
+}
