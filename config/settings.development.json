@@ -95,6 +95,7 @@
       "email": "sin8@hawaii.edu"
     }
   ],
+
   "defaultTags": [
     {
       "name": "Trainer",
@@ -121,5 +122,6 @@
       "picture": "Newbie"
     }
   ],
+
   "loadAssetsFile":  false
 }

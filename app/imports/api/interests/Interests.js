@@ -20,4 +20,9 @@ class InterestsCollection {
   }
 }
 
+/**
+ * The singleton instance of the InterestsCollection.
+ * @type {InterestsCollection}
+ */
+
 export const Interests = new InterestsCollection();
