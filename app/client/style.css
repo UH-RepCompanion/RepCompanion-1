@@ -1,5 +1,5 @@
 /* Use Open Sans as the default sans serif font. */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans|Poppins:300,400,500,700|Source+Code+Pro:300,400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Poppins|Cinzel|Bitter:300,400,500,700|Source+Code+Pro:300,400,500,700");
 
 /* Set up some CSS variables to theme the application. */
 :root {
@@ -22,7 +22,7 @@ body {
   --bs-dark-rgb: var(--matr-navbar-bg-rgb);
   background: fixed center url("/images/uh-gym.jpeg");
   background-size: cover;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Bitter', sans-serif;
 }
 
 /* Set the alert background on the signin and signup pages. */
@@ -37,35 +37,72 @@ body {
   padding-top: 10px;
   padding-bottom: 20px;
 }
+
 footer, footer a {
   color: var(--matr-navbar-text-color);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Cinzel', sans-serif;
 }
+
+/* Information on landing page */
+.infofooter {
+  color: black;
+  font-family: 'Bitter', sans-serif;
+}
+
 body .navbar {
   --bs-navbar-active-color: var(--matr-navbar-highlight-text);
   --bs-navbar-brand-color: var(--matr-navbar-text-color);
   --bs-navbar-brand-hover-color: var(--matr-navbar-highlight-text);
   --bs-navbar-color: var(--matr-navbar-text-color);
   --bs-navbar-hover-color: var(--matr-navbar-highlight-text);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Cinzel', sans-serif;
 }
 .bg-dark a.dropdown-item {
   color: var(--matr-navbar-bg);
 }
 
+/* Welcome text */
+.welcome {
+  color: white;
+  font-family: 'Cinzel', sans-serif;
+  text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px  1px 0 #000,
+      1px  1px 0 #000;
+  font-weight: bold;
+}
+
 .landing-page-button {
   height: 10px;
   width: 10px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Bitter', sans-serif;
   font-size: x-large;
+  margin: 20px;
 }
 
+/* Footer links */
+.link {
+  text-decoration: none;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+
+/* Landing page card */
 .square-card {
   width: 300px;
   height: 300px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Bitter', sans-serif;
   font-size: large;
 }
+
 /* About Page style */
 .aboutBackground {
   background-color: white;

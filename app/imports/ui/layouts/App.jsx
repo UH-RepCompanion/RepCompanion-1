@@ -18,6 +18,7 @@ import Profiles from '../pages/Profiles';
 import UserProfile from '../pages/UserProfile';
 import About from '../pages/About';
 import Filter from '../pages/Filter';
+import Policy from '../pages/Policy';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/about" element={<About />} />
+          <Route path="/policy" element={<Policy />} />
           <Route path="/editprofile" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/filter" element={<ProtectedRoute><Filter /></ProtectedRoute>} />m
