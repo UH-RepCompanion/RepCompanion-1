@@ -59,8 +59,11 @@ const Footer = () => {
               {' '}
               <br />
               <a href="https://github.com/UH-RepCompanion" className="link">
-                RepCompanion Organization
+                App Organization
               </a>
+            </Col>
+            <Col className="text-center">
+              <Image className="pt-5" style={{ width: '100px', height: 'auto' }} src="../images/uh-warriors-logo.png" alt="[Image Not Found]" />
             </Col>
             <Col className="text-center">
               UH RepCompanion
@@ -76,12 +79,22 @@ const Footer = () => {
               {' '}
               <br />
             </Col>
+            <Col className="text-center">
+              <Image className="pt-5" style={{ width: '100px', height: 'auto' }} src="../images/uh-warriors-logo.png" alt="[Image Not Found]" />
+            </Col>
             <Col>
               <h5><strong>Terms of Service</strong></h5>
               {' '}
               <br />
               <a href="/policy" className="link">
                 Privacy Policy
+              </a>
+              {' '}
+              <br />
+              {' '}
+              <br />
+              <a href="/terms&conditions" className="link">
+                Terms & Conditions
               </a>
             </Col>
           </Row>

@@ -5,11 +5,20 @@ const Policy = () => (
   <Container className="aboutBackground w-50 h-50 infofooter" style={{ backgroundColor: 'light' }}>
     <Row className="text-center">
       <Col className="pt-5">
-        <h1>Privacy Policy</h1>
+        <h1><strong>UH RepCompanion</strong></h1>
+        <h2 className="m-4">Privacy Policy</h2>
         {/* eslint-disable-next-line max-len */}
-        <p className="m-5 text-start">
+        <p className="m-5">
 
           This Privacy Policy describes how the UH RepCompanion application collects, uses, and protects your personal information when you use UH RepCompanion.
+        </p>
+        <h4>Terms & Conditions</h4>
+
+        <p className="m-5"> Please review our Terms & Conditions under our Terms of Service or by clicking&nbsp;
+          <a href="/terms&conditions" className="link">
+            here
+          </a>
+          .
         </p>
         <h4>Registration Policy</h4>
 
