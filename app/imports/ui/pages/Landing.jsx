@@ -28,7 +28,7 @@ const Landing = () => {
           ) : (
             <Button className="py-3 justify-content-center" variant="dark" id="landing-page-button" style={{ width: '150px' }} as={Link} to="/signin"><strong> Login </strong></Button>
           )}
-          <Image width={350} height={350} style={{ marginTop: '20px', marginBottom: '20px', marginRight: '20px', marginLeft: '20px' }} className="rounded-circle" src="../images/uh-repcompanion.png" />
+          <Image width={350} height={350} style={{ marginTop: '20px', marginBottom: '20px', marginRight: '20px', marginLeft: '20px', borderRadius: '50%', border: '3px solid white' }} className="rounded-circle" src="../images/uh-repcompanion.png" />
           {currentUser ? (
             ''
           ) : (

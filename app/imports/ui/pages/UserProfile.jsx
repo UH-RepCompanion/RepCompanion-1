@@ -49,7 +49,7 @@ const UserProfile = () => {
           <Card style={{ width: '600px', height: '600px' }}>
             <Card.Body style={{ width: '800', height: 'auto' }}>
               <Row>
-                <Col xs={6}><Image className="rounded-circle" src={profile?.picture} style={{ width: '200px', height: 'auto', marginBottom: '10px', borderRadius: '50%', border: '2px solid black' }} />
+                <Col xs={6}><Image className="rounded-circle" src={profile?.picture} style={{ width: '200px', height: 'auto', marginBottom: '10px', borderRadius: '50%', border: '3px solid black' }} />
                   <Card.Title>{profile?.firstName} {profile?.lastName}</Card.Title>
                   <Card.Text style={{ marginTop: '50px', marginBottom: '20px' }}><strong>Major:</strong> {profile?.major}</Card.Text>
                 </Col>
