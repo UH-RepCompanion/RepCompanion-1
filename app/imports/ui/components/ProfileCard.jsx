@@ -5,7 +5,7 @@ import { ChatDotsFill, HeartFill, TrophyFill } from 'react-bootstrap-icons';
 
 const ProfileCard = ({ profile }) => (
   <Col>
-    <Card className="h-100">
+    <Card className="h-100" style={{ backgroundColor: 'azure' }}>
       <Card.Header className="text-center">
         <div className="image-border">
           <Image src={profile.picture} width={150} style={{ borderRadius: '50%', border: '3px solid black' }} roundedCircle />
