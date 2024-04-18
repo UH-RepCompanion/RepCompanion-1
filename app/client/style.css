@@ -13,11 +13,6 @@
   background: linear-gradient(to right, rgb(1, 50, 32), rgb(46, 139, 87), rgb(0, 0, 0));
 }
 
-.profileCard {
-  background: linear-gradient(to right, rgb(232, 220, 202), rgb(211, 211, 211), rgb(232, 220, 202));
-}
-
-
 /* Change bootstrap variable values.
  See https://getbootstrap.com/docs/5.2/customize/css-variables/
  */

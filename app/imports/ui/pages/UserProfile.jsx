@@ -46,7 +46,7 @@ const UserProfile = () => {
       <Row className="justify-content-center align-items-center">
         <Col>
           <Col className="justify-content-center text-center"><h2 style={{ color: 'white' }}>{profile?.firstName}&apos;s Profile</h2></Col>
-          <Card className="profileCard" style={{ width: '600px', height: '600px', border: '1px solid black' }}>
+          <Card style={{ width: '600px', height: '600px', backgroundColor: 'beige', border: '1px solid black' }}>
             <Card.Body style={{ width: '800', height: 'auto' }}>
               <Row>
                 <Col xs={6}><Image className="rounded-circle" src={profile?.picture} style={{ width: '200px', height: 'auto', marginBottom: '10px', borderRadius: '50%', border: '3px solid black' }} />
