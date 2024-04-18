@@ -1,12 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Notes } from '../../api/note/Notes';
-import { Interests } from '../../api/interests/Interests';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
-// eslint-disable-next-line import/named
-import { Tags } from '../../api/tags/Tags';
-import { TagsInterests } from '../../api/tags/TagsInterests';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 
 // User-level publication.
@@ -29,7 +25,6 @@ Meteor.publish(Notes.adminPublicationName, function () {
   return this.ready();
 });
 /** Define a publication to publish all interests. */
-Meteor.publish(Interests.userPublicationName, () => Interests.collection.find());
 
 /** Define a publication to publish all profiles. */
 Meteor.publish(Profiles.userPublicationName, () => Profiles.collection.find());
@@ -39,13 +34,6 @@ Meteor.publish(ProfilesInterests.userPublicationName, () => ProfilesInterests.co
 
 /** Define a publication to publish this collection. */
 Meteor.publish(ProfilesTags.userPublicationName, () => ProfilesTags.collection.find());
-
-/** Define a publication to publish all projects. */
-Meteor.publish(Tags.userPublicationName, () => Tags.collection.find());
-
-/** Define a publication to publish this collection. */
-Meteor.publish(TagsInterests.userPublicationName, () => TagsInterests.collection.find());
-
 // alanning:roles publication
 // Recommended code to publish roles for each user.
 Meteor.publish(null, function () {

@@ -26,7 +26,7 @@ const ProfileCard = ({ profile }) => (
         </Card.Text>
         <Card.Text>
           <h5>Level</h5>
-          {profile.tags.map((tag, index) => <Badge key={index} bg="secondary">{tag}</Badge>)}
+          <Badge bg="secondary">{profile.tag}</Badge>
         </Card.Text>
         <h5>Activity Bar</h5>
         <ProgressBar now={profile.progress} label={`${profile.progress}%`} animated />
@@ -48,7 +48,7 @@ ProfileCard.propTypes = {
     picture: PropTypes.string,
     major: PropTypes.string,
     interests: PropTypes.arrayOf(PropTypes.string),
-    tags: PropTypes.arrayOf(PropTypes.string),
+    tag: PropTypes.string,
     progress: PropTypes.number,
   }).isRequired,
 };

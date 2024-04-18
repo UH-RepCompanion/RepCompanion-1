@@ -2,9 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
-import { TagsInterests } from '../../api/tags/TagsInterests';
-// eslint-disable-next-line import/named
-import { Tags } from '../../api/tags/Tags';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -38,32 +35,13 @@ const updateProfileMethod = 'Profiles.update';
  * updated situation specified by the user.
  */
 Meteor.methods({
-  'Profiles.update'({ email, firstName, lastName, bio, major, picture, interests, tags }) {
-    Profiles.collection.update({ email }, { $set: { email, firstName, lastName, bio, major, picture } }, { upsert: true });
+  'Profiles.update'({ email, firstName, lastName, bio, major, picture, interests, tag }) {
+    Profiles.collection.update({ email }, { $set: { email, firstName, lastName, bio, major, picture, tag, interests } }, { upsert: true });
     ProfilesInterests.collection.remove({ profile: email });
     ProfilesTags.collection.remove({ profile: email });
     interests.map((interest) => ProfilesInterests.collection.insert({ profile: email, interest }));
-    tags.map((tag) => ProfilesTags.collection.insert({ profile: email, tag }));
+    ProfilesTags.collection.insert({ profile: email, tag });
   },
 });
 
-const addProjectMethod = 'Projects.add';
-
-/** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsInterests. */
-Meteor.methods({
-  'Projects.add'({ name, picture, interests, participants }) {
-    Tags.collection.insert({ name, picture });
-    ProfilesTags.collection.remove({ tag: name });
-    TagsInterests.collection.remove({ tag: name });
-    if (interests) {
-      interests.map((interest) => TagsInterests.collection.insert({ tag: name, interest }));
-    } else {
-      throw new Meteor.Error('At least one interest is required.');
-    }
-    if (participants) {
-      participants.map((participant) => ProfilesTags.collection.insert({ tag: name, profile: participant }));
-    }
-  },
-});
-
-export { updateProfileMethod, addProjectMethod };
+export { updateProfileMethod };

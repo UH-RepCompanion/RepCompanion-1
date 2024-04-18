@@ -6,7 +6,6 @@ import { Container, Card, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { _ } from 'meteor/underscore';
 import { AutoForm, SelectField, SubmitField } from 'uniforms-bootstrap5';
-import { Interests } from '../../api/interests/Interests';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -14,7 +13,6 @@ import { useStickyState } from '../utilities/StickyState';
 import { pageStyle } from './pageStyles';
 import { ComponentIDs, PageIDs } from '../utilities/ids';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
-import { Tags } from '../../api/tags/Tags';
 import ProfileCard from '../components/ProfileCard';
 
 /* Create a schema to specify the structure of the data to appear in the form. */

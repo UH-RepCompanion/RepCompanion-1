@@ -7,7 +7,6 @@ import SimpleSchema from 'simpl-schema';
 import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Interests } from '../../api/interests/Interests';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { updateProfileMethod } from '../../startup/both/Methods';
@@ -15,8 +14,6 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
 import { ComponentIDs, PageIDs } from '../utilities/ids';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
-// eslint-disable-next-line import/named
-import { Tags } from '../../api/tags/Tags';
 
 /* Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allInterests, allTags) => new SimpleSchema({
@@ -28,8 +25,7 @@ const makeSchema = (allInterests, allTags) => new SimpleSchema({
   picture: { type: String, label: 'Picture URL', optional: true },
   interests: { type: Array, label: 'Interests', optional: true },
   'interests.$': { type: String, allowedValues: allInterests },
-  tags: { type: Array, label: 'Tags', optional: true },
-  'tags.$': { type: String, allowedValues: allTags },
+  tag: { type: String, allowedValues: allTags, label: 'Tags', optional: true },
 });
 
 /* Renders the EditProfile Page: what appears after the user logs in. */
@@ -46,7 +42,6 @@ const EditProfile = () => {
     // Append the email to the data object. Ensure userEmail is not undefined.
     if (userEmail) {
       const dataWithEmail = { ...data, email: userEmail };
-
       Meteor.call(updateProfileMethod, dataWithEmail, (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -61,19 +56,17 @@ const EditProfile = () => {
   };
   const { ready, email } = useTracker(() => {
     // Ensure that minimongo is populated with all collections prior to running render().
-    const sub1 = Meteor.subscribe(Interests.userPublicationName);
-    const sub2 = Meteor.subscribe(Profiles.userPublicationName);
-    const sub3 = Meteor.subscribe(ProfilesInterests.userPublicationName);
-    const sub4 = Meteor.subscribe(ProfilesTags.userPublicationName);
-    const sub5 = Meteor.subscribe(Tags.userPublicationName);
+    const sub1 = Meteor.subscribe(Profiles.userPublicationName);
+    const sub2 = Meteor.subscribe(ProfilesInterests.userPublicationName);
+    const sub3 = Meteor.subscribe(ProfilesTags.userPublicationName);
     return {
-      ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
+      ready: sub1.ready() && sub2.ready() && sub3.ready(),
       email: Meteor.user()?.username,
     };
   }, []);
   // Create the form schema for uniforms. Need to determine all interests and projects for muliselect list.
-  const allInterests = _.pluck(Interests.collection.find().fetch(), 'name');
-  const allTags = _.pluck(Tags.collection.find().fetch(), 'name');
+  const allInterests = Profiles.allowedInterests;
+  const allTags = Profiles.allowedTags;
   const formSchema = makeSchema(allInterests, allTags);
   const bridge = new SimpleSchema2Bridge(formSchema);
   // Now create the model with all the user information.
@@ -100,7 +93,7 @@ const EditProfile = () => {
               </Row>
               <Row>
                 <Col xs={6}><SelectField name="interests" showInlineError multiple /></Col>
-                <Col xs={6}><SelectField name="tags" showInlineError multiple /></Col>
+                <Col xs={6}><SelectField name="tag" showInlineError /></Col>
               </Row>
               <SubmitField id={ComponentIDs.homeFormSubmit} value="Update" />
             </Card.Body>

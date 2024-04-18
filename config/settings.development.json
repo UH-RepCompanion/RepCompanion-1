@@ -16,9 +16,7 @@
         "Core Training",
         "Cardio"
       ],
-      "tags":[
-        "Trainer"
-      ],
+      "tag": "Trainer",
       "picture": "https://github.com/philipmjohnson.png",
       "email": "johnson@hawaii.edu"
     },
@@ -31,9 +29,7 @@
         "Core Training",
         "Cardio"
       ],
-      "tags":[
-        "Advanced"
-      ],
+      "tag":"Advanced",
       "picture": "http://www.ics.hawaii.edu/wp-content/uploads/2013/08/Henri_Casanova1.jpg",
       "email": "henric@hawaii.edu"
     },
@@ -45,9 +41,7 @@
       "interests": [
         "Cardio"
       ],
-      "tags":[
-        "Trainer"
-      ],
+      "tag": "Trainer",
       "picture": "https://github.com/cammoore.png",
       "email": "cmoore@hawaii.edu"
     },
@@ -59,9 +53,7 @@
       "interests": [
         "Yoga"
       ],
-      "tags":[
-        "Newbie"
-      ],
+      "tag": "Newbie",
       "picture": "https://anthonyjchriste.github.io/images/me.png",
       "email": "achriste@hawaii.edu"
     },
@@ -73,9 +65,7 @@
       "interests": [
         "Balance Training"
       ],
-      "tags":[
-        "Intermediate"
-      ],
+      "tag": "Intermediate",
       "picture": "http://www.ics.hawaii.edu/wp-content/uploads/2013/08/Jason_Leigh-2014.jpg",
       "email": "leighj@hawaii.edu"
     },
@@ -88,37 +78,9 @@
         "Power Lifting",
         "Balance Training"
       ],
-      "tags":[
-        "Intermediate"
-      ],
+      "tag": "Intermediate",
       "picture": "https://sergey-negrashov.github.io/images/serge.jpg",
       "email": "sin8@hawaii.edu"
-    }
-  ],
-  "defaultTags": [
-    {
-      "name": "Trainer",
-      "interests": [
-      ],
-      "picture": "Trainer"
-    },
-    {
-      "name": "Intermediate",
-      "interests": [
-      ],
-      "picture": "Intermediate"
-    },
-    {
-      "name": "Advanced",
-      "interests": [
-      ],
-      "picture": "Advanced"
-    },
-    {
-      "name": "Newbie",
-      "interests": [
-      ],
-      "picture": "Newbie"
     }
   ],
   "loadAssetsFile":  false

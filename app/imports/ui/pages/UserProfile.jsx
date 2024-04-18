@@ -3,11 +3,7 @@ import { Container, Col, Card, Row, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import { Interests } from '../../api/interests/Interests';
 import { Profiles } from '../../api/profiles/Profiles';
-import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
-import { ProfilesTags } from '../../api/profiles/ProfilesTags';
-import { Tags } from '../../api/tags/Tags';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
 import { PageIDs } from '../utilities/ids';
@@ -15,29 +11,13 @@ import { PageIDs } from '../utilities/ids';
 /* Renders the UserProfile Page: displays user information. */
 /* Assisted by chatgpt generation */
 const UserProfile = () => {
-  const { ready, profile, interests, tags } = useTracker(() => {
-    const sub1 = Meteor.subscribe(Interests.userPublicationName);
-    const sub2 = Meteor.subscribe(Profiles.userPublicationName);
-    const sub3 = Meteor.subscribe(ProfilesInterests.userPublicationName);
-    const sub4 = Meteor.subscribe(Tags.userPublicationName);
-    const sub5 = Meteor.subscribe(ProfilesTags.userPublicationName);
+  const { ready, profile } = useTracker(() => {
+    const sub = Meteor.subscribe(Profiles.userPublicationName);
     const userProfile = Profiles.collection.findOne({ email: Meteor.user()?.username });
-    const userInterests = ProfilesInterests.collection.find({ profile: userProfile?.email }).fetch();
-    const userTags = ProfilesTags.collection.find({ profile: userProfile?.email }).fetch();
-    const userInterestsNames = userInterests.map(({ interest }) => {
-      const interestDoc = Interests.collection.findOne({ name: interest });
-      return interestDoc?.name;
-    });
-    const userTagsNames = userTags.map(({ tag }) => {
-      const tagDoc = Tags.collection.findOne({ name: tag });
-      return tagDoc?.name;
-    });
     return {
-      ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
+      ready: sub.ready(),
       email: Meteor.user()?.username,
       profile: userProfile,
-      interests: userInterestsNames,
-      tags: userTagsNames,
     };
   }, []);
 
@@ -59,8 +39,8 @@ const UserProfile = () => {
                 </Col>
               </Row>
               <Row>
-                <Col xs={6}><Card.Text style={{ marginBottom: '20px' }}><strong>Interests:</strong> {interests.join(', ')}</Card.Text></Col>
-                <Col xs={6}><Card.Text style={{ marginBottom: '20px', color: 'black' }}><strong>Tags:</strong> {tags.join(', ')}</Card.Text></Col>
+                <Col xs={6}><Card.Text style={{ marginBottom: '20px' }}><strong>Interests:</strong> {profile?.interests.join(', ')}</Card.Text></Col>
+                <Col xs={6}><Card.Text style={{ marginBottom: '20px', color: 'black' }}><strong>Tags:</strong> {profile?.tag}</Card.Text></Col>
                 <Link to="/editprofile" style={{ position: 'absolute', bottom: '10px', left: '500px' }}>Edit Profile</Link>
               </Row>
             </Card.Body>
