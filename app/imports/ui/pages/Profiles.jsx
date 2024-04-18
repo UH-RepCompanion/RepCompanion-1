@@ -11,16 +11,14 @@ import { PageIDs } from '../utilities/ids';
 import ProfileCard from '../components/ProfileCard';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 // eslint-disable-next-line import/named
-import { Tags } from '../../api/tags/Tags';
 
 /* Returns the Profile and associated Projects and Interests associated with the passed user email. */
 function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
   const interests = _.pluck(ProfilesInterests.collection.find({ profile: email }).fetch(), 'interest');
-  const tags = _.pluck(ProfilesTags.collection.find({ profile: email }).fetch(), 'tag');
-  const tagPictures = tags.map(tag => Tags.collection.findOne({ name: tag })?.picture);
+  const tag = _.pluck(ProfilesTags.collection.find({ profile: email }).fetch(), 'tag');
   // console.log(_.extend({ }, data, { interests, projects: projectPictures }));
-  return _.extend({}, data, { interests, tags: tagPictures });
+  return _.extend({}, data, { interests, tag });
 }
 
 /* Renders the Profile Collection as a set of Cards. */
@@ -31,9 +29,8 @@ const ProfilesPage = () => {
     const sub1 = Meteor.subscribe(Profiles.userPublicationName);
     const sub2 = Meteor.subscribe(ProfilesInterests.userPublicationName);
     const sub3 = Meteor.subscribe(ProfilesTags.userPublicationName);
-    const sub4 = Meteor.subscribe(Tags.userPublicationName);
     return {
-      ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready(),
+      ready: sub1.ready() && sub2.ready() && sub3.ready(),
     };
   }, []);
   const emails = _.pluck(Profiles.collection.find().fetch(), 'email');
