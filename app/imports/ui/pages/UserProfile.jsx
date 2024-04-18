@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Col, Card, Row, Image } from 'react-bootstrap';
+import { Container, Col, Card, Row, Image, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
@@ -22,14 +22,14 @@ const UserProfile = () => {
   }, []);
 
   return ready ? (
-    <Container id={PageIDs.homePage} className="d-flex justify-content-center align-items-center" style={pageStyle}>
+    <Container id={PageIDs.homePage} className="d-flex justify-content-center align-items-center infofooter" style={pageStyle}>
       <Row className="justify-content-center align-items-center">
         <Col>
           <Col className="justify-content-center text-center"><h2 style={{ color: 'white' }}>{profile?.firstName}&apos;s Profile</h2></Col>
-          <Card style={{ width: '600px', height: '600px' }}>
+          <Card style={{ width: '600px', height: '600px', backgroundColor: 'azure', border: '1px solid black' }}>
             <Card.Body style={{ width: '800', height: 'auto' }}>
               <Row>
-                <Col xs={6}><Image className="rounded-circle" src={profile?.picture} style={{ width: '200px', height: 'auto', marginBottom: '10px', borderRadius: '50%', border: '2px solid black' }} />
+                <Col xs={6}><Image className="rounded-circle" src={profile?.picture} style={{ width: '200px', height: 'auto', marginBottom: '10px', borderRadius: '50%', border: '3px solid black' }} />
                   <Card.Title>{profile?.firstName} {profile?.lastName}</Card.Title>
                   <Card.Text style={{ marginTop: '50px', marginBottom: '20px' }}><strong>Major:</strong> {profile?.major}</Card.Text>
                 </Col>
@@ -41,7 +41,7 @@ const UserProfile = () => {
               <Row>
                 <Col xs={6}><Card.Text style={{ marginBottom: '20px' }}><strong>Interests:</strong> {profile?.interests.join(', ')}</Card.Text></Col>
                 <Col xs={6}><Card.Text style={{ marginBottom: '20px', color: 'black' }}><strong>Tags:</strong> {profile?.tag}</Card.Text></Col>
-                <Link to="/editprofile" style={{ position: 'absolute', bottom: '10px', left: '500px' }}>Edit Profile</Link>
+                <Button className="text-start" variant="dark" id="landing-page-button" style={{ position: 'absolute', bottom: '10px', left: '465px', color: 'white', width: '120px' }} as={Link} to="/editprofile">Edit Profile</Button>
               </Row>
             </Card.Body>
           </Card>

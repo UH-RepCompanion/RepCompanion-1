@@ -60,7 +60,7 @@ const Filter = () => {
   return ready ? (
     <Container id={PageIDs.filterPage} style={pageStyle}>
       <AutoForm schema={bridge} onSubmit={data => submit(data)} model={{ interests }}>
-        <Card>
+        <Card style={{ backgroundColor: 'azure' }}>
           <Card.Body id={ComponentIDs.filterFormInterests}>
             <SelectField name="interests" multiple placeholder="Interests" checkboxes transform={transform} />
             <SubmitField id={ComponentIDs.filterFormSubmit} value="Submit" />
