@@ -3,7 +3,6 @@ import { Col, Container, Row, Image, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import LandingPageCard from '../components/LandingPageCard';
 
 const Landing = () => {
   const [visible, setVisible] = useState(false);
@@ -35,7 +34,6 @@ const Landing = () => {
             <Button className="py-3 justify-content-center" variant="dark" id="landing-page-button" style={{ width: '150px' }} as={Link} to="/signup"><strong> Register </strong></Button>
           )}
         </Col>
-        <LandingPageCard />
       </Row>
     </Container>
   );
