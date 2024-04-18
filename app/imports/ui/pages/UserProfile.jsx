@@ -12,10 +12,10 @@ import { PageIDs } from '../utilities/ids';
 /* Assisted by chatgpt generation */
 const UserProfile = () => {
   const { ready, profile } = useTracker(() => {
-    const sub2 = Meteor.subscribe(Profiles.userPublicationName);
+    const sub = Meteor.subscribe(Profiles.userPublicationName);
     const userProfile = Profiles.collection.findOne({ email: Meteor.user()?.username });
     return {
-      ready: sub2.ready(),
+      ready: sub.ready(),
       email: Meteor.user()?.username,
       profile: userProfile,
     };

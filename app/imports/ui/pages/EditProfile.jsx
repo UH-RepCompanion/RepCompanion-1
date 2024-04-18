@@ -56,11 +56,11 @@ const EditProfile = () => {
   };
   const { ready, email } = useTracker(() => {
     // Ensure that minimongo is populated with all collections prior to running render().
-    const sub2 = Meteor.subscribe(Profiles.userPublicationName);
-    const sub3 = Meteor.subscribe(ProfilesInterests.userPublicationName);
-    const sub4 = Meteor.subscribe(ProfilesTags.userPublicationName);
+    const sub1 = Meteor.subscribe(Profiles.userPublicationName);
+    const sub2 = Meteor.subscribe(ProfilesInterests.userPublicationName);
+    const sub3 = Meteor.subscribe(ProfilesTags.userPublicationName);
     return {
-      ready: sub2.ready() && sub3.ready() && sub4.ready(),
+      ready: sub1.ready() && sub2.ready() && sub3.ready(),
       email: Meteor.user()?.username,
     };
   }, []);
