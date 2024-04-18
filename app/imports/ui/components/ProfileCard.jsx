@@ -8,7 +8,7 @@ const ProfileCard = ({ profile }) => (
     <Card className="h-100">
       <Card.Header className="text-center">
         <div className="image-border">
-          <Image src={profile.picture} width={150} roundedCircle />
+          <Image src={profile.picture} width={150} style={{ borderRadius: '50%', border: '3px solid black' }} roundedCircle />
         </div>
         <Card.Title>{profile.firstName} {profile.lastName}</Card.Title>
         <Card.Subtitle><span className="date">{profile.major}</span></Card.Subtitle>
