@@ -17,7 +17,6 @@ import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 import { Tags } from '../../api/tags/Tags';
 import ProfileCard from '../components/ProfileCard';
 
-/* Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allInterests) => new SimpleSchema({
   interests: { type: Array, label: 'Interests', optional: true },
   'interests.$': { type: String, allowedValues: allInterests },
@@ -30,47 +29,51 @@ function getProfileData(email) {
   const projectPictures = tags.map(tag => Tags.collection.findOne({ name: tag }).picture);
   return _.extend({}, data, { interests, tags: projectPictures });
 }
-/* Renders the Profile Collection as a set of Cards. */
-const Filter = () => {
-  const [interests, setInterests] = useStickyState('interests', []);
 
-  const { ready, interestDocs, profileInterests } = useTracker(() => {
-    // Ensure that minimongo is populated with all collections prior to running render().
+const Filter = () => {
+  const [selectedInterests, setSelectedInterests] = useStickyState('selectedInterests', []);
+
+  const { ready, interestDocs, profileData } = useTracker(() => {
     const sub1 = Meteor.subscribe(Profiles.userPublicationName);
     const sub2 = Meteor.subscribe(ProfilesInterests.userPublicationName);
     const sub3 = Meteor.subscribe(ProfilesTags.userPublicationName);
     const sub4 = Meteor.subscribe(Tags.userPublicationName);
     const sub5 = Meteor.subscribe(Interests.userPublicationName);
+
+    const allProfiles = Profiles.collection.find().fetch().map(profile => getProfileData(profile.email));
     return {
       ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
       interestDocs: Interests.collection.find().fetch(),
-      profileInterests: ProfilesInterests.collection.find().fetch(),
+      profileData: allProfiles,
     };
   }, []);
+
   const submit = (data) => {
-    setInterests(data.interests || []);
+    setSelectedInterests(data.interests || []);
   };
+
+  const filteredProfiles = selectedInterests.length > 0
+    ? profileData.filter(profile => profile.interests.some(interest => selectedInterests.includes(interest)))
+    : profileData;
 
   const allInterests = _.pluck(interestDocs, 'name');
   const formSchema = makeSchema(allInterests);
   const bridge = new SimpleSchema2Bridge(formSchema);
-  const profileWithInterest = profileInterests.filter(pI => interests.includes(pI.interest));
-  const emails = _.pluck(profileWithInterest, 'profile');
-  const profileData = _.uniq(emails).map(email => getProfileData(email));
-  const transform = (label) => ` ${label}`;
+
+  const transformLabel = (label) => ` ${label}`;
 
   return ready ? (
     <Container id={PageIDs.filterPage} style={pageStyle}>
-      <AutoForm schema={bridge} onSubmit={data => submit(data)} model={{ interests }}>
+      <AutoForm schema={bridge} onSubmit={data => submit(data)} model={{ interests: selectedInterests }}>
         <Card>
           <Card.Body id={ComponentIDs.filterFormInterests}>
-            <SelectField name="interests" multiple placeholder="Interests" checkboxes transform={transform} />
+            <SelectField name="interests" multiple placeholder="Select Interests" checkboxes transform={transformLabel} />
             <SubmitField id={ComponentIDs.filterFormSubmit} value="Submit" />
           </Card.Body>
         </Card>
       </AutoForm>
-      <Row xs={1} md={2} lg={4} className="g-2" style={{ paddingTop: '10px' }}>
-        {profileData.map((profile, index) => <ProfileCard key={index} profile={profile} />)}
+      <Row xs={1} md={2} lg={4} className="g-4" style={{ paddingTop: '10px' }}>
+        {filteredProfiles.map((profile, index) => <ProfileCard key={index} profile={profile} />)}
       </Row>
     </Container>
   ) : <LoadingSpinner />;
