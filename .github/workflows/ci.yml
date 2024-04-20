@@ -1,4 +1,4 @@
-name: ci-RepCompanion-1
+name: ci-uh-repcompanion
 
 on:
   push:
