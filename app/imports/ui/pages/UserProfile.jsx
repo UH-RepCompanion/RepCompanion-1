@@ -27,8 +27,9 @@ const UserProfile = () => {
   const [selectedDay, setSelectedDay] = useState('');
   const [workout, setWorkout] = useState('');
 
-  const handleAddWorkout = () => {
+  const handleAddWorkout = (day) => {
     // Handle adding the workout here
+    Notes.addWorkout(Meteor.userId(), day, workout);
     setWorkout('');
     setShowWorkoutModal(false);
   };
@@ -39,10 +40,7 @@ const UserProfile = () => {
     setShowWorkoutModal(true);
   };
 
-  const getWorkoutForDay = (day) => {
-    const notesForDay = Notes.collection.find({ owner: Meteor.userId(), day }).fetch();
-    return notesForDay.map((note) => note.note); // Return the content of the notes
-  };
+  const getWorkoutForDay = (day) => Notes.getWorkoutForDay(Meteor.userId(), day);
 
   return ready ? (
     <Container id={PageIDs.homePage} className="d-flex justify-content-center align-items-center infofooter" style={pageStyle}>
