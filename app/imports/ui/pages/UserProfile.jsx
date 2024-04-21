@@ -1,5 +1,5 @@
-import React from 'react';
-import { Container, Col, Card, Row, Image, Button, Table } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Container, Col, Card, Row, Image, Button, Table, Form, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
@@ -21,6 +21,15 @@ const UserProfile = () => {
       profile: userProfile,
     };
   }, []);
+
+  const [showWorkoutModal, setShowWorkoutModal] = useState(false);
+  const [workout, setWorkout] = useState('');
+
+  const handleAddWorkout = () => {
+    // Handle adding the workout here
+    setWorkout('');
+    setShowWorkoutModal(false);
+  };
 
   return ready ? (
     <Container id={PageIDs.homePage} className="d-flex justify-content-center align-items-center infofooter" style={pageStyle}>
@@ -45,6 +54,8 @@ const UserProfile = () => {
               <Row>
                 <Col xs={6}><Card.Text style={{ marginBottom: '20px' }}><strong>Interests:</strong> {profile?.interests.join(', ')}</Card.Text></Col>
                 <Col xs={6}><Card.Text style={{ marginBottom: '20px', color: 'black' }}><strong>Tags:</strong> {profile?.tag}</Card.Text></Col>
+              </Row>
+              <Row>
                 <Container className="d-flex justify-content-center align-items-center square-card">
                   <Table striped bordered hover style={{ width: '100%' }}>
                     <thead>
@@ -60,13 +71,13 @@ const UserProfile = () => {
                     </thead>
                     <tbody>
                       <tr>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }}>*</th>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }}>*</th>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }}>*</th>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }}>*</th>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }}>*</th>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }}>*</th>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => setShowWorkoutModal(true)}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => setShowWorkoutModal(true)}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => setShowWorkoutModal(true)}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => setShowWorkoutModal(true)}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => setShowWorkoutModal(true)}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => setShowWorkoutModal(true)}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => setShowWorkoutModal(true)}>*</th>
                       </tr>
                     </tbody>
                   </Table>
@@ -77,6 +88,23 @@ const UserProfile = () => {
           </Card>
         </Col>
       </Row>
+      <Modal show={showWorkoutModal} onHide={() => setShowWorkoutModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Workout</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="workoutText">
+              <Form.Label>Details</Form.Label>
+              <Form.Control as="textarea" rows={3} value={workout} onChange={(e) => setWorkout(e.target.value)} />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="light" onClick={() => setShowWorkoutModal(false)}>Cancel</Button>
+          <Button variant="dark" onClick={handleAddWorkout}>Add Workout</Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   ) : <LoadingSpinner />;
 };
