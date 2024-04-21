@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, PersonFill, PersonPlusFill, PersonSquare } from 'react-bootstrap-icons';
 
 const NavBar = () => {
@@ -15,8 +15,9 @@ const NavBar = () => {
   return (
     <Navbar bg="dark" expand="lg" className="gradient">
       <Container>
+        <Image style={{ marginTop: '8px', marginBottom: '20px', marginRight: '10px', width: '50px', height: 'auto' }} src="./images/uh-warriors-logo.png" />
         <Navbar.Brand as={NavLink} to="/">
-          <h2><strong>UH RepCompanion</strong></h2>
+          <h2><strong>RepCompanion</strong></h2>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

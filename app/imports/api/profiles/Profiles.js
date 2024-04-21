@@ -4,6 +4,19 @@ import SimpleSchema from 'simpl-schema';
 /** Encapsulates state and variable values for this collection. */
 class ProfilesCollection {
   constructor() {
+    this.allowedInterests =
+      ['Strength Training',
+        'Power Lifting',
+        'Core Training',
+        'Cardio',
+        'Yoga',
+        'Balance Training'];
+
+    this.allowedTags =
+      ['Trainer',
+        'Advanced',
+        'Intermediate',
+        'Newbie'];
     // The name of this collection.
     this.name = 'ProfilesCollection';
     // Define the Mongo collection.
@@ -16,6 +29,18 @@ class ProfilesCollection {
       bio: { type: String, optional: true },
       major: { type: String, optional: true },
       picture: { type: String, optional: true },
+      interests: {
+        type: Array,
+        defaultValue: [],
+      },
+      'interests.$': {
+        type: String,
+        allowedValues: this.allowedInterests,
+      },
+      tag: {
+        type: String,
+        allowedValues: this.allowedTags,
+      },
     });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);
