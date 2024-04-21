@@ -118,4 +118,7 @@ body .navbar {
   padding: 5px;
 }
 
-
+.icon {
+  font-size: 22px;
+  color: darkcyan;
+}

@@ -3,6 +3,7 @@ import { Container, Col, Card, Row, Image, Button, Table } from 'react-bootstrap
 import { Link } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
+import { Instagram, Snapchat, Discord } from 'react-bootstrap-icons';
 import { Profiles } from '../../api/profiles/Profiles';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
@@ -35,7 +36,10 @@ const UserProfile = () => {
                 </Col>
                 <Col xs={6}><Card.Subtitle className="mb-2 text-muted">{profile?.email}</Card.Subtitle>
                   <Card.Text><strong>About Me: </strong></Card.Text>
-                  {profile?.bio}
+                  <Card.Text>{profile?.bio}</Card.Text>
+                  <Col className="mb-4 mt-4 icon"><Instagram /></Col>
+                  <Col className="mb-4 icon"><Snapchat /></Col>
+                  <Col className="mb-4 icon"><Discord /></Col>
                 </Col>
               </Row>
               <Row>
