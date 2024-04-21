@@ -60,13 +60,13 @@ const UserProfile = () => {
                     </thead>
                     <tbody>
                       <tr>
-                        <th style={{ backgroundColor: 'lightcyan' }}>*</th>
-                        <th style={{ backgroundColor: 'lightcyan' }}>*</th>
-                        <th style={{ backgroundColor: 'lightcyan' }}>*</th>
-                        <th style={{ backgroundColor: 'lightcyan' }}>*</th>
-                        <th style={{ backgroundColor: 'lightcyan' }}>*</th>
-                        <th style={{ backgroundColor: 'lightcyan' }}>*</th>
-                        <th style={{ backgroundColor: 'lightcyan' }}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }}>*</th>
                       </tr>
                     </tbody>
                   </Table>
