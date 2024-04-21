@@ -15,9 +15,9 @@ const NavBar = () => {
   return (
     <Navbar bg="dark" expand="lg" className="gradient">
       <Container>
-        <Image width={45} height={45} style={{ marginTop: '10px', marginBottom: '20px', marginRight: '10px', borderRadius: '50%' }} className="rounded-circle" src="../images/uh-logo.png" />
+        <Image style={{ marginTop: '8px', marginBottom: '20px', marginRight: '10px', width: '50px', height: 'auto' }} src="./images/uh-warriors-logo.png" />
         <Navbar.Brand as={NavLink} to="/">
-          <h2><strong>UH RepCompanion</strong></h2>
+          <h2><strong>RepCompanion</strong></h2>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
