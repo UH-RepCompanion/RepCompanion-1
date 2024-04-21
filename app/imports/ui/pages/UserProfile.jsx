@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Col, Card, Row, Image, Button } from 'react-bootstrap';
+import { Container, Col, Card, Row, Image, Button, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
@@ -41,6 +41,32 @@ const UserProfile = () => {
               <Row>
                 <Col xs={6}><Card.Text style={{ marginBottom: '20px' }}><strong>Interests:</strong> {profile?.interests.join(', ')}</Card.Text></Col>
                 <Col xs={6}><Card.Text style={{ marginBottom: '20px', color: 'black' }}><strong>Tags:</strong> {profile?.tag}</Card.Text></Col>
+                <Container className="d-flex justify-content-center align-items-center square-card">
+                  <Table striped bordered hover style={{ width: '100%' }}>
+                    <thead>
+                      <tr>
+                        <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Sun</th>
+                        <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Mon</th>
+                        <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Tues</th>
+                        <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Wed</th>
+                        <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Thurs</th>
+                        <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Fri</th>
+                        <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Sat</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th style={{ backgroundColor: 'lightcyan' }}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan' }}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan' }}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan' }}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan' }}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan' }}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan' }}>*</th>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </Container>
                 <Button className="text-start" variant="dark" id="landing-page-button" style={{ position: 'absolute', bottom: '10px', left: '465px', color: 'white', width: '120px' }} as={Link} to="/editprofile">Edit Profile</Button>
               </Row>
             </Card.Body>
