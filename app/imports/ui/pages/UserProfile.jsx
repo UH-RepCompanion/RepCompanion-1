@@ -8,6 +8,7 @@ import { Profiles } from '../../api/profiles/Profiles';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
 import { PageIDs } from '../utilities/ids';
+import { Notes } from '../../api/note/Notes';
 
 /* Renders the UserProfile Page: displays user information. */
 /* Assisted by chatgpt generation */
@@ -23,12 +24,24 @@ const UserProfile = () => {
   }, []);
 
   const [showWorkoutModal, setShowWorkoutModal] = useState(false);
+  const [selectedDay, setSelectedDay] = useState('');
   const [workout, setWorkout] = useState('');
 
   const handleAddWorkout = () => {
     // Handle adding the workout here
     setWorkout('');
     setShowWorkoutModal(false);
+  };
+
+  const openModalForDay = (day) => {
+    Meteor.call('notes.addWorkout', Meteor.userId(), selectedDay, workout);
+    setSelectedDay(day); // Set the selected day when clicking on a th
+    setShowWorkoutModal(true);
+  };
+
+  const getWorkoutForDay = (day) => {
+    const notesForDay = Notes.collection.find({ owner: Meteor.userId(), day }).fetch();
+    return notesForDay.map((note) => note.note); // Return the content of the notes
   };
 
   return ready ? (
@@ -57,7 +70,7 @@ const UserProfile = () => {
               </Row>
               <Row>
                 <Container className="d-flex justify-content-center align-items-center square-card">
-                  <Table striped bordered hover style={{ width: '100%' }}>
+                  <Table striped bordered hover>
                     <thead>
                       <tr>
                         <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Sun</th>
@@ -71,13 +84,13 @@ const UserProfile = () => {
                     </thead>
                     <tbody>
                       <tr>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => setShowWorkoutModal(true)}>*</th>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => setShowWorkoutModal(true)}>*</th>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => setShowWorkoutModal(true)}>*</th>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => setShowWorkoutModal(true)}>*</th>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => setShowWorkoutModal(true)}>*</th>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => setShowWorkoutModal(true)}>*</th>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => setShowWorkoutModal(true)}>*</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => openModalForDay('Sunday')}>{getWorkoutForDay('Sunday')}</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => openModalForDay('Monday')}>{getWorkoutForDay('Monday')}</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => openModalForDay('Tuesday')}>{getWorkoutForDay('Tuesday')}</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => openModalForDay('Wednesday')}>{getWorkoutForDay('Wednesday')}</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => openModalForDay('Thursday')}>{getWorkoutForDay('Thursday')}</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => openModalForDay('Friday')}>{getWorkoutForDay('Friday')}</th>
+                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => openModalForDay('Saturday')}>{getWorkoutForDay('Saturday')}</th>
                       </tr>
                     </tbody>
                   </Table>
@@ -90,7 +103,7 @@ const UserProfile = () => {
       </Row>
       <Modal show={showWorkoutModal} onHide={() => setShowWorkoutModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Workout</Modal.Title>
+          <Modal.Title>Add Workout for {selectedDay}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
