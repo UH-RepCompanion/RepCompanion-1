@@ -46,7 +46,8 @@ class NotesCollection {
    * @returns {Array} - Array of workout notes for the specified day and owner.
    */
   getWorkoutForDay(owner, day) {
-    return this.collection.find({ owner, day }).fetch();
+    const workoutNote = this.collection.findOne({ owner, day });
+    return workoutNote ? workoutNote.note : '';
   }
 }
 

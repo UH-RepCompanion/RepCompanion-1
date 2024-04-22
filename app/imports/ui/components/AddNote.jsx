@@ -10,26 +10,27 @@ import { Notes } from '../../api/note/Notes';
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   note: String,
-  contactId: String,
   owner: String,
+  day: String,
   createdAt: Date,
+  profile: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /* Renders the AddStuff page for adding a document. */
-const AddNote = ({ owner, contactId }) => {
+const AddNote = ({ profile }) => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
     const { note, createdAt } = data;
     Notes.collection.insert(
-      { note, createdAt, owner, contactId },
+      { note, createdAt, profile },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
         } else {
-          swal('Success', 'Item added successfully', 'success');
+          swal('Success', 'Workout added successfully', 'success');
           formRef.reset();
         }
       },
@@ -42,15 +43,14 @@ const AddNote = ({ owner, contactId }) => {
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col xs={10}>
-          <Col className="text-center"><h4>Add Timestamped Note</h4></Col>
+          <Col className="text-center"><h4>Add Workout</h4></Col>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <Card>
               <Card.Body>
                 <TextField name="note" />
                 <SubmitField value="Submit" />
                 <ErrorsField />
-                <HiddenField name="owner" value={owner} />
-                <HiddenField name="contactId" value={contactId} />
+                <HiddenField name="profile" value={profile} />
                 <HiddenField name="createdAt" value={new Date()} />
               </Card.Body>
             </Card>
@@ -62,8 +62,7 @@ const AddNote = ({ owner, contactId }) => {
 };
 
 AddNote.propTypes = {
-  owner: PropTypes.string.isRequired,
-  contactId: PropTypes.string.isRequired,
+  profile: PropTypes.string.isRequired,
 };
 
 export default AddNote;
