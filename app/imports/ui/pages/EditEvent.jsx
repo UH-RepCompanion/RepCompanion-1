@@ -28,15 +28,12 @@ const EditEvent = () => {
   /* On submit, insert the data. */
   const submit = (data) => {
     // Created by chatgpt
-    // Assume you have email stored in the component's state or fetched from Meteor.user()
-    // For simplicity, let's fetch it directly from Meteor.user() if not already available
-    // eslint-disable-next-line no-use-before-define
-    const owner = email || Meteor.user()?.emails[0].address;
+    const userEmail = Meteor.user()?.username;
 
     // Append the email to the data object. Ensure userEmail is not undefined.
-    if (owner) {
-      const dataWithOwner = { ...data, owner: owner };
-      Meteor.call(updateEventMethod, dataWithOwner, (error) => {
+    if (userEmail) {
+      const dataWithEmail = { ...data, owner: userEmail, eventId: Meteor.user()?._id };
+      Meteor.call(updateEventMethod, dataWithEmail, (error) => {
         if (error) {
           swal('Error', error.message, 'error');
         } else {
@@ -73,7 +70,7 @@ const EditEvent = () => {
               <Row>
                 <Col xs={4}><TextField id={ComponentIDs.homeFormFirstName} name="date" showInlineError placeholder="Event Date" type="date" /></Col>
               </Row>
-              <LongTextField name="description" placeholder="Write a little bit about yourself." />
+              <LongTextField name="description" placeholder="Describe your workout routine." />
               <Row>
                 <Col xs={6}><SelectField name="workouts" showInlineError multiple /></Col>
               </Row>

@@ -83,5 +83,30 @@
       "email": "sin8@hawaii.edu"
     }
   ],
+  "defaultEvents": [
+    {
+      "description": "Join us for a session of intense workouts to boost your fitness levels!",
+      "workouts": [
+        "Dumbbells",
+        "Treadmill",
+        "Weight Bench"
+      ],
+      "date": "2024-04-25T09:00:00.000Z",
+      "owner": "johnson@hawaii.edu",
+      "eventId": "1"
+    },
+    {
+      "description": "Join us for a session of intense workouts to boost your fitness levels!",
+      "workouts": [
+        "Leg Press",
+        "Smith Machine",
+        "Cable Machine"
+      ],
+      "date": "2024-09-25T07:30:00.000Z",
+      "owner": "henric@hawaii.edu",
+      "eventId": "2"
+    }
+  ],
+
   "loadAssetsFile":  false
 }

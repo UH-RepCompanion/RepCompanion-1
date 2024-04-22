@@ -48,8 +48,8 @@ Meteor.methods({
 const updateEventMethod = 'Events.update';
 
 Meteor.methods({
-  'Events.update'({ owner, date, workouts, description }) {
-    Events.collection.update({ owner }, { $set: { owner, date, workouts, description } }, { upsert: true });
+  'Events.update'({ owner, eventId, date, workouts, description }) {
+    Events.collection.update({ owner }, { $set: { owner, eventId, date, workouts, description } }, { upsert: true });
   },
 });
 
