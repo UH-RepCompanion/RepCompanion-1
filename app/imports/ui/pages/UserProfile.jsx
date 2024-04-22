@@ -3,7 +3,7 @@ import { Container, Col, Card, Row, Image, Button, Table, Form, Modal } from 're
 import { Link } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import { Instagram, Snapchat, Discord } from 'react-bootstrap-icons';
+import { Instagram, Github, Discord } from 'react-bootstrap-icons';
 import { Profiles } from '../../api/profiles/Profiles';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
@@ -58,7 +58,7 @@ const UserProfile = () => {
                   <Card.Text><strong>About Me: </strong></Card.Text>
                   <Card.Text>{profile?.bio}</Card.Text>
                   <Col className="mb-4 mt-4 icon"><Instagram /></Col>
-                  <Col className="mb-4 icon"><Snapchat /></Col>
+                  <Col className="mb-4 icon"><Github /></Col>
                   <Col className="mb-4 icon"><Discord /></Col>
                 </Col>
               </Row>
