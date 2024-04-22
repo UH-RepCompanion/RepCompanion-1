@@ -85,7 +85,7 @@
   ],
   "defaultEvents": [
     {
-      "description": "Join us for a session of intense workouts to boost your fitness levels!",
+      "description": "Join me for an intensive workshop where I'll share my passion for strength training and core conditioning. We'll focus on powerlifting techniques and core exercises to enhance strength and support paddle sports activities. Expect a mix of strength-building and cardio exercises tailored to boost your endurance and physical capabilities.",
       "workouts": [
         "Dumbbells",
         "Treadmill",
@@ -96,7 +96,7 @@
       "eventId": "1"
     },
     {
-      "description": "Join us for a session of intense workouts to boost your fitness levels!",
+      "description": "I'm excited to lead a core and cardio session aimed at fitness enthusiasts interested in serious scuba diving. We'll tackle intensive HIIT and core exercises that simulate the challenges of underwater activities. Prepare for a dynamic workout that boosts both core strength and cardiovascular health.",
       "workouts": [
         "Leg Press",
         "Smith Machine",
