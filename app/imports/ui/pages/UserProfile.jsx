@@ -58,8 +58,8 @@ const UserProfile = () => {
                   <Card.Text><strong>About Me: </strong></Card.Text>
                   <Card.Text>{profile?.bio}</Card.Text>
                   <Col className="mb-4 mt-4 icon"><Instagram /></Col>
-                  <Col className="mb-4 icon"><Github /></Col>
                   <Col className="mb-4 icon"><Discord /></Col>
+                  <Col className="mb-4 icon"><Github /></Col>
                 </Col>
               </Row>
               <Row>
