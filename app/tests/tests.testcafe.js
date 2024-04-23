@@ -17,7 +17,7 @@ const credentialsOne = {
   lastName: 'Test',
   bio: 'test test test',
   major: 'Computer Science',
-  interests: 'Strength Training',
+  interests: 'Cardio',
   tag: 'Newbie',
   picture: 'test',
 };
@@ -29,12 +29,7 @@ const credentialsTwo = {
   lastName: 'Foo',
   bio: 'I have no interests because Im just a test.',
   major: 'Computer Science',
-  interests: [
-    'Strength Training',
-    'Power Lifting',
-    'Core Training',
-    'Cardio',
-  ],
+  interests: 'Yoga',
   tag: 'Trainer',
   picture: 'https://github.com/philipmjohnson.png',
 };
@@ -61,9 +56,12 @@ test('Test editing an existing profile', async (testController) => {
   await navBar.gotoProfilePage(testController);
   await profileUserPage.userEditProfile(testController);
   await editProfilePage.editProfile(testController, credentialsOne.firstName, credentialsOne.lastName, credentialsOne.bio, credentialsOne.major, credentialsOne.interests, credentialsOne.tag, credentialsOne.picture);
+  await navBar.isLoggedIn(testController, credentialsOne.username);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
 });
 
-test.only('Test that signin and signout work', async (testController) => {
+test('Test that signin and signout work', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
   await navBar.isLoggedIn(testController, credentialsOne.username);

@@ -16,14 +16,7 @@ class EditProfilePage {
     const interestSelector = Selector('select').withAttribute('name', 'interests'); // Adjust the attribute to correctly target the interests dropdown
     await testController.click(interestSelector);
     // If interests is an array, iterate through interests and click each
-    if (Array.isArray(interests)) {
-      for (const interest of interests) {
-        await testController.click(interestSelector.find('option').withText(interest));
-      }
-    } else {
-      // If just one interest, select directly
-      await testController.click(interestSelector.find('option').withText(interests));
-    }
+    await testController.click(interestSelector.find('option').withText(interests));
   }
 
   async selectTag(testController, tag) {
@@ -42,6 +35,7 @@ class EditProfilePage {
     await this.selectTag(testController, tag);
     await testController.typeText('#edit-form-picture-link', picture);
     await testController.click('#edit-form-update input.btn.btn-primary');
+    await testController.click('button.swal-button.swal-button--confirm');
   }
 }
 
