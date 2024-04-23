@@ -18,6 +18,7 @@ class EditProfilePage {
 
   async selectTag(testController, tag) {
     const tagSelector = Selector('#edit-form-tags'); // Update this selector
+    await testController.click(tagSelector);
     await testController.click(tagSelector.withText(tag));
   }
 
@@ -29,7 +30,7 @@ class EditProfilePage {
     await testController.typeText('#edit-form-major', major);
     await this.selectInterests(testController, interests);
     await this.selectTag(testController, tag);
-    await testController.typeText('#edit-form-picture', picture);
+    await testController.typeText('#edit-form-picture-link', picture);
     await testController.click('#edit-form-update input.btn.btn-primary');
   }
 }
