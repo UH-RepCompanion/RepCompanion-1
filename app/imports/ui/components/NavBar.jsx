@@ -24,9 +24,9 @@ const NavBar = () => {
             {currentUser ? ([
               <Nav.Link id="add-stuff-nav" as={NavLink} to="/add" key="add">Add Event</Nav.Link>,
               <Nav.Link id="finder-nav" as={NavLink} to="/filter" key="filter">Finder</Nav.Link>,
-              <NavDropdown title="Event" id="event-dropdown">
-                <NavDropdown.Item as={NavLink} to="/addevent">Add Event</NavDropdown.Item>
-                <NavDropdown.Item as={NavLink} to="/events">Events</NavDropdown.Item>
+              <NavDropdown title="Event" id="navbar-event-dropdown">
+                <NavDropdown.Item id="navbar-add-event" as={NavLink} to="/addevent">Add Event</NavDropdown.Item>
+                <NavDropdown.Item id="navbar-list-event" as={NavLink} to="/events">Events</NavDropdown.Item>
               </NavDropdown>,
               <Nav.Link id="list-stuff-nav" as={NavLink} to="/filter" key="filter">Finder</Nav.Link>,
             ]) : ''}

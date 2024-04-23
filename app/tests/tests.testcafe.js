@@ -6,6 +6,7 @@ import { finderPage } from './finder.page';
 import { signupPage } from './signup.page';
 import { editProfilePage } from './edit.profile.page';
 import { profileUserPage } from './profile.page';
+import { userEventPage } from './event.page';
 
 /* global fixture:false, test:false */
 
@@ -34,6 +35,12 @@ const credentialsTwo = {
   picture: 'https://github.com/philipmjohnson.png',
 };
 
+const credentialsEvent = {
+  date: '05012024',
+  description: 'flat bench, inclined bench, chest flies, triceps',
+  workout: 'Barbell',
+};
+
 fixture('uh-repcompanion localhost test with default db')
   .page('http://localhost:3000');
 
@@ -59,6 +66,18 @@ test('Test editing an existing profile', async (testController) => {
   await navBar.isLoggedIn(testController, credentialsOne.username);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
+});
+
+test.only('Test that an event can be added', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
+  await navBar.gotoAddEventPage(testController);
+  await userEventPage.addEvent(
+    testController,
+    credentialsEvent.date,
+    credentialsEvent.description,
+    credentialsEvent.workout,
+  );
 });
 
 test('Test that signin and signout work', async (testController) => {

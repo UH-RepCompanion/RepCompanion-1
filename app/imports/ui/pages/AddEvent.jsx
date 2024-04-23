@@ -61,20 +61,20 @@ const AddEvent = () => {
   const event = Events.collection.findOne({ email });
   const model = _.extend({}, event);
   return ready ? (
-    <Container id={PageIDs.homePage} className="justify-content-center" style={pageStyle}>
+    <Container id="add-event-page" className="justify-content-center" style={pageStyle}>
       <Col>
         <Col className="justify-content-center text-center"><h2 style={{ color: 'white' }}>Your Event</h2></Col>
         <AutoForm model={model} schema={bridge} onSubmit={data => submit(data)}>
           <Card>
             <Card.Body>
               <Row>
-                <Col xs={4}><TextField id={ComponentIDs.homeFormFirstName} name="date" showInlineError placeholder="Event Date" type="date" /></Col>
+                <Col xs={4}><TextField id="date-form-event" name="date" showInlineError placeholder="Event Date" type="date" /></Col>
               </Row>
-              <LongTextField name="description" placeholder="Describe your workout routine." />
+              <LongTextField id="description-form-event" name="description" placeholder="Describe your workout routine." />
               <Row>
-                <Col xs={6}><SelectField name="workouts" showInlineError multiple /></Col>
+                <Col xs={6}><SelectField id="workout-form-event" name="workouts" showInlineError multiple /></Col>
               </Row>
-              <SubmitField id={ComponentIDs.homeFormSubmit} value="Add" />
+              <SubmitField id="add-button" value="Add" />
             </Card.Body>
           </Card>
         </AutoForm>
