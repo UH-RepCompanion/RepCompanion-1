@@ -7,7 +7,6 @@ import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, PersonFill, PersonPlusFill, PersonSquare } from 'react-bootstrap-icons';
 
 const NavBar = () => {
-  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { currentUser } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
@@ -23,7 +22,10 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
             {currentUser ? ([
-              <Nav.Link id="add-stuff-nav" as={NavLink} to="/add" key="add">Add Event</Nav.Link>,
+              <NavDropdown title="Event" id="event-dropdown">
+                <NavDropdown.Item as={NavLink} to="/addevent">Add Event</NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to="/events">Events</NavDropdown.Item>
+              </NavDropdown>,
               <Nav.Link id="list-stuff-nav" as={NavLink} to="/filter" key="filter">Finder</Nav.Link>,
             ]) : ''}
             {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
