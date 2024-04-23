@@ -29,13 +29,8 @@ const credentialsTwo = {
   lastName: 'Foo',
   bio: 'I have no interests because Im just a test.',
   major: 'Computer Science',
-  interests: [
-    'Strength Training',
-    'Power Lifting',
-    'Core Training',
-    'Cardio',
-  ],
-  tag: 'Beginner',
+  interests: 'Strength Training',
+  tag: 'Trainer',
   picture: 'https://github.com/philipmjohnson.png',
 };
 
