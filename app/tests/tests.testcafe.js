@@ -5,6 +5,7 @@ import { navBar } from './navbar.component';
 import { finderPage } from './finder.page';
 import { signupPage } from './signup.page';
 import { editProfilePage } from './edit.profile.page';
+import { profileUserPage } from './profile.page';
 
 /* global fixture:false, test:false */
 
@@ -12,18 +13,13 @@ import { editProfilePage } from './edit.profile.page';
 const credentialsOne = {
   username: 'johnson@hawaii.edu',
   password: 'foo',
-  firstName: 'Philip',
-  lastName: 'Johnson',
-  bio: 'I am a Professor and like to paddle outrigger canoes.',
+  firstName: 'Test',
+  lastName: 'Test',
+  bio: 'test test test',
   major: 'Computer Science',
-  interests: [
-    'Strength Training',
-    'Power Lifting',
-    'Core Training',
-    'Cardio',
-  ],
+  interests: 'Strength Training',
   tag: 'Trainer',
-  picture: 'https://github.com/philipmjohnson.png',
+  picture: '',
 };
 
 const credentialsTwo = {
@@ -50,20 +46,20 @@ test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
 });
 
+test('Test editing an existing profile', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
+  await navBar.gotoProfilePage(testController);
+  await profileUserPage.userEditProfile(testController);
+  await editProfilePage.editProfile(testController, credentialsTwo.firstName, credentialsTwo.lastName, credentialsTwo.bio, credentialsTwo.major, credentialsTwo.interests, credentialsTwo.tag, credentialsTwo.picture);
+});
+
 test('Test that a new account can be registered', async (testController) => {
   await navBar.gotoSignUpPage(testController);
   await signupPage.signupUser(testController, credentialsTwo.username, credentialsTwo.password);
-  await editProfilePage.editProfile(
-    testController,
-    credentialsTwo.firstName,
-    credentialsTwo.lastName,
-    credentialsTwo.bio,
-    credentialsTwo.major,
-    credentialsTwo.interests,
-    credentialsTwo.tag,
-    credentialsTwo.picture,
-  );
-  await navBar.isLoggedIn(testController, credentialsOne.username);
+  await navBar.isLoggedIn(testController, credentialsTwo.username);
+  await editProfilePage.editProfile(testController, credentialsTwo.firstName, credentialsTwo.lastName, credentialsTwo.bio, credentialsTwo.major, credentialsTwo.interests, credentialsTwo.tag, credentialsTwo.picture);
+  await navBar.isLoggedIn(testController, credentialsTwo.username);
   await navBar.logout(testController);
 });
 

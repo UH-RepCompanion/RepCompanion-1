@@ -6,7 +6,6 @@ import { Meteor } from 'meteor/meteor';
 import { Profiles } from '../../api/profiles/Profiles';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
-import { PageIDs } from '../utilities/ids';
 
 /* Renders the UserProfile Page: displays user information. */
 /* Assisted by chatgpt generation */
@@ -22,7 +21,7 @@ const UserProfile = () => {
   }, []);
 
   return ready ? (
-    <Container id={PageIDs.homePage} className="d-flex justify-content-center align-items-center infofooter" style={pageStyle}>
+    <Container id="profile-page" className="d-flex justify-content-center align-items-center infofooter" style={pageStyle}>
       <Row className="justify-content-center align-items-center">
         <Col>
           <Col className="justify-content-center text-center"><h2 style={{ color: 'white' }}>{profile?.firstName}&apos;s Profile</h2></Col>
@@ -41,7 +40,7 @@ const UserProfile = () => {
               <Row>
                 <Col xs={6}><Card.Text style={{ marginBottom: '20px' }}><strong>Interests:</strong> {profile?.interests.join(', ')}</Card.Text></Col>
                 <Col xs={6}><Card.Text style={{ marginBottom: '20px', color: 'black' }}><strong>Tags:</strong> {profile?.tag}</Card.Text></Col>
-                <Button className="text-start" variant="dark" id="landing-page-button" style={{ position: 'absolute', bottom: '10px', left: '465px', color: 'white', width: '120px' }} as={Link} to="/editprofile">Edit Profile</Button>
+                <Button className="text-start" variant="dark" id="edit-profile-button" style={{ position: 'absolute', bottom: '10px', left: '465px', color: 'white', width: '120px' }} as={Link} to="/editprofile">Edit Profile</Button>
               </Row>
             </Card.Body>
           </Card>

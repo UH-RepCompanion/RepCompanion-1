@@ -13,7 +13,6 @@ class EditProfilePage {
 
   /** Signs up a new user, then checks to see that they are logged in by checking the navbar. */
   async editProfile(testController, firstName, lastName, bio, major, interests, tag, picture) {
-    await this.isDisplayed(testController);
     await testController.typeText('#edit-form-first-name', firstName);
     await testController.typeText('#edit-form-last-name', lastName);
     await testController.typeText('#edit-form-bio', bio);
