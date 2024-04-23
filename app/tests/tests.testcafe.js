@@ -35,8 +35,10 @@ const credentialsTwo = {
   picture: 'https://github.com/philipmjohnson.png',
 };
 
+const testDate = new Date(2024, 11, 11);
+
 const credentialsEvent = {
-  date: '05012024',
+  date: testDate,
   description: 'flat bench, inclined bench, chest flies, triceps',
   workout: 'Barbell',
 };

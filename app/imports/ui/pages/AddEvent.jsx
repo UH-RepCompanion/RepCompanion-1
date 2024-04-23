@@ -10,7 +10,6 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { updateEventMethod } from '../../startup/both/Methods';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
-import { ComponentIDs, PageIDs } from '../utilities/ids';
 import { Events } from '../../api/events/Events';
 
 /* Create a schema to specify the structure of the data to appear in the form. */
