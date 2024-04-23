@@ -18,8 +18,8 @@ const credentialsOne = {
   bio: 'test test test',
   major: 'Computer Science',
   interests: 'Strength Training',
-  tag: 'Trainer',
-  picture: '',
+  tag: 'Newbie',
+  picture: 'test',
 };
 
 const credentialsTwo = {
@@ -51,7 +51,7 @@ test('Test editing an existing profile', async (testController) => {
   await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
   await navBar.gotoProfilePage(testController);
   await profileUserPage.userEditProfile(testController);
-  await editProfilePage.editProfile(testController, credentialsTwo.firstName, credentialsTwo.lastName, credentialsTwo.bio, credentialsTwo.major, credentialsTwo.interests, credentialsTwo.tag, credentialsTwo.picture);
+  await editProfilePage.editProfile(testController, credentialsOne.firstName, credentialsOne.lastName, credentialsOne.bio, credentialsOne.major, credentialsOne.interests, credentialsOne.tag, credentialsOne.picture);
 });
 
 test('Test that a new account can be registered', async (testController) => {
