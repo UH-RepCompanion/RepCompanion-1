@@ -33,10 +33,7 @@ const EditProfile = () => {
   /* On submit, insert the data. */
   const submit = (data) => {
     // Created by chatgpt
-    // Assume you have email stored in the component's state or fetched from Meteor.user()
-    // For simplicity, let's fetch it directly from Meteor.user() if not already available
-    // eslint-disable-next-line no-use-before-define
-    const userEmail = email || Meteor.user()?.emails[0].address;
+    const userEmail = Meteor.user()?.username;
 
     // Append the email to the data object. Ensure userEmail is not undefined.
     if (userEmail) {

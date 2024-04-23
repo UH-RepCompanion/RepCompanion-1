@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col, Container, Image, Row } from 'react-bootstrap';
+import { Col, Container, Image, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 
