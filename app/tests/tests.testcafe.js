@@ -35,7 +35,7 @@ const credentialsTwo = {
     'Core Training',
     'Cardio',
   ],
-  tag: 'Beginner',
+  tag: 'Trainer',
   picture: 'https://github.com/philipmjohnson.png',
 };
 
@@ -44,6 +44,15 @@ fixture('uh-repcompanion localhost test with default db')
 
 test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
+});
+test('Test that a new account can be registered', async (testController) => {
+  await navBar.gotoSignUpPage(testController);
+  await signupPage.signupUser(testController, credentialsTwo.username, credentialsTwo.password);
+  await navBar.isLoggedIn(testController, credentialsTwo.username);
+  await editProfilePage.editProfile(testController, credentialsTwo.firstName, credentialsTwo.lastName, credentialsTwo.bio, credentialsTwo.major, credentialsTwo.interests, credentialsTwo.tag, credentialsTwo.picture);
+  await navBar.isLoggedIn(testController, credentialsTwo.username);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
 });
 
 test('Test editing an existing profile', async (testController) => {
@@ -54,16 +63,7 @@ test('Test editing an existing profile', async (testController) => {
   await editProfilePage.editProfile(testController, credentialsOne.firstName, credentialsOne.lastName, credentialsOne.bio, credentialsOne.major, credentialsOne.interests, credentialsOne.tag, credentialsOne.picture);
 });
 
-test('Test that a new account can be registered', async (testController) => {
-  await navBar.gotoSignUpPage(testController);
-  await signupPage.signupUser(testController, credentialsTwo.username, credentialsTwo.password);
-  await navBar.isLoggedIn(testController, credentialsTwo.username);
-  await editProfilePage.editProfile(testController, credentialsTwo.firstName, credentialsTwo.lastName, credentialsTwo.bio, credentialsTwo.major, credentialsTwo.interests, credentialsTwo.tag, credentialsTwo.picture);
-  await navBar.isLoggedIn(testController, credentialsTwo.username);
-  await navBar.logout(testController);
-});
-
-test('Test that signin and signout work', async (testController) => {
+test.only('Test that signin and signout work', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
   await navBar.isLoggedIn(testController, credentialsOne.username);

@@ -12,14 +12,24 @@ class EditProfilePage {
   }
 
   async selectInterests(testController, interests) {
-    const interestSelector = Selector('#edit-form-interests'); // Update this selector
-    await testController.click(interestSelector.withText(interests));
+    // This assumes interests is a string or an array. Adjust accordingly if it's an array.
+    const interestSelector = Selector('select').withAttribute('name', 'interests'); // Adjust the attribute to correctly target the interests dropdown
+    await testController.click(interestSelector);
+    // If interests is an array, iterate through interests and click each
+    if (Array.isArray(interests)) {
+      for (const interest of interests) {
+        await testController.click(interestSelector.find('option').withText(interest));
+      }
+    } else {
+      // If just one interest, select directly
+      await testController.click(interestSelector.find('option').withText(interests));
+    }
   }
 
   async selectTag(testController, tag) {
-    const tagSelector = Selector('#edit-form-tags'); // Update this selector
+    const tagSelector = Selector('select').withAttribute('name', 'tag'); // Adjust the attribute to correctly target the tags dropdown
     await testController.click(tagSelector);
-    await testController.click(tagSelector.withText(tag));
+    await testController.click(tagSelector.find('option').withText(tag));
   }
 
   /** Signs up a new user, then checks to see that they are logged in by checking the navbar. */
