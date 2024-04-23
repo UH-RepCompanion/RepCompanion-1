@@ -12,7 +12,6 @@ import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { updateProfileMethod } from '../../startup/both/Methods';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
-import { ComponentIDs, PageIDs } from '../utilities/ids';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 
 /* Create a schema to specify the structure of the data to appear in the form. */
@@ -75,27 +74,27 @@ const EditProfile = () => {
   const profile = Profiles.collection.findOne({ email });
   const model = _.extend({}, profile, { interests, tags });
   return ready ? (
-    <Container id={PageIDs.homePage} className="justify-content-center" style={pageStyle}>
+    <Container id="edit-profifle-page" className="justify-content-center" style={pageStyle}>
       <Col>
         <Col className="justify-content-center text-center"><h2 style={{ color: 'white' }}>Your Profile</h2></Col>
         <AutoForm model={model} schema={bridge} onSubmit={data => submit(data)}>
           <Card>
             <Card.Body>
               <Row>
-                <Col xs={4}><TextField id={ComponentIDs.homeFormFirstName} name="firstName" showInlineError placeholder="First Name" /></Col>
-                <Col xs={4}><TextField id={ComponentIDs.homeFormLastName} name="lastName" showInlineError placeholder="Last Name" /></Col>
+                <Col xs={4}><TextField id="edit-form-first-name" name="firstName" showInlineError placeholder="First Name" /></Col>
+                <Col xs={4}><TextField id="edit-form-last-name" name="lastName" showInlineError placeholder="Last Name" /></Col>
                 <Col xs={4}><TextField name="email" showInlineError placeholder="email" disabled /></Col>
               </Row>
-              <LongTextField id={ComponentIDs.homeFormBio} name="bio" placeholder="Write a little bit about yourself." />
+              <LongTextField id="edit-form-bio" name="bio" placeholder="Write a little bit about yourself." />
               <Row>
-                <Col xs={6}><TextField name="major" showInlineError placeholder="Major" /></Col>
-                <Col xs={6}><TextField name="picture" showInlineError placeholder="URL to picture" /></Col>
+                <Col xs={6}><TextField id="edit-form-major" name="major" showInlineError placeholder="Major" /></Col>
+                <Col xs={6}><TextField id="edit-form-picture-link" name="picture" showInlineError placeholder="URL to picture" /></Col>
               </Row>
               <Row>
-                <Col xs={6}><SelectField name="interests" showInlineError multiple /></Col>
-                <Col xs={6}><SelectField name="tag" showInlineError /></Col>
+                <Col xs={6}><SelectField id="edit-form-interests" name="interests" showInlineError multiple /></Col>
+                <Col xs={6}><SelectField id="edit-form-tags" name="tag" showInlineError /></Col>
               </Row>
-              <SubmitField id={ComponentIDs.homeFormSubmit} value="Update" />
+              <SubmitField id="edit-form-update" value="Update" />
             </Card.Body>
           </Card>
         </AutoForm>

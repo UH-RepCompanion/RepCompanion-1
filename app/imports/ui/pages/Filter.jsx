@@ -63,7 +63,7 @@ const Filter = () => {
   const bridge = new SimpleSchema2Bridge(formSchema);
 
   return ready ? (
-    <Container id={PageIDs.filterPage} style={pageStyle}>
+    <Container id="finder-page" style={pageStyle}>
       <AutoForm schema={bridge} onSubmit={data => submit(data)} model={{ interests }}>
         <Card>
           <Card.Body id={ComponentIDs.filterFormInterests}>
