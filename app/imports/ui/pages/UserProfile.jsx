@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Col, Container, Image, Modal, Row, Table } from 'react-bootstrap';
+import { Button, Card, Col, Container, Image, Row, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
@@ -8,8 +8,6 @@ import { Profiles } from '../../api/profiles/Profiles';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
 import { PageIDs } from '../utilities/ids';
-import { Events } from '../../api/events/Events';
-import EventCard from '../components/EventCard';
 
 const UserProfile = () => {
   const { ready, profile } = useTracker(() => {
@@ -21,11 +19,6 @@ const UserProfile = () => {
       profile: userProfile,
     };
   }, []);
-
-  const [showEventModal, setShowEventModal] = useState(false);
-
-  const events = Events.collection.find({}).fetch();
-  const profiles = events.map(event => Profiles.collection.findOne({ email: event.owner }));
 
   // Initialize image visibility state from local storage or default to false
   const [imageVisibility, setImageVisibility] = useState(() => ({
@@ -179,20 +172,6 @@ const UserProfile = () => {
           </Card>
         </Col>
       </Row>
-      <Modal show={showEventModal} onHide={() => setShowEventModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Add Event</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Row xs={1} md={2} lg={4} className="g-2">
-            {events.map((event, index) => (<EventCard key={events._id} event={event} profile={profiles[index]} />))}
-          </Row>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="light" onClick={() => setShowEventModal(false)}>Cancel</Button>
-          <Button variant="dark">Add Event</Button>
-        </Modal.Footer>
-      </Modal>
     </Container>
   ) : <LoadingSpinner />;
 };
