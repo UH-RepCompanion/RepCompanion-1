@@ -21,7 +21,7 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
-            <Nav.Link id="list-stuff-nav" as={NavLink} to="/filter" key="filter">Finder</Nav.Link>,
+            <Nav.Link id="finder-nav" as={NavLink} to="/filter" key="filter">Finder</Nav.Link>,
             {currentUser ? ([
               <NavDropdown title="Event" id="navbar-event-dropdown">
                 <NavDropdown.Item id="navbar-add-event" as={NavLink} to="/addevent">Add Event</NavDropdown.Item>
