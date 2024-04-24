@@ -3,7 +3,7 @@ name: ci-uh-repcompanion
 on:
   push:
     branches:
-      - main
+      - 30-2
 
 defaults:
   run:
