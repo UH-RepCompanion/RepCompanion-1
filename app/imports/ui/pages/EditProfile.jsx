@@ -71,7 +71,7 @@ const EditProfile = () => {
   const profile = Profiles.collection.findOne({ email });
   const model = _.extend({}, profile, { interests, tags });
   return ready ? (
-    <Container id="edit-profifle-page" className="justify-content-center" style={pageStyle}>
+    <Container id="edit-profile-page" className="justify-content-center" style={pageStyle}>
       <Col>
         <Col className="justify-content-center text-center"><h2 style={{ color: 'white' }}>Your Profile</h2></Col>
         <AutoForm model={model} schema={bridge} onSubmit={data => submit(data)}>
