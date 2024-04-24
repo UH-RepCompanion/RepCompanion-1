@@ -20,7 +20,7 @@ const EventsPage = () => {
   const events = Events.collection.find({}).fetch();
   const profiles = events.map(event => Profiles.collection.findOne({ email: event.owner }));
   return ready ? (
-    <Container style={pageStyle}>
+    <Container id="event-page" style={pageStyle}>
       <Row xs={1} md={2} lg={4} className="g-2">
         {events.map((event, index) => (<EventCard key={events._id} event={event} profile={profiles[index]} />))}
       </Row>
