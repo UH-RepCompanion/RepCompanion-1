@@ -21,7 +21,6 @@ const EventsPage = () => {
   const profiles = events.map(event => Profiles.collection.findOne({ email: event.owner }));
   return ready ? (
     <Container id="event-page" style={pageStyle}>
-      <hr />
       <Row xs={1} md={2} lg={4} className="g-2">
         {events.map((event, index) => (<EventCard key={events._id} event={event} profile={profiles[index]} />))}
       </Row>

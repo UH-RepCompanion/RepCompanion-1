@@ -5,20 +5,25 @@ import { format } from 'date-fns';
 
 const EventCard = ({ event, profile }) => (
   <Col>
-    <Card className="h-100" style={{ backgroundColor: 'azure' }}>
+    <Card className="h-100" style={{ backgroundColor: 'whitesmoke' }}>
       <Card.Body>
         <Card.Text>
-          <h5>Workouts</h5>
+          <h5>Circuit</h5>
           {event.workouts.map((workout, index) => <Badge key={index} bg="info">{workout}</Badge>)}
         </Card.Text>
+        <hr />
         <Card.Text>
-          <h5>Routine</h5>
+          <h5>Training Plan</h5>
           {event.description}
         </Card.Text>
         <Card.Text>
+          <div className="alert alert-success" role="alert">
+            This is a success alert—check it out!
+          </div>
           <Badge className="fw-lighter">
             {format(new Date(event.date), 'EEEE, MMMM d, yyyy')}
           </Badge>
+          <hr />
           <p className="fw-lighter">
             Created by {profile.firstName} {profile.lastName} {format(new Date(event.createdAt), 'EEEE, MMMM d, yyyy')}
           </p>
