@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
-import { Container, Col, Card, Row, Image, Button, Table, Form, Modal } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Button, Card, Col, Container, Image, Modal, Row, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import { Instagram, Snapchat, Discord } from 'react-bootstrap-icons';
+import { Discord, Instagram, Snapchat } from 'react-bootstrap-icons';
 import { Profiles } from '../../api/profiles/Profiles';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
 import { PageIDs } from '../utilities/ids';
-import { Notes } from '../../api/note/Notes';
+import { Events } from '../../api/events/Events';
+import EventCard from '../components/EventCard';
 
-/* Renders the UserProfile Page: displays user information. */
-/* Assisted by chatgpt generation */
 const UserProfile = () => {
   const { ready, profile } = useTracker(() => {
     const sub = Meteor.subscribe(Profiles.userPublicationName);
@@ -23,24 +22,40 @@ const UserProfile = () => {
     };
   }, []);
 
-  const [showWorkoutModal, setShowWorkoutModal] = useState(false);
-  const [selectedDay, setSelectedDay] = useState('');
-  const [workout, setWorkout] = useState('');
+  const [showEventModal, setShowEventModal] = useState(false);
 
-  const handleAddWorkout = (day) => {
-    // Handle adding the workout here
-    Notes.addWorkout(Meteor.userId(), day, workout);
-    setWorkout('');
-    setShowWorkoutModal(false);
+  const events = Events.collection.find({}).fetch();
+  const profiles = events.map(event => Profiles.collection.findOne({ email: event.owner }));
+
+  // Initialize image visibility state from local storage or default to false
+  const [imageVisibility, setImageVisibility] = useState(() => ({
+    cell1: JSON.parse(localStorage.getItem('cell1Visible')) || false,
+    cell2: JSON.parse(localStorage.getItem('cell2Visible')) || false,
+    cell3: JSON.parse(localStorage.getItem('cell3Visible')) || false,
+    cell4: JSON.parse(localStorage.getItem('cell4Visible')) || false,
+    cell5: JSON.parse(localStorage.getItem('cell5Visible')) || false,
+    cell6: JSON.parse(localStorage.getItem('cell6Visible')) || false,
+    cell7: JSON.parse(localStorage.getItem('cell7Visible')) || false,
+  }));
+
+  // Update local storage whenever image visibility state changes
+  useEffect(() => {
+    localStorage.setItem('cell1Visible', JSON.stringify(imageVisibility.cell1));
+    localStorage.setItem('cell2Visible', JSON.stringify(imageVisibility.cell2));
+    localStorage.setItem('cell3Visible', JSON.stringify(imageVisibility.cell3));
+    localStorage.setItem('cell4Visible', JSON.stringify(imageVisibility.cell4));
+    localStorage.setItem('cell5Visible', JSON.stringify(imageVisibility.cell5));
+    localStorage.setItem('cell6Visible', JSON.stringify(imageVisibility.cell6));
+    localStorage.setItem('cell7Visible', JSON.stringify(imageVisibility.cell7));
+  }, [imageVisibility]);
+
+  // Function to toggle the visibility of the image for a specific cell
+  const toggleImageVisibility = (cellName) => {
+    setImageVisibility((prevState) => ({
+      ...prevState,
+      [cellName]: !prevState[cellName],
+    }));
   };
-
-  const openModalForDay = (day) => {
-    Meteor.call('notes.addWorkout', Meteor.userId(), selectedDay, workout);
-    setSelectedDay(day); // Set the selected day when clicking on a th
-    setShowWorkoutModal(true);
-  };
-
-  const getWorkoutForDay = (day) => Notes.getWorkoutForDay(Meteor.userId(), day);
 
   return ready ? (
     <Container id={PageIDs.homePage} className="d-flex justify-content-center align-items-center infofooter" style={pageStyle}>
@@ -50,11 +65,13 @@ const UserProfile = () => {
           <Card style={{ width: '600px', height: '600px', backgroundColor: 'azure', border: '1px solid black' }}>
             <Card.Body style={{ width: '800', height: 'auto' }}>
               <Row>
-                <Col xs={6}><Image className="rounded-circle" src={profile?.picture} style={{ width: '200px', height: 'auto', marginBottom: '10px', borderRadius: '50%', border: '3px solid black' }} />
+                <Col xs={6}>
+                  <Image className="rounded-circle" src={profile?.picture} style={{ width: '200px', height: 'auto', marginBottom: '10px', borderRadius: '50%', border: '3px solid black' }} />
                   <Card.Title>{profile?.firstName} {profile?.lastName}</Card.Title>
                   <Card.Text style={{ marginTop: '50px', marginBottom: '20px' }}><strong>Major:</strong> {profile?.major}</Card.Text>
                 </Col>
-                <Col xs={6}><Card.Subtitle className="mb-2 text-muted">{profile?.email}</Card.Subtitle>
+                <Col xs={6}>
+                  <Card.Subtitle className="mb-2 text-muted">{profile?.email}</Card.Subtitle>
                   <Card.Text><strong>About Me: </strong></Card.Text>
                   <Card.Text>{profile?.bio}</Card.Text>
                   <Col className="mb-4 mt-4 icon"><Instagram /></Col>
@@ -82,13 +99,76 @@ const UserProfile = () => {
                     </thead>
                     <tbody>
                       <tr>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => openModalForDay('Sunday')}>{getWorkoutForDay('Sunday')}</th>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => openModalForDay('Monday')}>{getWorkoutForDay('Monday')}</th>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => openModalForDay('Tuesday')}>{getWorkoutForDay('Tuesday')}</th>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => openModalForDay('Wednesday')}>{getWorkoutForDay('Wednesday')}</th>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => openModalForDay('Thursday')}>{getWorkoutForDay('Thursday')}</th>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => openModalForDay('Friday')}>{getWorkoutForDay('Friday')}</th>
-                        <th style={{ backgroundColor: 'lightcyan', border: '1px solid black' }} onClick={() => openModalForDay('Saturday')}>{getWorkoutForDay('Saturday')}</th>
+                        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                        <td
+                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
+                          onClick={() => toggleImageVisibility('cell1')} // Add onClick handler
+                        >
+                          {/* Render image conditionally based on visibility state */}
+                          {imageVisibility.cell1 && (
+                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
+                          )}
+                        </td>
+                        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                        <td
+                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
+                          onClick={() => toggleImageVisibility('cell2')} // Add onClick handler
+                        >
+                          {/* Render image conditionally based on visibility state */}
+                          {imageVisibility.cell2 && (
+                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
+                          )}
+                        </td>
+                        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                        <td
+                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
+                          onClick={() => toggleImageVisibility('cell3')} // Add onClick handler
+                        >
+                          {/* Render image conditionally based on visibility state */}
+                          {imageVisibility.cell3 && (
+                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
+                          )}
+                        </td>
+                        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                        <td
+                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
+                          onClick={() => toggleImageVisibility('cell4')} // Add onClick handler
+                        >
+                          {/* Render image conditionally based on visibility state */}
+                          {imageVisibility.cell4 && (
+                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
+                          )}
+                        </td>
+                        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                        <td
+                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
+                          onClick={() => toggleImageVisibility('cell5')} // Add onClick handler
+                        >
+                          {/* Render image conditionally based on visibility state */}
+                          {imageVisibility.cell5 && (
+                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
+                          )}
+                        </td>
+                        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                        <td
+                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
+                          onClick={() => toggleImageVisibility('cell6')} // Add onClick handler
+                        >
+                          {/* Render image conditionally based on visibility state */}
+                          {imageVisibility.cell6 && (
+                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
+                          )}
+                        </td>
+                        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                        <td
+                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
+                          onClick={() => toggleImageVisibility('cell7')} // Add onClick handler
+                        >
+                          {/* Render image conditionally based on visibility state */}
+                          {imageVisibility.cell7 && (
+                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
+                          )}
+                        </td>
                       </tr>
                     </tbody>
                   </Table>
@@ -99,21 +179,18 @@ const UserProfile = () => {
           </Card>
         </Col>
       </Row>
-      <Modal show={showWorkoutModal} onHide={() => setShowWorkoutModal(false)}>
+      <Modal show={showEventModal} onHide={() => setShowEventModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Workout for {selectedDay}</Modal.Title>
+          <Modal.Title>Add Event</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group controlId="workoutText">
-              <Form.Label>Details</Form.Label>
-              <Form.Control as="textarea" rows={3} value={workout} onChange={(e) => setWorkout(e.target.value)} />
-            </Form.Group>
-          </Form>
+          <Row xs={1} md={2} lg={4} className="g-2">
+            {events.map((event, index) => (<EventCard key={events._id} event={event} profile={profiles[index]} />))}
+          </Row>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="light" onClick={() => setShowWorkoutModal(false)}>Cancel</Button>
-          <Button variant="dark" onClick={handleAddWorkout}>Add Workout</Button>
+          <Button variant="light" onClick={() => setShowEventModal(false)}>Cancel</Button>
+          <Button variant="dark">Add Event</Button>
         </Modal.Footer>
       </Modal>
     </Container>
