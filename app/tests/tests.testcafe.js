@@ -32,7 +32,7 @@ const credentialsTwo = {
   lastName: 'Foo',
   bio: 'I have no interests because Im just a test.',
   major: 'Computer Science',
-  interests: 'Yoga',
+  interests: 'Cardio',
   tag: 'Trainer',
   picture: 'https://github.com/philipmjohnson.png',
 };
