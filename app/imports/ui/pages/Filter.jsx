@@ -70,9 +70,7 @@ const Filter = () => {
             <SelectField
               name="interests"
               multiple
-              placeholder="Interests"
-              checkboxes
-              transform={label => ` ${label}`} // Adds a space before the label text
+              placeholder="Select Interests"
             />
             <SubmitField id={ComponentIDs.filterFormSubmit} value="Submit" />
           </Card.Body>
