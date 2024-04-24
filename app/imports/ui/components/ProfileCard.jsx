@@ -1,10 +1,10 @@
-import { Badge, Card, Col, Image, Button, ProgressBar } from 'react-bootstrap';
+import { Badge, Card, Col, Row, Image, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ChatDotsFill, HeartFill, TrophyFill } from 'react-bootstrap-icons';
+import './ProfileCard.css'; // Ensure your CSS is properly linked
 
 const ProfileCard = ({ profile }) => (
-  <Col>
+  <Col lg={8} xl={6}>
     <Card className="h-100">
       <Card.Header className="text-center">
         <div className="image-border">
@@ -14,26 +14,23 @@ const ProfileCard = ({ profile }) => (
         <Card.Subtitle><span className="date">{profile.major}</span></Card.Subtitle>
       </Card.Header>
       <Card.Body>
-        <div className="icon-box p-3 my-3 border rounded d-flex justify-content-around">
-          <HeartFill size={24} />
-          <TrophyFill size={24} />
-          <ChatDotsFill size={24} />
-        </div>
-
-        <Card.Text>
-          <h5>Interest</h5>
-          {profile.interests.map((interest, index) => <Badge key={index} bg="info">{interest}</Badge>)}
-        </Card.Text>
-        <Card.Text>
-          <h5>Level</h5>
-          <Badge bg="secondary">{profile.tag}</Badge>
-        </Card.Text>
-        <h5>Activity Bar</h5>
-        <ProgressBar now={profile.progress} label={`${profile.progress}%`} animated />
-        <Card.Text>
-          {profile.bio}
-        </Card.Text>
-        <hr />
+        <Row className="mb-3">
+          <Col md={6}>
+            <h5>Interest</h5>
+            <div className="interests">
+              {profile.interests.map((interest, index) => <Badge key={index} bg="info" className="m-1">{interest}</Badge>)}
+            </div>
+          </Col>
+          <Col md={6}>
+            <h5>Level</h5>
+          </Col>
+        </Row>
+        <Row className="mb-3">
+          <Col>
+            <h5>Bio</h5>
+            <p className="bio">{profile.bio}</p>
+          </Col>
+        </Row>
         <Button variant="outline-success">Contact Me</Button>
       </Card.Body>
     </Card>
