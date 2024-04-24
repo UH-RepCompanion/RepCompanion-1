@@ -6,6 +6,8 @@ import { finderPage } from './finder.page';
 import { signupPage } from './signup.page';
 import { editProfilePage } from './edit.profile.page';
 import { profileUserPage } from './profile.page';
+import { userAddEventPage } from './add.event.page';
+import { userAboutPage } from './about.page';
 import { userEventPage } from './event.page';
 
 /* global fixture:false, test:false */
@@ -36,7 +38,6 @@ const credentialsTwo = {
 };
 
 const credentialsEvent = {
-  date: '05012024',
   description: 'flat bench, inclined bench, chest flies, triceps',
   workout: 'Barbell',
 };
@@ -68,16 +69,21 @@ test('Test editing an existing profile', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
-test.only('Test that an event can be added', async (testController) => {
+test('Test that the event list page will show', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
+  await navBar.gotoListEventPage(testController);
+  await userEventPage.isDisplayed(testController);
+});
+
+test('Test that an event can be added', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
   await navBar.gotoAddEventPage(testController);
-  await userEventPage.addEvent(
-    testController,
-    credentialsEvent.date,
-    credentialsEvent.description,
-    credentialsEvent.workout,
-  );
+  await userAddEventPage.addEvent(testController, credentialsEvent.description, credentialsEvent.workout);
+  await navBar.isLoggedIn(testController, credentialsOne.username);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
 });
 
 test('Test that signin and signout work', async (testController) => {
@@ -93,4 +99,9 @@ test('Test that the finder page shows up', async (testController) => {
   await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
   await navBar.gotoFinderPage(testController);
   await finderPage.isDisplayed(testController);
+});
+
+test('Test that the About page shows up', async (testController) => {
+  await navBar.gotoAboutPage(testController);
+  await userAboutPage.isDisplayed(testController);
 });

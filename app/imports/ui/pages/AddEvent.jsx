@@ -83,11 +83,11 @@ const AddEvent = () => {
           <Card>
             <Card.Body>
               <Row>
-                <Col xs={4}><TextField id="date-form-event" name="date" showInlineError placeholder="Event Date" type="date" /></Col>
+                <Col xs={4}><TextField id="event-form-date" name="date" showInlineError placeholder="Event Date" type="date" /></Col>
               </Row>
-              <LongTextField id="description-form-event" name="description" placeholder="Describe your workout routine." />
+              <LongTextField id="event-form-description" name="description" placeholder="Describe your workout routine." />
               <Row>
-                <Col xs={6}><SelectField id="workout-form-event" name="workouts" showInlineError multiple /></Col>
+                <Col xs={6}><SelectField id="event-form-workout" name="workouts" showInlineError multiple /></Col>
               </Row>
               <SubmitField id="add-button" value="Add" />
             </Card.Body>

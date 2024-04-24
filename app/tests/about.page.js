@@ -1,15 +1,15 @@
 import { Selector } from 'testcafe';
 
-class UserEventPage {
+class UserAboutPage {
   constructor() {
-    this.pageId = '#event-page';
+    this.pageId = '#about-page';
     this.pageSelector = Selector(this.pageId);
   }
 
-  /** Checks that this page is currently displayed. */
+  /** Asserts that this page is currently displayed. */
   async isDisplayed(testController) {
     await testController.expect(this.pageSelector.exists).ok();
   }
 }
 
-export const userEventPage = new UserEventPage();
+export const userAboutPage = new UserAboutPage();
