@@ -94,15 +94,12 @@ body .navbar {
   opacity: 1;
 }
 
-/* calendar card */
+/* Landing page card */
 .square-card {
-  width: 800px;
-  height: 150px;
+  width: 300px;
+  height: 300px;
   font-family: 'Bitter', sans-serif;
   font-size: large;
-  justify-content: center;
-  align-items: center;
-  margin-top: 100px;
 }
 
 /* About Page style */
@@ -116,9 +113,4 @@ body .navbar {
   border: 3px solid #000;
   border-radius: 50%;
   padding: 5px;
-}
-
-.icon {
-  font-size: 22px;
-  color: darkcyan;
 }
