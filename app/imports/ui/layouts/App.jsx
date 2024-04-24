@@ -26,7 +26,6 @@ import AddEvent from '../pages/AddEvent';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
-  // eslint-disable-next-line no-unused-vars
   const { ready } = useTracker(() => {
     const rdy = Roles.subscription.ready();
     return {
@@ -40,7 +39,7 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<Landing />} />
           <Route path="/profiles" element={<Profiles />} />
-          <Route path="userprofile" element={<UserProfile />} />
+          <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
