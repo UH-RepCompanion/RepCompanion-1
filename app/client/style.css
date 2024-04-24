@@ -113,9 +113,9 @@ body .navbar {
 }
 .image-border {
   display: inline-block;
-  border: 3px solid #000;
+  border: 3px solid #166D3B;
   border-radius: 50%;
-  padding: 5px;
+  padding: 0px;
 }
 
 .icon {

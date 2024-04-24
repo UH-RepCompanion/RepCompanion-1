@@ -79,7 +79,7 @@ const Filter = () => {
         </Card>
       </AutoForm>
 
-      <Row xs={1} md={2} lg={4} className="g-2" style={{ paddingTop: '10px' }}>
+      <Row xs={1} md={2} lg={3} className="g-2" style={{ paddingTop: '10px' }}>
         {profileData.map((profile, index) => <ProfileCard key={index} profile={profile} />)}
       </Row>
     </Container>

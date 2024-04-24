@@ -1,7 +1,6 @@
-import { Badge, Card, Col, Image, Button, ProgressBar } from 'react-bootstrap';
+import { Badge, Card, Col, Image, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ChatDotsFill, HeartFill, TrophyFill } from 'react-bootstrap-icons';
 
 const ProfileCard = ({ profile }) => (
   <Col>
@@ -14,12 +13,6 @@ const ProfileCard = ({ profile }) => (
         <Card.Subtitle><span className="date">{profile.major}</span></Card.Subtitle>
       </Card.Header>
       <Card.Body>
-        <div className="icon-box p-3 my-3 border rounded d-flex justify-content-around">
-          <HeartFill size={24} />
-          <TrophyFill size={24} />
-          <ChatDotsFill size={24} />
-        </div>
-
         <Card.Text>
           <h5>Interest</h5>
           {profile.interests.map((interest, index) => <Badge key={index} bg="info">{interest}</Badge>)}
@@ -28,12 +21,11 @@ const ProfileCard = ({ profile }) => (
           <h5>Level</h5>
           <Badge bg="secondary">{profile.tag}</Badge>
         </Card.Text>
-        <h5>Activity Bar</h5>
-        <ProgressBar now={profile.progress} label={`${profile.progress}%`} animated />
-        <Card.Text>
-          {profile.bio}
-        </Card.Text>
-        <hr />
+        <div className="icon-box p-3 my-3 border rounded d-flex justify-content-around">
+          <Card.Text>
+            {profile.bio}
+          </Card.Text>
+        </div>
         <Button variant="outline-success">Contact Me</Button>
       </Card.Body>
     </Card>
