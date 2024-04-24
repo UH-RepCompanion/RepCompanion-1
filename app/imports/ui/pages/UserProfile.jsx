@@ -7,7 +7,6 @@ import { Discord, Instagram, Snapchat } from 'react-bootstrap-icons';
 import { Profiles } from '../../api/profiles/Profiles';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
-import { PageIDs } from '../utilities/ids';
 
 const UserProfile = () => {
   const { ready, profile } = useTracker(() => {
