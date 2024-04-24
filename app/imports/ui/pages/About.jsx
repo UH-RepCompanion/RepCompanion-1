@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 
 const About = () => (
-  <Container className="aboutBackground w-50">
+  <Container id="about-page" className="aboutBackground w-50">
     <Row className="text-center">
       <Col className="pt-5">
         <h1>About Us</h1>
