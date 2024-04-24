@@ -101,7 +101,7 @@ const UserProfile = () => {
                       <tr>
                         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
                         <td
-                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
+                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer', height: '50px' }}
                           onClick={() => toggleImageVisibility('cell1')} // Add onClick handler
                         >
                           {/* Render image conditionally based on visibility state */}
