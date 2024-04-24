@@ -11,7 +11,7 @@ import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { useStickyState } from '../utilities/StickyState';
 import { pageStyle } from './pageStyles';
-import { ComponentIDs, PageIDs } from '../utilities/ids';
+import { ComponentIDs } from '../utilities/ids';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 import ProfileCard from '../components/ProfileCard';
 
