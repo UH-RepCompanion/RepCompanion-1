@@ -23,22 +23,30 @@ const Footer = () => {
                 </Row>
                 <Row className="text-center">
                   <Col>
-                    <h5>*Put image here*</h5>
+                    <Image className="mb-3" style={{ width: '500px', height: 'auto' }} src="./images/uh-repcompanion-high-five.jpeg" />
                   </Col>
                   <Col>
-                    <h5>*Put image here*</h5>
+                    <Image className="mb-3" style={{ width: '500px', height: 'auto' }} src="./images/uh-repcompanion-using-app.jpeg" />
                   </Col>
                 </Row>
                 <Row className="text-center">
-                  <Col>
+                  <Col className="m-3">
                     <p>By matching users based on fitness goals, interests, availability,
                       and preferred workout styles, RepCompanion helps students overcome
                       shyness and build confidence while providing motivation and accountability
                       to stick to their fitness routines.
                     </p>
                   </Col>
-                  <Col>
+                  <Col className="m-3">
                     <p>With RepCompanion, students can find compatible workout buddies who can push them to achieve their fitness goals, try new exercises, and stay committed to their health and wellness journey.</p>
+                  </Col>
+                </Row>
+                <Row className="text-center">
+                  <Col>
+                    <Image style={{ width: '500px', height: 'auto' }} src="./images/uh-repcompanion-connection.jpg" />
+                  </Col>
+                  <Col>
+                    <Image style={{ width: '500px', height: 'auto' }} src="./images/uh-repcompanion-ritual.jpg" />
                   </Col>
                 </Row>
               </Col>
