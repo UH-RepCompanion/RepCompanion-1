@@ -1,7 +1,7 @@
 {
   "monti": {
-    "appId": "hZuoBz6CAWmaJBRCN",
-    "appSecret": "895e4829-9561-491b-8888-1ab9432a3ab3"
+    "appId": "28Yw4AyojFYN9gdaQ",
+    "appSecret": "ea99a57b-1e73-4cfc-8cc5-76fcc1835aea"
   },
 
   "defaultProfiles": [
@@ -83,5 +83,30 @@
       "email": "sin8@hawaii.edu"
     }
   ],
+  "defaultEvents": [
+    {
+      "description": "Join me for an intensive workshop where I'll share my passion for strength training and core conditioning. We'll focus on powerlifting techniques and core exercises to enhance strength and support paddle sports activities. Expect a mix of strength-building and cardio exercises tailored to boost your endurance and physical capabilities.",
+      "workouts": [
+        "Dumbbells",
+        "Treadmill",
+        "Weight Bench"
+      ],
+      "date": "2024-04-25T09:00:00.000Z",
+      "owner": "johnson@hawaii.edu",
+      "eventId": "1"
+    },
+    {
+      "description": "I'm excited to lead a core and cardio session aimed at fitness enthusiasts interested in serious scuba diving. We'll tackle intensive HIIT and core exercises that simulate the challenges of underwater activities. Prepare for a dynamic workout that boosts both core strength and cardiovascular health.",
+      "workouts": [
+        "Leg Press",
+        "Smith Machine",
+        "Cable Machine"
+      ],
+      "date": "2024-09-25T07:30:00.000Z",
+      "owner": "henric@hawaii.edu",
+      "eventId": "2"
+    }
+  ],
+
   "loadAssetsFile":  false
 }

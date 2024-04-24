@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
+import { Events } from '../../api/events/Events';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -44,4 +45,12 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod };
+const updateEventMethod = 'Events.update';
+
+Meteor.methods({
+  'Events.update'({ owner, eventId, date, workouts, description }) {
+    Events.collection.update({ owner }, { $set: { owner, eventId, date, workouts, description } }, { upsert: true });
+  },
+});
+
+export { updateProfileMethod, updateEventMethod };

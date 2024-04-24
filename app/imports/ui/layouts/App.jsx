@@ -20,6 +20,9 @@ import About from '../pages/About';
 import Filter from '../pages/Filter';
 import Policy from '../pages/Policy';
 import Terms from '../pages/Terms';
+import EditEvent from '../pages/EditEvent';
+import Events from '../pages/Events';
+import AddEvent from '../pages/AddEvent';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -36,7 +39,7 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<Landing />} />
           <Route path="/profiles" element={<Profiles />} />
-          <Route path="userprofile" element={<UserProfile />} />
+          <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
@@ -44,8 +47,11 @@ const App = () => {
           <Route path="/policy" element={<Policy />} />
           <Route path="/terms&conditions" element={<Terms />} />
           <Route path="/editprofile" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
+          <Route path="/editevent" element={<ProtectedRoute><EditEvent /></ProtectedRoute>} />
+          <Route path="/events" element={<ProtectedRoute><Events /></ProtectedRoute>} />
+          <Route path="/addevent" element={<ProtectedRoute><AddEvent /></ProtectedRoute>} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
-          <Route path="/filter" element={<ProtectedRoute><Filter /></ProtectedRoute>} />m
+          <Route path="/filter" element={<ProtectedRoute><Filter /></ProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
