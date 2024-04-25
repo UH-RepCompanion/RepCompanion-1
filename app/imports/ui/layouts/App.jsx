@@ -26,7 +26,6 @@ import AddEvent from '../pages/AddEvent';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
-  // eslint-disable-next-line no-unused-vars
   const { ready } = useTracker(() => {
     const rdy = Roles.subscription.ready();
     return {
@@ -53,6 +52,7 @@ const App = () => {
           <Route path="/addevent" element={<ProtectedRoute><AddEvent /></ProtectedRoute>} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/filter" element={<ProtectedRoute><Filter /></ProtectedRoute>} />
+          <Route path="/admin" element={<AdminProtectedRoute ready={ready}><Profiles /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
