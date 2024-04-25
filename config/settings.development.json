@@ -7,7 +7,7 @@
   "defaultProfiles": [
     {
       "firstName": "Admin",
-      "lastName": "",
+      "lastName": "Admin",
       "bio": "I am the admin",
       "major": "Admin",
       "interests": [
