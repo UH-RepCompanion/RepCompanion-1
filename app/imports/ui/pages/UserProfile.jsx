@@ -3,7 +3,7 @@ import { Button, Card, Col, Container, Image, Row, Table } from 'react-bootstrap
 import { Link } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import { Discord, Instagram, Snapchat } from 'react-bootstrap-icons';
+import { Discord, Instagram, Linkedin } from 'react-bootstrap-icons';
 import { Profiles } from '../../api/profiles/Profiles';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
@@ -56,19 +56,21 @@ const UserProfile = () => {
           <Col className="justify-content-center text-center"><h2 style={{ color: 'white' }}>{profile?.firstName}&apos;s Profile</h2></Col>
           <Card style={{ width: '600px', height: '600px', backgroundColor: 'white', border: '1px solid black' }}>
             <Card.Body style={{ width: '800', height: 'auto' }}>
-              <Row>
+              <Row className="justify-content-center">
                 <Col xs={6}>
                   <Image className="rounded-circle" src={profile?.picture} style={{ width: '200px', height: 'auto', marginBottom: '10px', borderRadius: '50%', border: '3px solid black' }} />
                   <Card.Title>{profile?.firstName} {profile?.lastName}</Card.Title>
+                  <Row>
+                    <Col xs="auto" className="text-center"><Instagram className="mt-2 icon" /></Col>
+                    <Col xs="auto" className="text-center"><Discord className="mt-2 icon" /></Col>
+                    <Col xs="auto" className="text-center"><Linkedin className="mt-2 icon" /></Col>
+                  </Row>
                   <Card.Text style={{ marginTop: '50px', marginBottom: '20px' }}><strong>Major:</strong> {profile?.major}</Card.Text>
                 </Col>
                 <Col xs={6}>
                   <Card.Subtitle className="mb-2 text-muted">{profile?.email}</Card.Subtitle>
                   <Card.Text><strong>About Me: </strong></Card.Text>
                   <Card.Text>{profile?.bio}</Card.Text>
-                  <Col className="mb-4 mt-4 icon"><Instagram /></Col>
-                  <Col className="mb-4 icon"><Discord /></Col>
-                  <Col className="mb-4 icon"><Snapchat /></Col>
                 </Col>
               </Row>
               <Row>

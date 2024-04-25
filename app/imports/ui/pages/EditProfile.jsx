@@ -73,7 +73,7 @@ const EditProfile = () => {
   return ready ? (
     <Container id="edit-profile-page" className="justify-content-center" style={pageStyle}>
       <Col>
-        <Col className="justify-content-center text-center"><h2 style={{ color: 'white' }}>Your Profile</h2></Col>
+        <Col className="justify-content-center text-center"><h2 className="infofooter" style={{ color: 'white' }}>Your Profile</h2></Col>
         <AutoForm model={model} schema={bridge} onSubmit={data => submit(data)}>
           <Card>
             <Card.Body>
