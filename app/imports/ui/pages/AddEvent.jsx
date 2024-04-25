@@ -6,7 +6,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { updateEventMethod } from '../../startup/both/Methods';
+import { createEventMethod } from '../../startup/both/Methods';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
 import { Events } from '../../api/events/Events';
@@ -31,7 +31,7 @@ const AddEvent = () => {
     // Append the email to the data object. Ensure userEmail is not undefined.
     if (userEmail) {
       const dataWithEmail = { ...data, owner: userEmail, eventId: Meteor.user()?._id };
-      Meteor.call(updateEventMethod, dataWithEmail, (error) => {
+      Meteor.call(createEventMethod, dataWithEmail, (error) => {
         if (error) {
           swal('Error', error.message, 'error');
         } else {
