@@ -65,7 +65,7 @@ const UserProfile = () => {
                     <Col xs="auto" className="text-center"><Discord className="mt-2 icon" /></Col>
                     <Col xs="auto" className="text-center"><Linkedin className="mt-2 icon" /></Col>
                   </Row>
-                  <Card.Text style={{ marginTop: '50px', marginBottom: '20px' }}><strong>Major:</strong> {profile?.major}</Card.Text>
+                  <Card.Text style={{ marginTop: '40px', marginBottom: '20px' }}><strong>Major:</strong> {profile?.major}</Card.Text>
                 </Col>
                 <Col xs={6}>
                   <Card.Subtitle className="mb-2 text-muted">{profile?.email}</Card.Subtitle>
