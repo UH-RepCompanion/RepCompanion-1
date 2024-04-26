@@ -25,6 +25,10 @@ const makeSchema = (allInterests, allTags) => new SimpleSchema({
   interests: { type: Array, label: 'Interests', optional: true },
   'interests.$': { type: String, allowedValues: allInterests },
   tag: { type: String, allowedValues: allTags, label: 'Tags', optional: true },
+  socialLinks: { type: Array, label: 'Social Links', optional: true },
+  'socialLinks.$': { type: Object },
+  'socialLinks.$.platform': { type: String, label: 'Platform', allowedValues: ['Instagram', 'Discord', 'Snapchat', 'Facebook', 'Twitter', 'LinkedIn'] },
+  'socialLinks.$.url': { type: String, label: 'URL' },
 });
 
 /* Renders the EditProfile Page: what appears after the user logs in. */
@@ -90,6 +94,14 @@ const EditProfile = () => {
               <Row>
                 <Col xs={6}><SelectField id="edit-form-interests" name="interests" showInlineError multiple /></Col>
                 <Col xs={6}><SelectField id="edit-form-tags" name="tag" showInlineError /></Col>
+              </Row>
+              <Row>
+                <Col xs={6}>
+                  <SelectField id="edit-form-social-platform" name="socialLinks.$.platform" showInlineError multiple placeholder="Social Media Platform" />
+                </Col>
+                <Col xs={6}>
+                  <TextField id="edit-form-social-url" name="socialLinks.$.url" showInlineError placeholder="URL to Social Media Profile" />
+                </Col>
               </Row>
               <SubmitField id="edit-form-update" value="Update" />
             </Card.Body>
