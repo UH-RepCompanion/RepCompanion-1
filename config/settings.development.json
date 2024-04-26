@@ -6,6 +6,24 @@
 
   "defaultProfiles": [
     {
+      "firstName": "Admin",
+      "lastName": "Admin",
+      "bio": "I am the admin",
+      "major": "Admin",
+      "interests": [
+        "Strength Training",
+        "Power Lifting",
+        "Core Training",
+        "Cardio",
+        "Yoga",
+        "Balance Training"
+      ],
+      "tag": "Trainer",
+      "picture": "",
+      "email": "admin",
+      "role": "admin"
+    },
+    {
       "firstName": "Philip",
       "lastName": "Johnson",
       "bio": "I am a Professor and like to paddle outrigger canoes.",
