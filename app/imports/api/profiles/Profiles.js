@@ -41,20 +41,9 @@ class ProfilesCollection {
         type: String,
         allowedValues: this.allowedTags,
       },
-      socialLinks: {
-        type: Array,
-        optional: true,
-      },
-      'socialLinks.$': { // creates the object
-        type: Object,
-      },
-      'socialLinks.$.platform': { // allowed social links
-        type: String,
-        allowedValues: ['Instagram', 'Discord', 'Snapchat', 'Facebook', 'Twitter', 'LinkedIn'],
-      },
-      'socialLinks.$.url': { // stores the social link as a url
-        type: String,
-      },
+      instagramLink: { type: String, optional: true, defaultValue: '' },
+      facebookLink: { type: String, optional: true, defaultValue: '' },
+      spotifyLink: { type: String, optional: true, defaultValue: '' },
     });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);

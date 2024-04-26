@@ -25,10 +25,9 @@ const makeSchema = (allInterests, allTags) => new SimpleSchema({
   interests: { type: Array, label: 'Interests', optional: true },
   'interests.$': { type: String, allowedValues: allInterests },
   tag: { type: String, allowedValues: allTags, label: 'Tags', optional: true },
-  socialLinks: { type: Array, label: 'Social Links', optional: true },
-  'socialLinks.$': { type: Object },
-  'socialLinks.$.platform': { type: String, label: 'Platform', allowedValues: ['Instagram', 'Discord', 'Snapchat', 'Facebook', 'Twitter', 'LinkedIn'] },
-  'socialLinks.$.url': { type: String, label: 'URL' },
+  instagramLink: { type: String, label: 'Instagram Link', optional: true },
+  facebookLink: { type: String, label: 'Facebook Link', optional: true },
+  spotifyLink: { type: String, label: 'Spotify Link', optional: true },
 });
 
 /* Renders the EditProfile Page: what appears after the user logs in. */
@@ -84,7 +83,7 @@ const EditProfile = () => {
               <Row>
                 <Col xs={4}><TextField id="edit-form-first-name" name="firstName" showInlineError placeholder="First Name" /></Col>
                 <Col xs={4}><TextField id="edit-form-last-name" name="lastName" showInlineError placeholder="Last Name" /></Col>
-                <Col xs={4}><TextField name="email" showInlineError placeholder="email" disabled /></Col>
+                <Col xs={4}><TextField name="email" showInlineError placeholder={email} disabled /></Col>
               </Row>
               <LongTextField id="edit-form-bio" name="bio" placeholder="Write a little bit about yourself." />
               <Row>
@@ -96,12 +95,9 @@ const EditProfile = () => {
                 <Col xs={6}><SelectField id="edit-form-tags" name="tag" showInlineError /></Col>
               </Row>
               <Row>
-                <Col xs={6}>
-                  <SelectField id="edit-form-social-platform" name="socialLinks.$.platform" showInlineError multiple placeholder="Social Media Platform" />
-                </Col>
-                <Col xs={6}>
-                  <TextField id="edit-form-social-url" name="socialLinks.$.url" showInlineError placeholder="URL to Social Media Profile" />
-                </Col>
+                <Col xs={4}><TextField id="edit-form-instagram" name="instagramLink" placeholder="instagram url" showInlineError /> </Col>
+                <Col xs={4}><TextField id="edit-form-facebook" name="facebookLink" placeholder="facebook url" showInlineError /></Col>
+                <Col xs={4}><TextField id="edit-form-spotify" name="spotifyLink" placeholder="spotify url" showInlineError /></Col>
               </Row>
               <SubmitField id="edit-form-update" value="Update" />
             </Card.Body>
