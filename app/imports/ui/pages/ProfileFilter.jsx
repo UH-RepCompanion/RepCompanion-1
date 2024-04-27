@@ -28,7 +28,7 @@ function getProfileData(email) {
   return _.extend({}, data, { interests, tags });
 }
 
-const Filter = () => {
+const ProfileFilter = () => {
   const [interests, setInterests] = useStickyState('interests', []);
   const [profileData, setProfileData] = useState([]);
 
@@ -86,4 +86,4 @@ const Filter = () => {
   ) : <LoadingSpinner />;
 };
 
-export default Filter;
+export default ProfileFilter;
