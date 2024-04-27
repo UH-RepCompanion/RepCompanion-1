@@ -29,6 +29,9 @@ class ProfilesCollection {
       bio: { type: String, optional: true },
       major: { type: String, optional: true },
       picture: { type: String, optional: true },
+      socialLink1: { type: String, optional: true },
+      socialLink2: { type: String, optional: true },
+      socialLink3: { type: String, optional: true },
       interests: {
         type: Array,
         defaultValue: [],
@@ -40,20 +43,6 @@ class ProfilesCollection {
       tag: {
         type: String,
         allowedValues: this.allowedTags,
-      },
-      socialLinks: {
-        type: Array,
-        optional: true,
-      },
-      'socialLinks.$': { // creates the object
-        type: Object,
-      },
-      'socialLinks.$.platform': { // allowed social links
-        type: String,
-        allowedValues: ['Instagram', 'Discord', 'Snapchat', 'Facebook', 'Twitter', 'LinkedIn'],
-      },
-      'socialLinks.$.url': { // stores the social link as a url
-        type: String,
       },
     });
     // Ensure collection documents obey schema.

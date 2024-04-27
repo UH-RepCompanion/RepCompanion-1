@@ -3,7 +3,7 @@ import { Button, Card, Col, Container, Image, Row, Table } from 'react-bootstrap
 import { Link } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import { Discord, Instagram, Linkedin, Snapchat, Facebook, Twitter } from 'react-bootstrap-icons';
+import { Discord, Instagram, Linkedin } from 'react-bootstrap-icons';
 import { Profiles } from '../../api/profiles/Profiles';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
@@ -49,58 +49,57 @@ const UserProfile = () => {
     }));
   };
 
+  const renderIconForSocialLink = (platform, link) => {
+    if (link) {
+      let IconComponent;
+      let url;
+
+      switch (platform) {
+      case 'Instagram':
+        IconComponent = Instagram;
+        url = `https://instagram.com/${link}`;
+        break;
+      case 'Discord':
+        IconComponent = Discord;
+        url = `https://discord.com/${link}`;
+        break;
+      case 'LinkedIn':
+        IconComponent = Linkedin;
+        // eslint-disable-next-line no-unused-vars
+        url = `https://linkedin.com/in/${link}`;
+        break;
+      default:
+        // If the platform is not recognized, return null
+        return null;
+      }
+
+      // Render the icon with the corresponding link
+      return (
+        <Col xs="auto" className="text-center" key={platform}>
+          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+          <a href={link} target="_blank" rel="noopener noreferrer">
+            <IconComponent className="mt-2 icon" />
+          </a>
+        </Col>
+      );
+    }
+    return null; // Return null if the link is not present
+
+  };
+
   // Function to render icon links based on social media platforms
   const renderSocialLinks = () => (
     <Row>
-      {profile?.socialLinks.map((link, index) => {
-        let IconComponent;
-        let url;
-
-        switch (link.platform) {
-        case 'Instagram':
-          IconComponent = Instagram;
-          url = `https://instagram.com/${link.url}`;
-          break;
-        case 'Discord':
-          IconComponent = Discord;
-          url = `https://discord.com/${link.url}`;
-          break;
-        case 'LinkedIn':
-          IconComponent = Linkedin;
-          url = `https://linkedin.com/in/${link.url}`;
-          break;
-        case 'Snapchat':
-          // Assuming link.url contains the Snapchat username
-          IconComponent = Snapchat; // Replace with appropriate icon component for Snapchat
-          url = `https://www.snapchat.com/add/${link.url}`;
-          break;
-        case 'Facebook':
-          // Assuming link.url contains the Facebook username or profile ID
-          IconComponent = Facebook; // Replace with appropriate icon component for Facebook
-          url = `https://www.facebook.com/${link.url}`;
-          break;
-        case 'Twitter':
-          // Assuming link.url contains the Twitter username
-          IconComponent = Twitter; // Replace with appropriate icon component for Twitter
-          url = `https://twitter.com/${link.url}`;
-          break;
-        default:
-          // If the platform is not recognized, return null
-          return null;
-        }
-
-        return (
-          <Col xs="auto" className="text-center" key={index}>
-            {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-            <a href={url} target="_blank" rel="noopener noreferrer">
-              <IconComponent className="mt-2 icon" />
-            </a>
-          </Col>
-        );
-      })}
+      {profile && (
+        <>
+          {renderIconForSocialLink('Instagram', profile.socialLink1)}
+          {renderIconForSocialLink('Discord', profile.socialLink2)}
+          {renderIconForSocialLink('LinkedIn', profile.socialLink3)}
+          {/* Add more social links as needed */}
+        </>
+      )}
     </Row>
   );
-
   return ready ? (
     <Container id="profile-page" className="d-flex justify-content-center align-items-center infofooter" style={pageStyle}>
       <Row className="justify-content-center align-items-center">
@@ -112,9 +111,7 @@ const UserProfile = () => {
                 <Col xs={6}>
                   <Image className="rounded-circle" src={profile?.picture} style={{ width: '200px', height: 'auto', marginBottom: '10px', borderRadius: '50%', border: '3px solid black' }} />
                   <Card.Title>{profile?.firstName} {profile?.lastName}</Card.Title>
-                  <Row>
-                    <Col xs="auto" className="text-center mt-2 icon">{profile?.socialLinks && renderSocialLinks()}</Col>
-                  </Row>
+                  {renderSocialLinks()}
                   <Card.Text style={{ marginTop: '40px', marginBottom: '20px' }}><strong>Major:</strong> {profile?.major}</Card.Text>
                 </Col>
                 <Col xs={6}>

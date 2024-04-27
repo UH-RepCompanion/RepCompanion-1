@@ -22,13 +22,12 @@ const makeSchema = (allInterests, allTags) => new SimpleSchema({
   bio: { type: String, label: 'Biographical statement', optional: true },
   major: { type: String, label: 'Major', optional: true },
   picture: { type: String, label: 'Picture URL', optional: true },
+  socialLink1: { type: String, regEx: /^https:\/\/(www\.)?instagram\.com\//, label: 'Instagram', optional: true },
+  socialLink2: { type: String, regEx: /^https:\/\/(www\.)?discord\.com\//, label: 'Discord', optional: true },
+  socialLink3: { type: String, regEx: /^https:\/\/(www\.)?linkedin\.com\/in\//, label: 'LinkedIn', optional: true },
   interests: { type: Array, label: 'Interests', optional: true },
   'interests.$': { type: String, allowedValues: allInterests },
   tag: { type: String, allowedValues: allTags, label: 'Tags', optional: true },
-  socialLinks: { type: Array, label: 'Social Links', optional: true },
-  'socialLinks.$': { type: Object },
-  'socialLinks.$.platform': { type: String, label: 'Platform', allowedValues: ['Instagram', 'Discord', 'Snapchat', 'Facebook', 'Twitter', 'LinkedIn'] },
-  'socialLinks.$.url': { type: String, label: 'URL' },
 });
 
 /* Renders the EditProfile Page: what appears after the user logs in. */
@@ -97,10 +96,11 @@ const EditProfile = () => {
               </Row>
               <Row>
                 <Col xs={6}>
-                  <SelectField id="edit-form-social-platform" name="socialLinks.$.platform" showInlineError multiple placeholder="Social Media Platform" />
+                  <TextField id="edit-form-social-platform" name="socialLink1" showInlineError multiple placeholder="Instagram URL" />
+                  <TextField id="edit-form-social-platform" name="socialLink3" showInlineError multiple placeholder="LinkedIn URL" />
                 </Col>
                 <Col xs={6}>
-                  <TextField id="edit-form-social-url" name="socialLinks.$.url" showInlineError placeholder="URL to Social Media Profile" />
+                  <TextField id="edit-form-social-platform" name="socialLink2" showInlineError multiple placeholder="Discord URL" />
                 </Col>
               </Row>
               <SubmitField id="edit-form-update" value="Update" />
