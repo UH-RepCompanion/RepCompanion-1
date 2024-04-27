@@ -32,6 +32,9 @@ class ProfilesCollection {
       socialLink1: { type: String, optional: true },
       socialLink2: { type: String, optional: true },
       socialLink3: { type: String, optional: true },
+      socialLink4: { type: String, optional: true },
+      socialLink5: { type: String, optional: true },
+      socialLink6: { type: String, optional: true },
       interests: {
         type: Array,
         defaultValue: [],

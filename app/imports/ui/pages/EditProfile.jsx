@@ -25,6 +25,9 @@ const makeSchema = (allInterests, allTags) => new SimpleSchema({
   socialLink1: { type: String, regEx: /^https:\/\/(www\.)?instagram\.com\//, label: 'Instagram', optional: true },
   socialLink2: { type: String, regEx: /^https:\/\/(www\.)?discord\.com\//, label: 'Discord', optional: true },
   socialLink3: { type: String, regEx: /^https:\/\/(www\.)?linkedin\.com\/in\//, label: 'LinkedIn', optional: true },
+  socialLink4: { type: String, regEx: /^https:\/\/(www\.)?snapchat\.com\/add\//, label: 'Snapchat', optional: true },
+  socialLink5: { type: String, regEx: /^https:\/\/(www\.)?facebook\.com\//, label: 'Facebook', optional: true },
+  socialLink6: { type: String, regEx: /^https:\/\/?twitter\.com\//, label: 'Twitter', optional: true },
   interests: { type: Array, label: 'Interests', optional: true },
   'interests.$': { type: String, allowedValues: allInterests },
   tag: { type: String, allowedValues: allTags, label: 'Tags', optional: true },
@@ -98,9 +101,12 @@ const EditProfile = () => {
                 <Col xs={6}>
                   <TextField id="edit-form-social-platform" name="socialLink1" showInlineError multiple placeholder="Instagram URL" />
                   <TextField id="edit-form-social-platform" name="socialLink3" showInlineError multiple placeholder="LinkedIn URL" />
+                  <TextField id="edit-form-social-platform" name="socialLink5" showInlineError multiple placeholder="Facebook URL" />
                 </Col>
                 <Col xs={6}>
                   <TextField id="edit-form-social-platform" name="socialLink2" showInlineError multiple placeholder="Discord URL" />
+                  <TextField id="edit-form-social-platform" name="socialLink4" showInlineError multiple placeholder="Snapchat URL" />
+                  <TextField id="edit-form-social-platform" name="socialLink6" showInlineError multiple placeholder="Twitter URL" />
                 </Col>
               </Row>
               <SubmitField id="edit-form-update" value="Update" />

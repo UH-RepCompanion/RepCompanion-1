@@ -3,7 +3,7 @@ import { Button, Card, Col, Container, Image, Row, Table } from 'react-bootstrap
 import { Link } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import { Discord, Instagram, Linkedin } from 'react-bootstrap-icons';
+import { Discord, Instagram, Linkedin, Snapchat, Facebook, Twitter } from 'react-bootstrap-icons';
 import { Profiles } from '../../api/profiles/Profiles';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
@@ -68,6 +68,19 @@ const UserProfile = () => {
         // eslint-disable-next-line no-unused-vars
         url = `https://linkedin.com/in/${link}`;
         break;
+      case 'Snapchat':
+        IconComponent = Snapchat;
+        url = `https://www.snapchat.com/add/${link}`;
+        break;
+      case 'Facebook':
+        IconComponent = Facebook;
+        url = `https://www.facebook.com/${link}`;
+        break;
+      case 'Twitter':
+        IconComponent = Twitter;
+        // eslint-disable-next-line no-unused-vars
+        url = `https://twitter.com/${link}`;
+        break;
       default:
         // If the platform is not recognized, return null
         return null;
@@ -95,6 +108,9 @@ const UserProfile = () => {
           {renderIconForSocialLink('Instagram', profile.socialLink1)}
           {renderIconForSocialLink('Discord', profile.socialLink2)}
           {renderIconForSocialLink('LinkedIn', profile.socialLink3)}
+          {renderIconForSocialLink('Snapchat', profile.socialLink4)}
+          {renderIconForSocialLink('Facebook', profile.socialLink5)}
+          {renderIconForSocialLink('Twitter', profile.socialLink6)}
           {/* Add more social links as needed */}
         </>
       )}
