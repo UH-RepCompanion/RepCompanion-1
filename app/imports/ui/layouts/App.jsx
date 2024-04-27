@@ -5,7 +5,6 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
-import Landing from '../pages/Landing';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
 import SignOut from '../pages/SignOut';
@@ -23,6 +22,7 @@ import Terms from '../pages/Terms';
 import EditEvent from '../pages/EditEvent';
 import Events from '../pages/Events';
 import AddEvent from '../pages/AddEvent';
+import LandingPage from '../pages/LandingPage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -37,7 +37,7 @@ const App = () => {
       <div className="d-flex flex-column min-vh-100">
         <NavBar />
         <Routes>
-          <Route exact path="/" element={<Landing />} />
+          <Route exact path="/" element={<LandingPage />} />
           <Route path="/profiles" element={<Profiles />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/signin" element={<SignIn />} />
@@ -50,7 +50,7 @@ const App = () => {
           <Route path="/editevent" element={<ProtectedRoute><EditEvent /></ProtectedRoute>} />
           <Route path="/events" element={<ProtectedRoute><Events /></ProtectedRoute>} />
           <Route path="/addevent" element={<ProtectedRoute><AddEvent /></ProtectedRoute>} />
-          <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
+          <Route path="/home" element={<ProtectedRoute><LandingPage /></ProtectedRoute>} />
           <Route path="/filter" element={<ProtectedRoute><Filter /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><Profiles /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
@@ -95,7 +95,7 @@ ProtectedRoute.propTypes = {
 };
 
 ProtectedRoute.defaultProps = {
-  children: <Landing />,
+  children: <LandingPage />,
 };
 
 // Require a component and location to be passed to each AdminProtectedRoute.
@@ -106,7 +106,7 @@ AdminProtectedRoute.propTypes = {
 
 AdminProtectedRoute.defaultProps = {
   ready: false,
-  children: <Landing />,
+  children: <LandingPage />,
 };
 
 export default App;
