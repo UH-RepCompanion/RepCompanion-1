@@ -16,13 +16,14 @@ import EditProfile from '../pages/EditProfile';
 import Profiles from '../pages/Profiles';
 import UserProfile from '../pages/UserProfile';
 import About from '../pages/About';
-import Filter from '../pages/Filter';
+import ProfileFilter from '../pages/ProfileFilter';
 import Policy from '../pages/Policy';
 import Terms from '../pages/Terms';
 import EditEvent from '../pages/EditEvent';
-import Events from '../pages/Events';
+import Events from '../pages/EventFilter';
 import AddEvent from '../pages/AddEvent';
 import LandingPage from '../pages/LandingPage';
+import UserEvent from '../pages/UserEvent';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
           <Route exact path="/" element={<LandingPage />} />
           <Route path="/profiles" element={<Profiles />} />
           <Route path="/userprofile" element={<UserProfile />} />
+          <Route path="/userevent" element={<UserEvent />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
@@ -51,7 +53,7 @@ const App = () => {
           <Route path="/events" element={<ProtectedRoute><Events /></ProtectedRoute>} />
           <Route path="/addevent" element={<ProtectedRoute><AddEvent /></ProtectedRoute>} />
           <Route path="/home" element={<ProtectedRoute><LandingPage /></ProtectedRoute>} />
-          <Route path="/filter" element={<ProtectedRoute><Filter /></ProtectedRoute>} />
+          <Route path="/filter" element={<ProtectedRoute><ProfileFilter /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><Profiles /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />

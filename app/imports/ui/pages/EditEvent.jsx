@@ -45,21 +45,35 @@ const EditEvent = () => {
       swal('Error', 'Email is undefined.', 'error');
     }
   };
-  const { ready, email } = useTracker(() => {
+  const { ready, event } = useTracker(() => {
     // Ensure that minimongo is populated with all collections prior to running render().
     const sub1 = Meteor.subscribe(Events.userPublicationName);
+    const userEmail = Meteor.user()?.username;
+
+    // Fetch the event data associated with the user
+    const eventData = Events.collection.findOne({ owner: userEmail });
+    if (!eventData) {
+      return {
+        ready: sub1.ready(),
+        event: {
+          date: new Date().toISOString().substring(0, 10), // Convert date to YYYY-MM-DD format
+        },
+      };
+    }
+    eventData.date = new Date(eventData.date).toISOString().substring(0, 10);
     return {
       ready: sub1.ready(),
-      email: Meteor.user()?.username,
+      event: eventData,
     };
+
   }, []);
   // Create the form schema for uniforms. Need to determine all interests and projects for muliselect list.
   const allWorkouts = Events.allowedWorkouts;
   const formSchema = makeSchema(allWorkouts);
   const bridge = new SimpleSchema2Bridge(formSchema);
   // Now create the model with all the user information.
-  const event = Events.collection.findOne({ email });
   const model = _.extend({}, event);
+  // eslint-disable-next-line no-nested-ternary
   return ready ? (
     <Container id={PageIDs.homePage} className="justify-content-center" style={pageStyle}>
       <Col>

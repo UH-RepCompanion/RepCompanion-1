@@ -14,12 +14,12 @@ function createUser(email, role) {
   }
 }
 /** Defines a new user and associated profile. Error if user already exists. */
-function addProfile({ firstName, lastName, bio, major, interests, tag, picture, email, role }) {
+function addProfile({ firstName, lastName, bio, major, interests, tag, picture, email, role, socialLinks }) {
   console.log(`Defining profile ${email}`);
   // Define the user in the Meteor accounts package.
   createUser(email, role);
   // Create the profile.
-  Profiles.collection.insert({ firstName, lastName, bio, major, picture, tag, email, interests });
+  Profiles.collection.insert({ firstName, lastName, bio, major, picture, tag, email, interests, socialLinks });
   // Add interests and projects.
   interests.map(interest => ProfilesInterests.collection.insert({ profile: email, interest }));
   ProfilesTags.collection.insert({ profile: email, tag });

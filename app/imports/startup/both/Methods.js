@@ -36,12 +36,23 @@ const updateProfileMethod = 'Profiles.update';
  * updated situation specified by the user.
  */
 Meteor.methods({
-  'Profiles.update'({ email, firstName, lastName, bio, major, picture, interests, tag }) {
-    Profiles.collection.update({ email }, { $set: { email, firstName, lastName, bio, major, picture, tag, interests } }, { upsert: true });
+  'Profiles.update'({ email, firstName, lastName, bio, major, picture, socialLink1, socialLink2, socialLink3, socialLink4, socialLink5, socialLink6, interests, tag }) {
+    Profiles.collection.update({ email }, { $set: { email, firstName, lastName, bio, major, picture, tag, interests, socialLink1, socialLink2, socialLink3, socialLink4, socialLink5, socialLink6 } }, { upsert: true });
     ProfilesInterests.collection.remove({ profile: email });
     ProfilesTags.collection.remove({ profile: email });
     interests.map((interest) => ProfilesInterests.collection.insert({ profile: email, interest }));
     ProfilesTags.collection.insert({ profile: email, tag });
+  },
+});
+const removeUserMethod = 'User.remove';
+
+Meteor.methods({
+  'User.remove'({ email }) {
+    Profiles.collection.remove({ email: email });
+    ProfilesInterests.collection.remove({ profile: email });
+    ProfilesTags.collection.remove({ profile: email });
+    Events.collections.remove({ owner: email });
+    Meteor.user.remove({ username: email });
   },
 });
 
@@ -52,5 +63,18 @@ Meteor.methods({
     Events.collection.update({ owner }, { $set: { owner, eventId, date, workouts, description } }, { upsert: true });
   },
 });
+const createEventMethod = 'Events.create';
+Meteor.methods({
+  'Events.create'({ owner, eventId, date, workouts, description }) {
+    Events.collection.remove({ owner });
+    Events.collection.insert({ owner, eventId, date, workouts, description });
+  },
+});
+const removeEventMethod = 'Events.remove';
+Meteor.methods({
+  'Events.remove'({ owner }) {
+    Events.collection.remove({ owner });
+  },
+});
 
-export { updateProfileMethod, updateEventMethod };
+export { updateProfileMethod, removeUserMethod, updateEventMethod, createEventMethod, removeEventMethod };
