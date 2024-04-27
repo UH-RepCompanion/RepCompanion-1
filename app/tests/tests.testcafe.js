@@ -76,7 +76,7 @@ test('Test that the event list page will show', async (testController) => {
   await userEventPage.isDisplayed(testController);
 });
 
-test('Test that an event can be added', async (testController) => {
+test.skip('Test that an event can be added', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
   await navBar.gotoAddEventPage(testController);

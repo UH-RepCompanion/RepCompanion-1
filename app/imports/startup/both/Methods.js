@@ -44,6 +44,17 @@ Meteor.methods({
     ProfilesTags.collection.insert({ profile: email, tag });
   },
 });
+const removeUserMethod = 'User.remove';
+
+Meteor.methods({
+  'User.remove'({ email }) {
+    Profiles.collection.remove({ email: email });
+    ProfilesInterests.collection.remove({ profile: email });
+    ProfilesTags.collection.remove({ profile: email });
+    Events.collections.remove({ owner: email });
+    Meteor.user.remove({ username: email });
+  },
+});
 
 const updateEventMethod = 'Events.update';
 
@@ -52,5 +63,18 @@ Meteor.methods({
     Events.collection.update({ owner }, { $set: { owner, eventId, date, workouts, description } }, { upsert: true });
   },
 });
+const createEventMethod = 'Events.create';
+Meteor.methods({
+  'Events.create'({ owner, eventId, date, workouts, description }) {
+    Events.collection.remove({ owner });
+    Events.collection.insert({ owner, eventId, date, workouts, description });
+  },
+});
+const removeEventMethod = 'Events.remove';
+Meteor.methods({
+  'Events.remove'({ owner }) {
+    Events.collection.remove({ owner });
+  },
+});
 
-export { updateProfileMethod, updateEventMethod };
+export { updateProfileMethod, removeUserMethod, updateEventMethod, createEventMethod, removeEventMethod };
