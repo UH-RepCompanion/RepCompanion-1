@@ -30,9 +30,9 @@ const SecondSection = () => {
             </Col>
           </Row>
           <Row className="text-center">
-            <Col className="m-2">
-              <div className="bg-light" style={{ width: '500px', marginLeft: '88px', padding: '5px', border: '2px solid black' }}>
-                <p style={{ width: '490px' }}>By matching users based on fitness goals, interests, availability,
+            <Col className="m-2" xs={3} sm={4} md={5}>
+              <div className="bg-light text-center" style={{ width: '490px', marginLeft: 'auto', padding: '5px', border: '2px solid black' }}>
+                <p style={{ width: '475px' }}>By matching users based on fitness goals, interests, availability,
                   and preferred workout styles, RepCompanion helps students overcome
                   shyness and build confidence while providing motivation and accountability
                   to stick to their fitness routines.
@@ -42,9 +42,9 @@ const SecondSection = () => {
             <Col>
               <Image width={150} height={150} style={{ borderRadius: '50%', border: '1px solid white' }} className="rounded-circle" src="../images/uh-repcompanion.png" />
             </Col>
-            <Col className="m-2">
-              <div className="bg-light pt-1" style={{ width: '500px', marginRight: '88px', border: '2px solid black' }}>
-                <p style={{ width: '490px' }}>
+            <Col className="m-2" xs={3} sm={4} md={5}>
+              <div className="bg-light pt-1 text-center" style={{ width: '490px', marginRight: 'auto', border: '2px solid black' }}>
+                <p style={{ width: '475px' }}>
                   With RepCompanion, students can find and connect with compatible workout buddies who can push them to achieve their fitness goals, try new exercises, and help them stay committed to their health and wellness journey.
                 </p>
               </div>
