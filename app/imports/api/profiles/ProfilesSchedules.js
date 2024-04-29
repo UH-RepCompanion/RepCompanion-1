@@ -12,23 +12,11 @@ class ProfileSchedulesCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      owner: String,
-      scheduleId: String,
+      profile: String,
       scheduleDay: {
         type: String,
         allowedValues: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
       },
-      scheduleTasks: { type: Array },
-      'tasks.$': {
-        type: Object,
-      },
-      'tasks.$.time': {
-        type: String, // could use a more structured Time type here
-      },
-      'tasks.$.description': {
-        type: String,
-      },
-      time: Date,
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);

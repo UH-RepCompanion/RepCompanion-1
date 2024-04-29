@@ -11,24 +11,59 @@ class SchedulesCollection {
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
+    const WorkoutSchema = new SimpleSchema({
+      workout: {
+        type: String,
+      },
+      reps: {
+        type: Number,
+        min: 1,
+      },
+    });
+    const DaySchema = new SimpleSchema({
+      time: String,
+      sets: {
+        type: Number,
+        min: 1,
+      },
+      tasks: {
+        type: Array,
+      },
+      'tasks.$': WorkoutSchema,
+    });
+
+    // Main schema for the ScheduleCollection
     this.schema = new SimpleSchema({
       owner: String,
       scheduleId: String,
-      scheduleDay: {
-        type: String,
-        allowedValues: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      Monday: {
+        type: DaySchema,
+        optional: true,
       },
-      scheduleTasks: { type: Array },
-      'tasks.$': {
-        type: Object,
+      Tuesday: {
+        type: DaySchema,
+        optional: true
       },
-      'tasks.$.time': {
-        type: String, // could use a more structured Time type here
+      Wednesday: {
+        type: DaySchema,
+        optional: true
       },
-      'tasks.$.description': {
-        type: String,
+      Thursday: {
+        type: DaySchema,
+        optional: true
       },
-      time: Date,
+      Friday: {
+        type: DaySchema,
+        optional: true
+      },
+      Saturday: {
+        type: DaySchema,
+        optional: true
+      },
+      Sunday: {
+        type: DaySchema,
+        optional: true
+      },
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
