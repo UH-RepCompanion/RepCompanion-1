@@ -8,17 +8,19 @@ import { _ } from 'meteor/underscore';
 import { AutoForm, SelectField, SubmitField } from 'uniforms-bootstrap5';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
+import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { useStickyState } from '../utilities/StickyState';
 import { pageStyle } from './pageStyles';
 import { ComponentIDs } from '../utilities/ids';
-import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 import ProfileCard from '../components/ProfileCard';
 
 /* Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = (allInterests) => new SimpleSchema({
+const makeSchema = (allInterests, allTags) => new SimpleSchema({
   interests: { type: Array, label: 'Interests', optional: true },
   'interests.$': { type: String, allowedValues: allInterests },
+  tags: { type: Array, label: 'Tags', optional: true },
+  'tags.$': { type: String, allowedValues: allTags },
 });
 
 function getProfileData(email) {
@@ -30,9 +32,10 @@ function getProfileData(email) {
 
 const ProfileFilter = () => {
   const [interests, setInterests] = useStickyState('interests', []);
+  const [tags, setTags] = useStickyState('tags', []);
   const [profileData, setProfileData] = useState([]);
 
-  const { ready, profileInterests, allProfiles } = useTracker(() => {
+  const { ready, profileInterests, allProfiles, profileTags } = useTracker(() => {
     const sub1 = Meteor.subscribe(Profiles.userPublicationName);
     const sub2 = Meteor.subscribe(ProfilesInterests.userPublicationName);
     const sub3 = Meteor.subscribe(ProfilesTags.userPublicationName);
@@ -40,37 +43,53 @@ const ProfileFilter = () => {
       ready: sub1.ready() && sub2.ready() && sub3.ready(),
       profileInterests: ProfilesInterests.collection.find().fetch(),
       allProfiles: Profiles.collection.find().fetch(),
+      profileTags: ProfilesTags.collection.find().fetch(),
     };
   }, []);
 
   const submit = (data) => {
     setInterests(data.interests || []);
-    const filteredEmails = data.interests?.length > 0
-      ? _.uniq(_.pluck(profileInterests.filter(pI => data.interests.includes(pI.interest)), 'profile'))
-      : _.uniq(_.pluck(allProfiles, 'email'));
+    setTags(data.tags || []);
+    let filteredEmails = allProfiles.map(profile => profile.email);
+
+    if (data.interests?.length > 0) {
+      filteredEmails = _.intersection(filteredEmails, _.pluck(profileInterests.filter(pI => data.interests.includes(pI.interest)), 'profile'));
+    }
+
+    if (data.tags?.length > 0) {
+      filteredEmails = _.intersection(filteredEmails, _.pluck(profileTags.filter(pT => data.tags.includes(pT.tag)), 'profile'));
+    }
+
     setProfileData(filteredEmails.map(email => getProfileData(email)));
   };
 
   useEffect(() => {
-    // Load all profiles initially
-    if (ready && interests.length === 0) {
+    if (ready) {
       setProfileData(allProfiles.map(profile => getProfileData(profile.email)));
     }
   }, [ready, allProfiles]);
 
   const allInterests = Profiles.allowedInterests;
-  const formSchema = makeSchema(allInterests);
+  const allTags = Profiles.allowedTags;
+  const formSchema = makeSchema(allInterests, allTags);
   const bridge = new SimpleSchema2Bridge(formSchema);
 
   return ready ? (
     <Container id="finder-page" style={pageStyle}>
-      <AutoForm schema={bridge} onSubmit={data => submit(data)} model={{ interests }}>
+      <AutoForm schema={bridge} onSubmit={data => submit(data)} model={{ interests, tags }}>
         <Card>
           <Card.Body id={ComponentIDs.filterFormInterests}>
             <SelectField
               name="interests"
               multiple
               placeholder="Interests"
+              checkboxes
+              transform={label => ` ${label}`} // Adds a space before the label text
+            />
+            <SelectField
+              name="tags"
+              multiple
+              placeholder="Tags"
               checkboxes
               transform={label => ` ${label}`} // Adds a space before the label text
             />
