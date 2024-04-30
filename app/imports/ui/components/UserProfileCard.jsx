@@ -111,7 +111,7 @@ const UserProfileCard = ({ profile }) => {
             <Card.Body style={{ width: '800', height: 'auto' }}>
               <Row className="justify-content-center">
                 <Col xs={6}>
-                  <Image className="rounded-circle" src={profile?.picture} style={{ width: '200px', height: 'auto', marginBottom: '10px', borderRadius: '50%', border: '3px solid black' }} />
+                  <Image className="rounded-circle" src={profile?.picture} style={{ width: '200px', height: '200px', marginBottom: '10px', borderRadius: '50%', border: '3px solid black' }} />
                   <Card.Title>{profile?.firstName} {profile?.lastName}</Card.Title>
                   {renderSocialLinks()}
                   <Card.Text style={{ marginTop: '40px', marginBottom: '20px' }}><strong>Major:</strong> {profile?.major}</Card.Text>

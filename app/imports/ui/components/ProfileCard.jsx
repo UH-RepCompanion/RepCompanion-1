@@ -33,6 +33,7 @@ const ProfileCard = ({ profile }) => {
             <Image
               src={profile.picture}
               width={150}
+              height={150}
               style={{
                 borderRadius: '50%',
                 border: `3px solid ${borderColor}`, // Apply dynamic border color
