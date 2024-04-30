@@ -1,10 +1,15 @@
-import { Badge, Card, Col, Image, Button } from 'react-bootstrap';
+import { Badge, Card, Col, Image } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Mortarboard, TrophyFill } from 'react-bootstrap-icons';
+import queryString from 'query-string';
 
 const ProfileCard = ({ profile }) => {
 // Function to determine border color based on the profile's tag
+  const interests = Array.isArray(profile.interests) ? profile.interests : [profile.interests];
+  const updatedProfile = { ...profile, interests };
+  const profileQueryString = queryString.stringify(updatedProfile);
   const getBorderColor = (tag) => {
     switch (tag) {
     case 'Trainer':
@@ -54,7 +59,7 @@ const ProfileCard = ({ profile }) => {
               </Card.Text>
             </div>
           </div>
-          <Button variant="outline-success" className="mt-auto">View Profile</Button>
+          <Link to={`/test-page/?${profileQueryString}`} className="btn btn-outline-success mt-auto" onClick={profile}>View Profile</Link>
         </Card.Body>
       </Card>
     </Col>

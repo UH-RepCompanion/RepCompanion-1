@@ -30,7 +30,7 @@ const Footer = () => (
           University of Hawaii
           <br />
           <a href="https://static.wikia.nocookie.net/spongebob/images/1/12/MuscleBob_BuffPants_083.png/revision/latest/scale-to-width-down/1200?cb=20190905112630">
-            <Image style={{ width: '60px', height: 'auto' }} src="./images/uh-logo.png" alt="[Image Not Found]" />
+            <Image style={{ width: '60px', height: 'auto' }} src="/images/uh-logo.png" alt="[Image Not Found]" />
           </a>
           <br />
           Honolulu, HI 96822

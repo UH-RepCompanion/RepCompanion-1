@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Navigate, Routes } from 'react-router-dom';
 import Footer from '../components/Footer';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
@@ -24,6 +24,7 @@ import Events from '../pages/EventFilter';
 import AddEvent from '../pages/AddEvent';
 import LandingPage from '../pages/LandingPage';
 import UserEvent from '../pages/UserEvent';
+import TestPage from '../pages/TestPage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/profiles" element={<Profiles />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/userevent" element={<UserEvent />} />
+          <Route path="/test-page" element={<TestPage />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
