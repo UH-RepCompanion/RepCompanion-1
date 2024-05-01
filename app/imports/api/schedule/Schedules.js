@@ -15,6 +15,10 @@ class SchedulesCollection {
       workout: {
         type: String,
       },
+      sets: {
+        type: Number,
+        min: 1,
+      },
       reps: {
         type: Number,
         min: 1,
@@ -22,10 +26,6 @@ class SchedulesCollection {
     });
     const DaySchema = new SimpleSchema({
       time: String,
-      sets: {
-        type: Number,
-        min: 1,
-      },
       tasks: {
         type: Array,
       },
@@ -35,34 +35,33 @@ class SchedulesCollection {
     // Main schema for the ScheduleCollection
     this.schema = new SimpleSchema({
       owner: String,
-      scheduleId: String,
+      Sunday: {
+        type: DaySchema,
+        optional: true,
+      },
       Monday: {
         type: DaySchema,
         optional: true,
       },
       Tuesday: {
         type: DaySchema,
-        optional: true
+        optional: true,
       },
       Wednesday: {
         type: DaySchema,
-        optional: true
+        optional: true,
       },
       Thursday: {
         type: DaySchema,
-        optional: true
+        optional: true,
       },
       Friday: {
         type: DaySchema,
-        optional: true
+        optional: true,
       },
       Saturday: {
         type: DaySchema,
-        optional: true
-      },
-      Sunday: {
-        type: DaySchema,
-        optional: true
+        optional: true,
       },
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.

@@ -103,126 +103,124 @@ const UserProfileCard = ({ profile }) => {
     </Row>
   );
   return (
-    <Container id="profile-page" className="d-flex justify-content-center align-items-center infofooter" style={pageStyle}>
-      <Row className="justify-content-center align-items-center">
-        <Col>
-          <Col className="justify-content-center text-center"><h2 style={{ color: 'white' }}>{profile?.firstName}&apos;s Profile</h2></Col>
-          <Card style={{ width: '600px', height: '600px', backgroundColor: 'white', border: '1px solid black' }}>
-            <Card.Body style={{ width: '800', height: 'auto' }}>
-              <Row className="justify-content-center">
-                <Col xs={6}>
-                  <Image className="rounded-circle" src={profile?.picture} style={{ width: '200px', height: 'auto', marginBottom: '10px', borderRadius: '50%', border: '3px solid black' }} />
-                  <Card.Title>{profile?.firstName} {profile?.lastName}</Card.Title>
-                  {renderSocialLinks()}
-                  <Card.Text style={{ marginTop: '40px', marginBottom: '20px' }}><strong>Major:</strong> {profile?.major}</Card.Text>
-                </Col>
-                <Col xs={6}>
-                  <Card.Subtitle className="mb-2 text-muted">{profile?.email}</Card.Subtitle>
-                  <Card.Text><strong>About Me: </strong></Card.Text>
-                  <Card.Text>{profile?.bio}</Card.Text>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={6}><Card.Text style={{ marginBottom: '0px' }}><strong>Interests:</strong> {profile?.interests.join(', ')}</Card.Text></Col>
-                <Col xs={6}><Card.Text style={{ marginBottom: '0px', color: 'black' }}><strong>Tags:</strong> {profile?.tag}</Card.Text></Col>
-              </Row>
-              <Row>
-                <Container className="d-flex justify-content-center align-items-center square-card">
-                  <Table striped bordered hover>
-                    <thead>
-                      <tr>
-                        <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Sun</th>
-                        <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Mon</th>
-                        <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Tues</th>
-                        <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Wed</th>
-                        <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Thurs</th>
-                        <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Fri</th>
-                        <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Sat</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                        <td
-                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer', height: '50px' }}
-                          onClick={() => toggleImageVisibility('cell1')} // Add onClick handler
-                        >
-                          {/* Render image conditionally based on visibility state */}
-                          {imageVisibility.cell1 && (
-                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
-                          )}
-                        </td>
-                        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                        <td
-                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
-                          onClick={() => toggleImageVisibility('cell2')} // Add onClick handler
-                        >
-                          {/* Render image conditionally based on visibility state */}
-                          {imageVisibility.cell2 && (
-                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
-                          )}
-                        </td>
-                        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                        <td
-                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
-                          onClick={() => toggleImageVisibility('cell3')} // Add onClick handler
-                        >
-                          {/* Render image conditionally based on visibility state */}
-                          {imageVisibility.cell3 && (
-                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
-                          )}
-                        </td>
-                        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                        <td
-                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
-                          onClick={() => toggleImageVisibility('cell4')} // Add onClick handler
-                        >
-                          {/* Render image conditionally based on visibility state */}
-                          {imageVisibility.cell4 && (
-                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
-                          )}
-                        </td>
-                        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                        <td
-                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
-                          onClick={() => toggleImageVisibility('cell5')} // Add onClick handler
-                        >
-                          {/* Render image conditionally based on visibility state */}
-                          {imageVisibility.cell5 && (
-                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
-                          )}
-                        </td>
-                        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                        <td
-                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
-                          onClick={() => toggleImageVisibility('cell6')} // Add onClick handler
-                        >
-                          {/* Render image conditionally based on visibility state */}
-                          {imageVisibility.cell6 && (
-                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
-                          )}
-                        </td>
-                        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                        <td
-                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
-                          onClick={() => toggleImageVisibility('cell7')} // Add onClick handler
-                        >
-                          {/* Render image conditionally based on visibility state */}
-                          {imageVisibility.cell7 && (
-                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
-                          )}
-                        </td>
-                      </tr>
-                    </tbody>
-                  </Table>
-                </Container>
-                <Button className="text-start mt-5" variant="dark" id="edit-profile-button" style={{ position: 'absolute', bottom: '10px', left: '465px', color: 'white', width: '120px' }} as={Link} to="/editprofile">Edit Profile</Button>
-              </Row>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <Row className="justify-content-center align-items-center">
+      <Col>
+        <Col className="justify-content-center text-center"><h2 style={{ color: 'white' }}>{profile?.firstName}&apos;s Profile</h2></Col>
+        <Card style={{ width: '600px', height: '600px', backgroundColor: 'white', border: '1px solid black' }}>
+          <Card.Body style={{ width: '800', height: 'auto' }}>
+            <Row className="justify-content-center">
+              <Col xs={6}>
+                <Image className="rounded-circle" src={profile?.picture} style={{ width: '200px', height: 'auto', marginBottom: '10px', borderRadius: '50%', border: '3px solid black' }} />
+                <Card.Title>{profile?.firstName} {profile?.lastName}</Card.Title>
+                {renderSocialLinks()}
+                <Card.Text style={{ marginTop: '40px', marginBottom: '20px' }}><strong>Major:</strong> {profile?.major}</Card.Text>
+              </Col>
+              <Col xs={6}>
+                <Card.Subtitle className="mb-2 text-muted">{profile?.email}</Card.Subtitle>
+                <Card.Text><strong>About Me: </strong></Card.Text>
+                <Card.Text>{profile?.bio}</Card.Text>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={6}><Card.Text style={{ marginBottom: '0px' }}><strong>Interests:</strong> {profile?.interests.join(', ')}</Card.Text></Col>
+              <Col xs={6}><Card.Text style={{ marginBottom: '0px', color: 'black' }}><strong>Tags:</strong> {profile?.tag}</Card.Text></Col>
+            </Row>
+            <Row>
+              <Container className="d-flex justify-content-center align-items-center square-card">
+                <Table striped bordered hover>
+                  <thead>
+                    <tr>
+                      <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Sun</th>
+                      <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Mon</th>
+                      <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Tues</th>
+                      <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Wed</th>
+                      <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Thurs</th>
+                      <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Fri</th>
+                      <th style={{ backgroundColor: 'darkcyan', border: '1px solid black' }}>Sat</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                      <td
+                        style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer', height: '50px' }}
+                        onClick={() => toggleImageVisibility('cell1')} // Add onClick handler
+                      >
+                        {/* Render image conditionally based on visibility state */}
+                        {imageVisibility.cell1 && (
+                          <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
+                        )}
+                      </td>
+                      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                      <td
+                        style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
+                        onClick={() => toggleImageVisibility('cell2')} // Add onClick handler
+                      >
+                        {/* Render image conditionally based on visibility state */}
+                        {imageVisibility.cell2 && (
+                          <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
+                        )}
+                      </td>
+                      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                      <td
+                        style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
+                        onClick={() => toggleImageVisibility('cell3')} // Add onClick handler
+                      >
+                        {/* Render image conditionally based on visibility state */}
+                        {imageVisibility.cell3 && (
+                          <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
+                        )}
+                      </td>
+                      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                      <td
+                        style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
+                        onClick={() => toggleImageVisibility('cell4')} // Add onClick handler
+                      >
+                        {/* Render image conditionally based on visibility state */}
+                        {imageVisibility.cell4 && (
+                          <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
+                        )}
+                      </td>
+                      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                      <td
+                        style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
+                        onClick={() => toggleImageVisibility('cell5')} // Add onClick handler
+                      >
+                        {/* Render image conditionally based on visibility state */}
+                        {imageVisibility.cell5 && (
+                          <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
+                        )}
+                      </td>
+                      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                      <td
+                        style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
+                        onClick={() => toggleImageVisibility('cell6')} // Add onClick handler
+                      >
+                        {/* Render image conditionally based on visibility state */}
+                        {imageVisibility.cell6 && (
+                          <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
+                        )}
+                      </td>
+                      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                      <td
+                        style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
+                        onClick={() => toggleImageVisibility('cell7')} // Add onClick handler
+                      >
+                        {/* Render image conditionally based on visibility state */}
+                        {imageVisibility.cell7 && (
+                          <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
+                        )}
+                      </td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </Container>
+              <Button className="text-start mt-5" variant="dark" id="edit-profile-button" style={{ position: 'absolute', bottom: '10px', left: '465px', color: 'white', width: '120px' }} as={Link} to="/editprofile">Edit Profile</Button>
+            </Row>
+          </Card.Body>
+        </Card>
+      </Col>
+    </Row>
   );
 };
 

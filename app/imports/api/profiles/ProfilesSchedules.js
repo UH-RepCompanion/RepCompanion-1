@@ -13,10 +13,7 @@ class ProfileSchedulesCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       profile: String,
-      scheduleDay: {
-        type: String,
-        allowedValues: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-      },
+      scheduleDay: String,
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);

@@ -5,6 +5,8 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 import { Events } from '../../api/events/Events';
+import { Schedules } from '../../api/schedule/Schedules';
+import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
@@ -37,6 +39,9 @@ Meteor.publish(ProfilesInterests.userPublicationName, () => ProfilesInterests.co
 Meteor.publish(ProfilesTags.userPublicationName, () => ProfilesTags.collection.find());
 
 Meteor.publish(Events.userPublicationName, () => Events.collection.find());
+
+Meteor.publish(Schedules.userPublicationName, () => Events.collection.find());
+Meteor.publish(ProfilesSchedules.userPublicationName, () => Events.collection.find());
 // alanning:roles publication
 // Recommended code to publish roles for each user.
 Meteor.publish(null, function () {

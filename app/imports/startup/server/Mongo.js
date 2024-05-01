@@ -25,9 +25,9 @@ function addProfile({ firstName, lastName, bio, major, interests, tag, picture, 
   ProfilesTags.collection.insert({ profile: email, tag });
   // Make sure interests are defined in the Interests collection if they weren't already.
 }
-function addEvent({ owner, eventId, description, workouts, date, createdAt }) {
+function addEvent({ owner, description, workouts, date, createdAt }) {
   console.log(`Defining event ${owner}`);
-  Events.collection.insert({ owner, eventId, description, workouts, date, createdAt });
+  Events.collection.insert({ owner, description, workouts, date, createdAt });
 }
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
 if (Meteor.users.find().count() === 0) {

@@ -3,6 +3,7 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 import { Events } from '../../api/events/Events';
+import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -59,15 +60,15 @@ Meteor.methods({
 const updateEventMethod = 'Events.update';
 
 Meteor.methods({
-  'Events.update'({ owner, eventId, date, workouts, description }) {
-    Events.collection.update({ owner }, { $set: { owner, eventId, date, workouts, description } }, { upsert: true });
+  'Events.update'({ owner, date, workouts, description }) {
+    Events.collection.update({ owner }, { $set: { owner, date, workouts, description } }, { upsert: true });
   },
 });
 const createEventMethod = 'Events.create';
 Meteor.methods({
-  'Events.create'({ owner, eventId, date, workouts, description }) {
+  'Events.create'({ owner, date, workouts, description }) {
     Events.collection.remove({ owner });
-    Events.collection.insert({ owner, eventId, date, workouts, description });
+    Events.collection.insert({ owner, date, workouts, description });
   },
 });
 const removeEventMethod = 'Events.remove';
@@ -77,4 +78,28 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, removeUserMethod, updateEventMethod, createEventMethod, removeEventMethod };
+const updateScheduleMethod = 'Schedules.update';
+
+/**
+ * The server-side Profiles.update Meteor Method is called by the client-side EditProfile page after pushing the update button.
+ * Its purpose is to update the Profiles, ProfilesInterests, and ProfilesProjects collections to reflect the
+ * updated situation specified by the user.
+ */
+Meteor.methods({
+  'Schedules.update'({ owner, schedule }) {
+    const { Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday } = schedule;
+    Profiles.collection.update({ owner }, { $set: { owner, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday } }, { upsert: true });
+    ProfilesSchedules.collection.remove({ owner });
+
+    Object.entries(schedule).forEach(([day, daySchedule]) => {
+      if (daySchedule) { // Check if the day's schedule is defined
+        ProfilesSchedules.collection.insert({
+          profile: owner,
+          scheduleDay: day,
+        });
+      }
+    });
+  },
+});
+
+export { updateProfileMethod, removeUserMethod, updateEventMethod, createEventMethod, removeEventMethod, updateScheduleMethod };
