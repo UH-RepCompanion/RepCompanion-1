@@ -8,6 +8,7 @@ import { Events } from '../../api/events/Events';
 import { pageStyle } from './pageStyles';
 import OtherUserProfile from '../components/OtherUserProfile';
 import UserEventCard from '../components/UserEventCard';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const TestPage = () => {
   const location = useLocation();
@@ -19,14 +20,25 @@ const TestPage = () => {
     setProfile(updatedProfile);
   }, [location]);
 
+  const { ready, event } = useTracker(() => {
+    const sub2 = Meteor.subscribe(Events.userPublicationName);
+    const ownerUsername = profile?.email;
+    const userEvent = Events.collection.findOne({ owner: ownerUsername });
+    return {
+      ready: sub2.ready(),
+      event: userEvent,
+    };
+  }, []);
+
   if (!profile) {
     return <div>Loading...</div>;
   }
-  return (
+  return ready ? (
     <Container id="profile-page" className="d-flex flex-column justify-content-center align-items-center infofooter" style={pageStyle}>
       <OtherUserProfile profile={profile} />
+      {event ? <UserEventCard profile={profile} event={event} /> : <h2 style={{ color: 'white' }}>No Event</h2>}
     </Container>
-  );
+  ) : <LoadingSpinner />;
 };
 
 export default TestPage;
