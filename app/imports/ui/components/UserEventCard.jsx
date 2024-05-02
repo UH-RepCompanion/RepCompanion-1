@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { Badge, Button, Card, Col, Row } from 'react-bootstrap';
+import { Badge, Button, Card, Col, Row, Image } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { format } from 'date-fns';
@@ -31,7 +31,7 @@ const UserEventCard = ({ event, profile }) => (
       <Card style={{ width: '600px', height: '600px', backgroundColor: 'white', border: '1px solid black' }}>
         <Card.Body className="d-flex flex-column justify-content-between" style={{ width: '800', height: 'auto' }}>
           <Card.Text>
-            <h5>Circuit</h5>
+            <h5>Circuit <Image style={{ width: '35px', height: '40px' }} src="./images/circuit-workout.png" /></h5>
             {event.workouts.map((workout, index) => <Badge key={index} bg="info">{workout}</Badge>)}
           </Card.Text>
           <hr />
