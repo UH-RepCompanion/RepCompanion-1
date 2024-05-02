@@ -3,7 +3,7 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 import { Events } from '../../api/events/Events';
-import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
+import { Schedules } from '../../api/schedule/Schedules';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -86,19 +86,10 @@ const updateScheduleMethod = 'Schedules.update';
  * updated situation specified by the user.
  */
 Meteor.methods({
-  'Schedules.update'({ owner, schedule }) {
-    const { Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday } = schedule;
-    Profiles.collection.update({ owner }, { $set: { owner, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday } }, { upsert: true });
-    ProfilesSchedules.collection.remove({ owner });
-
-    Object.entries(schedule).forEach(([day, daySchedule]) => {
-      if (daySchedule) { // Check if the day's schedule is defined
-        ProfilesSchedules.collection.insert({
-          profile: owner,
-          scheduleDay: day,
-        });
-      }
-    });
+  'Schedules.update'({ owner, day, task }) {
+    // Build a dynamic query to specify which day's tasks array to append to
+    const dayField = `${day}.tasks`; // This will create a string like 'Monday.tasks'
+    Schedules.collection.update({ owner }, { $push: { [dayField]: task } }, { upsert: true });
   },
 });
 

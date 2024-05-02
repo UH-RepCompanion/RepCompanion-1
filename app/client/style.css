@@ -135,3 +135,26 @@ body .navbar {
   background-size: 33%;
   position: relative;
 }
+.scrollable-content {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;    /* Keep content on a single line */
+}
+.scrollable-table {
+  width: 100%; /* or a fixed width */
+  height: 400px; /* or the desired fixed height */
+  overflow: auto; /* Enable scrolling if content overflows */
+  margin: 0 auto;
+}
+
+table {
+  width: 100%; /* Ensures the table fills the container, adjust as needed */
+  border-collapse: collapse; /* Optional, for styling */
+  table-layout: fixed;
+}
+
+th, td {
+  white-space: nowrap; /* Prevents text wrapping in cells */
+  border: 1px solid #ccc; /* Optional, for styling */
+  padding: 8px; /* Optional, for styling */
+}

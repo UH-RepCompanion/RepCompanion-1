@@ -3,7 +3,6 @@
     "appId": "28Yw4AyojFYN9gdaQ",
     "appSecret": "ea99a57b-1e73-4cfc-8cc5-76fcc1835aea"
   },
-
   "defaultProfiles": [
     {
       "firstName": "Admin",
@@ -125,6 +124,19 @@
       "eventId": "2"
     }
   ],
-
+  "defaultSchedules": [
+    {
+      "owner": "johnson@hawaii.edu",
+      "Monday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          }
+        ]
+      }
+    }],
   "loadAssetsFile":  false
 }
