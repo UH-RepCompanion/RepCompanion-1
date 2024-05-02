@@ -134,6 +134,86 @@
             "workout": "Dumbbells",
             "sets": 3,
             "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          }
+        ]
+      },
+      "Wednesday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          }
+        ]
+      },
+      "Friday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
           }
         ]
       }

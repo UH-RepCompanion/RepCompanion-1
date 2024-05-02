@@ -87,10 +87,18 @@ const updateScheduleMethod = 'Schedules.update';
  */
 Meteor.methods({
   'Schedules.update'({ owner, day, task }) {
-    // Build a dynamic query to specify which day's tasks array to append to
     const dayField = `${day}.tasks`; // This will create a string like 'Monday.tasks'
     Schedules.collection.update({ owner }, { $push: { [dayField]: task } }, { upsert: true });
   },
 });
+const removeScheduleMethod = 'Schedules.remove';
+Meteor.methods({
+  'Schedules.remove'({ owner, day, tasks }) {
+    const updateField = {};
+    updateField[`${day}.tasks`] = tasks;
 
-export { updateProfileMethod, removeUserMethod, updateEventMethod, createEventMethod, removeEventMethod, updateScheduleMethod };
+    Schedules.collection.update({ owner }, { $set: updateField });
+  },
+});
+
+export { updateProfileMethod, removeUserMethod, updateEventMethod, createEventMethod, removeEventMethod, updateScheduleMethod, removeScheduleMethod };

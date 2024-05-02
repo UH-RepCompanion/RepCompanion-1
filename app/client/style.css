@@ -158,3 +158,27 @@ th, td {
   border: 1px solid #ccc; /* Optional, for styling */
   padding: 8px; /* Optional, for styling */
 }
+.task-entry {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.task-header {
+  display: flex;
+  align-items: center;
+}
+
+.remove-task-icon {
+  margin-right: 10px;
+visibility: hidden;
+cursor: pointer;
+}
+
+.task-entry:hover .remove-task-icon {
+  visibility: visible;
+}
+
+.task-details {
+  margin-left: 28px;
+}
