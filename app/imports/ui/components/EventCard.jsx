@@ -1,4 +1,4 @@
-import { Badge, Card, Col } from 'react-bootstrap';
+import { Badge, Card, Col, Image } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { format } from 'date-fns';
@@ -8,7 +8,7 @@ const EventCard = ({ event, profile }) => (
     <Card className="h-100" style={{ backgroundColor: 'whitesmoke' }}>
       <Card.Body>
         <Card.Text>
-          <h5>Circuit</h5>
+          <h5>Circuit <Image style={{ width: '35px', height: '40px' }} src="./images/circuit-workout.png" /></h5>
           {event.workouts.map((workout, index) => <Badge key={index} bg="info">{workout}</Badge>)}
         </Card.Text>
         <hr />
