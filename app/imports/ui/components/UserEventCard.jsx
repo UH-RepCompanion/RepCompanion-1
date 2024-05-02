@@ -54,6 +54,7 @@ const UserEventCard = ({ event, profile }) => (
         </Card.Body>
         <div className="mt-auto d-flex justify-content-between w-100">
           <Button className="m-3" variant="danger" style={{ color: 'white', width: '120px' }} onClick={() => deleteEvent(event)}>Delete Event</Button>
+          <Button className="m-3" variant="light" style={{ color: 'black', width: '160px' }} as={Link} to="/events">View All Events</Button>
           <Button className="m-3" variant="dark" style={{ color: 'white', width: '120px' }} as={Link} to="/editevent">Edit Event</Button>
         </div>
       </Card>
