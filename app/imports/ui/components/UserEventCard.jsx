@@ -36,7 +36,7 @@ const UserEventCard = ({ event, profile }) => (
           </Card.Text>
           <hr />
           <Card.Text>
-            <h5>Training Plan</h5>
+            <h5>Training Plan <Image style={{ width: '35px', height: '40px' }} src="./images/training-plan.png" /></h5>
             {event.description}
           </Card.Text>
           <Card.Text>
