@@ -10,7 +10,7 @@ const UserScheduleCard = ({ scheduleData, profile }) => {
   const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
   // Calculate the maximum number of tasks in any single day
-  const maxTasks = Math.max(7, daysOfWeek.reduce((max, day) => {
+  const maxTasks = Math.max(6, daysOfWeek.reduce((max, day) => {
     const tasksLength = scheduleData && scheduleData[day] ? scheduleData[day].tasks.length : 0;
     return tasksLength > max ? tasksLength : max;
   }, 0));
@@ -33,7 +33,7 @@ const UserScheduleCard = ({ scheduleData, profile }) => {
         <Card style={{ width: '1200px', height: 'auto', margin: 'auto', backgroundColor: 'white', border: '1px solid black' }}>
           <Card.Body className="d-flex flex-column justify-content-between" style={{ height: 'auto' }}>
             <Container className="scrollable-table">
-              <Table striped bordered hover style={{ width: '100%', margin: 'auto' }}>
+              <Table striped bordered hover style={{ width: '100%', height: 'auto', margin: 'auto' }}>
                 <thead>
                   <tr>
                     {['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map(day => (
@@ -45,15 +45,15 @@ const UserScheduleCard = ({ scheduleData, profile }) => {
                   {Array.from({ length: maxTasks }).map((_, rowIndex) => (
                     <tr key={rowIndex}>
                       {daysOfWeek.map(day => (
-                        <td key={day} style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer', height: '51px' }}>
+                        <td key={day} style={{ paddingTop: 0, paddingBottom: 0, backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer', height: '59px' }}>
                           <div className="scrollable-content">
                             {scheduleData && scheduleData[day] && scheduleData[day].tasks[rowIndex] ? (
                               <div className="task-entry">
                                 <div className="task-header">
-                                  <span className="remove-task-icon">
-                                    <X color="red" onClick={() => handleRemoveTask(day, rowIndex)} />
-                                  </span>
-                                  <strong>{scheduleData[day].tasks[rowIndex].workout}</strong>
+                                  <div>
+                                    <span className="remove-task-icon"><X color="red" onClick={() => handleRemoveTask(day, rowIndex)} /></span>
+                                    <strong>{scheduleData[day].tasks[rowIndex].workout}</strong>
+                                  </div>
                                   <div className="task-details">- {scheduleData[day].tasks[rowIndex].sets} X {scheduleData[day].tasks[rowIndex].reps}</div>
                                 </div>
                               </div>

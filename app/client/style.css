@@ -165,14 +165,14 @@ th, td {
 }
 
 .task-header {
-  display: flex;
+  display: table-column;
   align-items: center;
 }
 
 .remove-task-icon {
   margin-right: 10px;
-visibility: hidden;
-cursor: pointer;
+  visibility: hidden;
+  cursor: pointer;
 }
 
 .task-entry:hover .remove-task-icon {
