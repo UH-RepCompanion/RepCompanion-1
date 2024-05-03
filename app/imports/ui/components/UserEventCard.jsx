@@ -28,41 +28,42 @@ const deleteEvent = (userEvent) => {
 };
 const UserEventCard = ({ event, profile }) => (
   <Container className="d-flex justify-content-center align-items-center infofooter" style={pageStyle}>
-  <Row className="justify-content-center align-items-center">
-    <Col>
-      <Col className="justify-content-center text-center"><h2 style={{ color: 'white' }}>{profile?.firstName}&apos;s Event</h2></Col>
-      <Card style={{ width: '600px', height: '600px', backgroundColor: 'azure', border: '1px solid black' }}>
-        <Card.Body className="d-flex flex-column justify-content-between" style={{ width: '800', height: 'auto' }}>
-          <Card.Text>
-            <h5>Circuit <Image style={{ width: '35px', height: '40px' }} src="./images/circuit-workout.png" /></h5>
-            <Image style={{ width: '20px', height: '25px', marginRight: '5px' }} src="./images/dumbbell-icon.png" />{event.workouts.map((workout, index) => <Badge key={index} bg="info">{workout}</Badge>)}
-          </Card.Text>
-          <hr />
-          <Card.Text>
-            <h5>Training Plan <Image style={{ width: '35px', height: '40px' }} src="./images/training-plan.png" /></h5>
-            {event.description}
-          </Card.Text>
-          <Card.Text>
-            <div className="alert alert-success" role="alert">
-              This is a success alert—check it out! <Check style={{ width: '20px', height: '25px' }} />
-            </div>
-            <Badge className="fw-lighter">
-              <Calendar style={{ marginRight: '5px' }} />{format(new Date(event.date), 'EEEE, MMMM d, yyyy')}
-            </Badge>
+    <Row className="justify-content-center align-items-center">
+      <Col>
+        <Col className="justify-content-center text-center"><h2 style={{ color: 'white' }}>{profile?.firstName}&apos;s Event</h2></Col>
+        <Card style={{ width: '600px', height: '600px', backgroundColor: 'azure', border: '1px solid black' }}>
+          <Card.Body className="d-flex flex-column justify-content-between" style={{ width: '800', height: 'auto' }}>
+            <Card.Text>
+              <h5>Circuit <Image style={{ width: '35px', height: '40px' }} src="./images/circuit-workout.png" /></h5>
+              <Image style={{ width: '20px', height: '25px', marginRight: '5px' }} src="./images/dumbbell-icon.png" />{event.workouts.map((workout, index) => <Badge key={index} bg="info">{workout}</Badge>)}
+            </Card.Text>
             <hr />
-            <p className="fw-lighter">
-              Created by {profile.firstName} {profile.lastName} {format(new Date(event.createdAt), 'EEEE, MMMM d, yyyy')} <PencilSquare />
-            </p>
-          </Card.Text>
-        </Card.Body>
-        <div className="mt-auto d-flex justify-content-between w-100">
-          <Button className="m-3" variant="danger" style={{ color: 'white', width: '120px' }} onClick={() => deleteEvent(event)}>Delete Event</Button>
-          <Button className="m-3" variant="info" style={{ color: 'white', width: '160px' }} as={Link} to="/events">View All Events</Button>
-          <Button className="m-3" variant="dark" style={{ color: 'white', width: '120px' }} as={Link} to="/editevent">Edit Event</Button>
-        </div>
-      </Card>
-    </Col>
-  </Row>
+            <Card.Text>
+              <h5>Training Plan <Image style={{ width: '35px', height: '40px' }} src="./images/training-plan.png" /></h5>
+              {event.description}
+            </Card.Text>
+            <Card.Text>
+              <div className="alert alert-success" role="alert">
+                This is a success alert—check it out! <Check style={{ width: '20px', height: '25px' }} />
+              </div>
+              <Badge className="fw-lighter">
+                <Calendar style={{ marginRight: '5px' }} />{format(new Date(event.date), 'EEEE, MMMM d, yyyy')}
+              </Badge>
+              <hr />
+              <p className="fw-lighter">
+                Created by {profile.firstName} {profile.lastName} {format(new Date(event.createdAt), 'EEEE, MMMM d, yyyy')} <PencilSquare />
+              </p>
+            </Card.Text>
+          </Card.Body>
+          <div className="mt-auto d-flex justify-content-between w-100">
+            <Button className="m-3" variant="danger" style={{ color: 'white', width: '120px' }} onClick={() => deleteEvent(event)}>Delete Event</Button>
+            <Button className="m-3" variant="info" style={{ color: 'white', width: '160px' }} as={Link} to="/events">View All Events</Button>
+            <Button className="m-3" variant="dark" style={{ color: 'white', width: '120px' }} as={Link} to="/editevent">Edit Event</Button>
+          </div>
+        </Card>
+      </Col>
+    </Row>
+  </Container>
 );
 
 UserEventCard.propTypes = {
