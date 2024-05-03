@@ -7,17 +7,20 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
 import UserScheduleCard from '../components/UserScheduleCard';
 import { Schedules } from '../../api/schedule/Schedules';
-import AddNote from '../components/AddNote';
+import AddToSchedule from '../components/AddToSchedule';
+import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
 
 const UserSchedule = () => {
   const { ready, profile, schedule, email } = useTracker(() => {
+    const owner = Meteor.user()?.username;
     const sub1 = Meteor.subscribe(Profiles.userPublicationName);
     const sub2 = Meteor.subscribe(Schedules.userPublicationName);
-    const userProfile = Profiles.collection.findOne({ email: Meteor.user()?.username });
-    const userSchedule = Schedules.collection.findOne({ owner: Meteor.user()?.username });
+    const sub3 = Meteor.subscribe(ProfilesSchedules.userPublicationName);
+    const userProfile = Profiles.collection.findOne({ email: owner });
+    const userSchedule = Schedules.collection.findOne({ owner: owner });
     return {
-      ready: sub1.ready() && sub2.ready(),
-      email: Meteor.user()?.username,
+      ready: sub1.ready() && sub2.ready() && sub3.ready(),
+      email: owner,
       profile: userProfile,
       schedule: userSchedule,
     };
@@ -26,7 +29,7 @@ const UserSchedule = () => {
     <Container id="profile-page" className="d-flex flex-column justify-content-center align-items-center infofooter" style={pageStyle}>
       <Row>
         <Col><UserScheduleCard scheduleData={schedule} profile={profile} /></Col>
-        <Col><AddNote owner={email} /></Col>
+        <Col><AddToSchedule owner={email} /></Col>
       </Row>
     </Container>
   ) : <LoadingSpinner />;

@@ -126,9 +126,9 @@
   ],
   "defaultSchedules": [
     {
+      "days": ["Monday", "Wednesday", "Friday"],
       "owner": "johnson@hawaii.edu",
       "Monday": {
-        "time": "1:30",
         "tasks": [
           {
             "workout": "Dumbbells",

@@ -25,7 +25,6 @@ class SchedulesCollection {
       },
     });
     const DaySchema = new SimpleSchema({
-      time: String,
       tasks: {
         type: Array,
       },

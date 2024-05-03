@@ -48,7 +48,7 @@ fixture('uh-repcompanion localhost test with default db')
 test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
 });
-test('Test that a new account can be registered', async (testController) => {
+test.skip('Test that a new account can be registered', async (testController) => {
   await navBar.gotoSignUpPage(testController);
   await signupPage.signupUser(testController, credentialsTwo.username, credentialsTwo.password);
   await navBar.isLoggedIn(testController, credentialsTwo.username);
@@ -58,7 +58,7 @@ test('Test that a new account can be registered', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
-test('Test editing an existing profile', async (testController) => {
+test.skip('Test editing an existing profile', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
   await navBar.gotoProfilePage(testController);

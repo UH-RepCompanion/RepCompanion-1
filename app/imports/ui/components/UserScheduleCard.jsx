@@ -7,6 +7,13 @@ import { X } from 'react-bootstrap-icons';
 import { removeScheduleMethod } from '../../startup/both/Methods';
 
 const UserScheduleCard = ({ scheduleData, profile }) => {
+  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+  // Calculate the maximum number of tasks in any single day
+  const maxTasks = Math.max(7, daysOfWeek.reduce((max, day) => {
+    const tasksLength = scheduleData && scheduleData[day] ? scheduleData[day].tasks.length : 0;
+    return tasksLength > max ? tasksLength : max;
+  }, 0));
   const handleRemoveTask = (day, taskIndex) => {
     const newTasks = [...scheduleData[day].tasks];
     newTasks.splice(taskIndex, 1);
@@ -35,25 +42,29 @@ const UserScheduleCard = ({ scheduleData, profile }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    {['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map(day => (
-                      <td key={day} style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer', height: '50px' }}>
-                        <div className="scrollable-content">
-                          {scheduleData && scheduleData[day] && scheduleData[day].tasks.map((task, index) => (
-                            <div key={index} className="task-entry">
-                              <div className="task-header">
-                                <span className="remove-task-icon">
-                                  <X color="red" onClick={() => handleRemoveTask(day, index)} />
-                                </span>
-                                <strong>{task.workout}</strong>
+                  {Array.from({ length: maxTasks }).map((_, rowIndex) => (
+                    <tr key={rowIndex}>
+                      {daysOfWeek.map(day => (
+                        <td key={day} style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer', height: '51px' }}>
+                          <div className="scrollable-content">
+                            {scheduleData && scheduleData[day] && scheduleData[day].tasks[rowIndex] ? (
+                              <div className="task-entry">
+                                <div className="task-header">
+                                  <span className="remove-task-icon">
+                                    <X color="red" onClick={() => handleRemoveTask(day, rowIndex)} />
+                                  </span>
+                                  <strong>{scheduleData[day].tasks[rowIndex].workout}</strong>
+                                  <div className="task-details">- {scheduleData[day].tasks[rowIndex].sets} X {scheduleData[day].tasks[rowIndex].reps}</div>
+                                </div>
                               </div>
-                              <div className="task-details">- {task.sets} X {task.reps}</div>
-                            </div>
-                          ))}
-                        </div>
-                      </td>
-                    ))}
-                  </tr>
+                            ) : (
+                              <div className="empty-task-entry"></div> // Display when there's no task
+                            )}
+                          </div>
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
                 </tbody>
               </Table>
             </Container>
@@ -65,58 +76,7 @@ const UserScheduleCard = ({ scheduleData, profile }) => {
 };
 
 UserScheduleCard.propTypes = {
-  scheduleData: PropTypes.shape({
-    Sunday: PropTypes.shape({
-      tasks: PropTypes.arrayOf(PropTypes.shape({
-        workout: PropTypes.string.isRequired,
-        sets: PropTypes.number.isRequired,
-        reps: PropTypes.number.isRequired,
-      })),
-    }),
-    Monday: PropTypes.shape({
-      tasks: PropTypes.arrayOf(PropTypes.shape({
-        workout: PropTypes.string.isRequired,
-        sets: PropTypes.number.isRequired,
-        reps: PropTypes.number.isRequired,
-      })),
-    }),
-    // Repeat the same pattern for the other days
-    Tuesday: PropTypes.shape({
-      tasks: PropTypes.arrayOf(PropTypes.shape({
-        workout: PropTypes.string.isRequired,
-        sets: PropTypes.number.isRequired,
-        reps: PropTypes.number.isRequired,
-      })),
-    }),
-    Wednesday: PropTypes.shape({
-      tasks: PropTypes.arrayOf(PropTypes.shape({
-        workout: PropTypes.string.isRequired,
-        sets: PropTypes.number.isRequired,
-        reps: PropTypes.number.isRequired,
-      })),
-    }),
-    Thursday: PropTypes.shape({
-      tasks: PropTypes.arrayOf(PropTypes.shape({
-        workout: PropTypes.string.isRequired,
-        sets: PropTypes.number.isRequired,
-        reps: PropTypes.number.isRequired,
-      })),
-    }),
-    Friday: PropTypes.shape({
-      tasks: PropTypes.arrayOf(PropTypes.shape({
-        workout: PropTypes.string.isRequired,
-        sets: PropTypes.number.isRequired,
-        reps: PropTypes.number.isRequired,
-      })),
-    }),
-    Saturday: PropTypes.shape({
-      tasks: PropTypes.arrayOf(PropTypes.shape({
-        workout: PropTypes.string.isRequired,
-        sets: PropTypes.number.isRequired,
-        reps: PropTypes.number.isRequired,
-      })),
-    }),
-  }).isRequired,
+  scheduleData: PropTypes.shape({}).isRequired,
   profile: PropTypes.shape({
     firstName: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,

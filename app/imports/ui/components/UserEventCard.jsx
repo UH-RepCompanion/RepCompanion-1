@@ -26,7 +26,7 @@ const deleteEvent = (userEvent) => {
   }
 };
 const UserEventCard = ({ event, profile }) => (
-  <Container id="profile-page" className="d-flex justify-content-center align-items-center infofooter" style={pageStyle}>
+  <Container className="d-flex justify-content-center align-items-center infofooter" style={pageStyle}>
     <Row className="justify-content-center align-items-center">
       <Col>
         <Col className="justify-content-center text-center"><h2 style={{ color: 'white' }}>{profile?.firstName}&apos;s Event</h2></Col>

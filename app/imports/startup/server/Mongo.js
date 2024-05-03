@@ -6,6 +6,7 @@ import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { Events } from '../../api/events/Events';
 import { Schedules } from '../../api/schedule/Schedules';
+import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
 /** Define a user in the Meteor accounts package. This enables login. Username is the email address. */
 function createUser(email, role) {
   const userID = Accounts.createUser({ username: email, email, password: 'foo' });
@@ -30,9 +31,10 @@ function addEvent({ owner, description, workouts, date, createdAt }) {
   console.log(`Defining event ${owner}`);
   Events.collection.insert({ owner, description, workouts, date, createdAt });
 }
-function addSchedule({ owner, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday }) {
+function addSchedule({ owner, days, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday }) {
   console.log(`Defining schedule ${owner}`);
   Schedules.collection.insert({ owner, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday });
+  days.map((day) => ProfilesSchedules.collection.insert({ profile: owner, scheduleDay: day }));
 }
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
 if (Meteor.users.find().count() === 0) {

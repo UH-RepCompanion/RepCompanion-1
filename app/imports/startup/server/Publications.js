@@ -41,6 +41,7 @@ Meteor.publish(ProfilesTags.userPublicationName, () => ProfilesTags.collection.f
 Meteor.publish(Events.userPublicationName, () => Events.collection.find());
 
 Meteor.publish(Schedules.userPublicationName, () => Schedules.collection.find());
+
 Meteor.publish(ProfilesSchedules.userPublicationName, () => ProfilesSchedules.collection.find());
 // alanning:roles publication
 // Recommended code to publish roles for each user.

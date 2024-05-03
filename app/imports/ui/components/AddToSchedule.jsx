@@ -19,20 +19,18 @@ const formSchema = new SimpleSchema({
   workout: String,
   sets: Number,
   reps: Number,
-  time: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /* Renders the AddStuff page for adding a document. */
-const AddNote = ({ owner }) => {
+const AddToSchedule = ({ owner }) => {
   const submit = (data) => {
-    const { day, workout, sets, reps, time } = data;
+    const { day, workout, sets, reps } = data;
     const taskData = {
       workout,
       sets,
       reps,
-      time,
     };
     const updateData = {
       owner,
@@ -60,9 +58,6 @@ const AddNote = ({ owner }) => {
                     <SelectField name="day" placeholder="Select Day" showInlineError />
                   </Col>
                   <Col xs={12} sm={6} md={4}>
-                    <TextField name="time" placeholder="time" />
-                  </Col>
-                  <Col xs={12} sm={6} md={4}>
                     <TextField name="workout" placeholder="Workout" />
                   </Col>
                   <Col xs={6} sm={3} md={2}>
@@ -88,8 +83,8 @@ const AddNote = ({ owner }) => {
   );
 };
 
-AddNote.propTypes = {
+AddToSchedule.propTypes = {
   owner: PropTypes.string.isRequired,
 };
 
-export default AddNote;
+export default AddToSchedule;

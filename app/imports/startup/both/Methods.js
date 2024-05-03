@@ -4,6 +4,7 @@ import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 import { Events } from '../../api/events/Events';
 import { Schedules } from '../../api/schedule/Schedules';
+import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -89,6 +90,7 @@ Meteor.methods({
   'Schedules.update'({ owner, day, task }) {
     const dayField = `${day}.tasks`; // This will create a string like 'Monday.tasks'
     Schedules.collection.update({ owner }, { $push: { [dayField]: task } }, { upsert: true });
+    ProfilesSchedules.collection.update({ profile: owner, scheduleDay: day }, { $set: { profile: owner, scheduleDay: day } }, { upsert: true });
   },
 });
 const removeScheduleMethod = 'Schedules.remove';
@@ -96,8 +98,12 @@ Meteor.methods({
   'Schedules.remove'({ owner, day, tasks }) {
     const updateField = {};
     updateField[`${day}.tasks`] = tasks;
-
     Schedules.collection.update({ owner }, { $set: updateField });
+    if (tasks && tasks.length > 0) {
+      ProfilesSchedules.collection.update({ profile: owner, scheduleDay: day }, { $set: { profile: owner, scheduleDay: day } }, { upsert: true });
+    } else {
+      ProfilesSchedules.collection.remove({ profile: owner, scheduleDay: day });
+    }
   },
 });
 
