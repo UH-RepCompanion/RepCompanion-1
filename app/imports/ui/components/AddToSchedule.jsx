@@ -61,10 +61,10 @@ const AddToSchedule = ({ owner }) => {
                     <TextField name="workout" placeholder="Workout" />
                   </Col>
                   <Col xs={6} sm={3} md={2}>
-                    <TextField name="reps" placeholder="Reps" />
+                    <TextField name="sets" placeholder="Sets" />
                   </Col>
                   <Col xs={6} sm={3} md={2}>
-                    <TextField name="sets" placeholder="Sets" />
+                    <TextField name="reps" placeholder="Reps" />
                   </Col>
                 </Row>
                 <Row>
