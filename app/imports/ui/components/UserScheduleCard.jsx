@@ -58,7 +58,7 @@ const UserScheduleCard = ({ scheduleData, profile }) => {
                                 </div>
                               </div>
                             ) : (
-                              <div className="empty-task-entry"></div> // Display when there's no task
+                              <div className="empty-task-entry" /> // Display when there's no task
                             )}
                           </div>
                         </td>
