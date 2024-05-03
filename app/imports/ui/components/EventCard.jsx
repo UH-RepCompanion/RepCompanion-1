@@ -2,6 +2,7 @@ import { Badge, Card, Col, Image } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { format } from 'date-fns';
+import { PencilSquare, Check, Calendar } from 'react-bootstrap-icons';
 
 const EventCard = ({ event, profile }) => (
   <Col>
@@ -9,7 +10,7 @@ const EventCard = ({ event, profile }) => (
       <Card.Body>
         <Card.Text>
           <h5>Circuit <Image style={{ width: '35px', height: '40px' }} src="./images/circuit-workout.png" /></h5>
-          {event.workouts.map((workout, index) => <Badge key={index} bg="info">{workout}</Badge>)}
+          <Image style={{ width: '20px', height: '25px', marginRight: '5px' }} src="./images/dumbbell-icon.png" />{event.workouts.map((workout, index) => <Badge key={index} bg="info">{workout}</Badge>)}
         </Card.Text>
         <hr />
         <Card.Text>
@@ -18,14 +19,14 @@ const EventCard = ({ event, profile }) => (
         </Card.Text>
         <Card.Text>
           <div className="alert alert-success" role="alert">
-            This is a success alert—check it out!
+            This is a success alert—check it out! <Check style={{ width: '20px', height: '25px' }} />
           </div>
           <Badge className="fw-lighter">
-            {format(new Date(event.date), 'EEEE, MMMM d, yyyy')}
+            <Calendar style={{ marginRight: '5px' }} />{format(new Date(event.date), 'EEEE, MMMM d, yyyy')}
           </Badge>
           <hr />
           <p className="fw-lighter">
-            Created by {profile.firstName} {profile.lastName} {format(new Date(event.createdAt), 'EEEE, MMMM d, yyyy')}
+            Created by {profile.firstName} {profile.lastName} {format(new Date(event.createdAt), 'EEEE, MMMM d, yyyy')} <PencilSquare />
           </p>
         </Card.Text>
       </Card.Body>
