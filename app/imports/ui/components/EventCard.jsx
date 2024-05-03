@@ -6,7 +6,7 @@ import { PencilSquare, Check, Calendar } from 'react-bootstrap-icons';
 
 const EventCard = ({ event, profile }) => (
   <Col>
-    <Card className="h-100" style={{ backgroundColor: 'whitesmoke' }}>
+    <Card className="h-100" style={{ backgroundColor: 'azure' }}>
       <Card.Body>
         <Card.Text>
           <h5>Circuit <Image style={{ width: '35px', height: '40px' }} src="./images/circuit-workout.png" /></h5>
