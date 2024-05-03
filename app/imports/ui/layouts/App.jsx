@@ -24,6 +24,7 @@ import Events from '../pages/EventFilter';
 import AddEvent from '../pages/AddEvent';
 import LandingPage from '../pages/LandingPage';
 import UserEvent from '../pages/UserEvent';
+import UserSchedule from '../pages/UserSchedule';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -48,6 +49,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/policy" element={<Policy />} />
           <Route path="/terms&conditions" element={<Terms />} />
+          <Route path="/userschedule" element={<ProtectedRoute><UserSchedule /></ProtectedRoute>} />
           <Route path="/editprofile" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
           <Route path="/editevent" element={<ProtectedRoute><EditEvent /></ProtectedRoute>} />
           <Route path="/events" element={<ProtectedRoute><Events /></ProtectedRoute>} />
