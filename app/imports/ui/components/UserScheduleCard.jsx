@@ -8,7 +8,6 @@ import { removeScheduleMethod } from '../../startup/both/Methods';
 
 const UserScheduleCard = ({ scheduleData, profile }) => {
   const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
   // Calculate the maximum number of tasks in any single day
   const maxTasks = Math.max(6, daysOfWeek.reduce((max, day) => {
     const tasksLength = scheduleData && scheduleData[day] ? scheduleData[day].tasks.length : 0;
