@@ -40,8 +40,7 @@ const ViewUserProfile = () => {
   if (!profile) {
     return <div>Loading...</div>;
   }
-
-  const isParticipant = participant.some(p => p.eventId === event._id);
+  const isParticipant = event ? participant.some(p => p.eventId === event._id) : false;
   return ready ? (
     <Container id="profile-page" className="d-flex flex-column justify-content-center align-items-center infofooter" style={pageStyle}>
       <Row>
