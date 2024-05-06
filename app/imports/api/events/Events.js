@@ -19,7 +19,6 @@ class EventsCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       owner: { type: String, index: true, unique: true },
-      eventId: { type: String, index: true, unique: true },
       date: Date,
       createdAt: {
         type: Date,
@@ -43,6 +42,8 @@ class EventsCollection {
         allowedValues: this.allowedWorkouts,
       },
       description: { type: String, optional: true },
+      currentSize: { type: Number, defaultValue: 0 },
+      maxSize: { type: Number, optional: false },
     });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);

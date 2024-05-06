@@ -30,7 +30,7 @@ const makeSchema = (allInterests, allTags) => new SimpleSchema({
   socialLink6: { type: String, regEx: /^https:\/\/?twitter\.com\//, label: 'Twitter', optional: true },
   interests: { type: Array, label: 'Interests', optional: true },
   'interests.$': { type: String, allowedValues: allInterests },
-  tag: { type: String, allowedValues: allTags, label: 'Tags', optional: true },
+  tag: { type: String, allowedValues: allTags, label: 'Tags' },
 });
 
 /* Renders the EditProfile Page: what appears after the user logs in. */
@@ -94,8 +94,8 @@ const EditProfile = () => {
                 <Col xs={6}><TextField id="edit-form-picture-link" name="picture" showInlineError placeholder="URL to picture" /></Col>
               </Row>
               <Row>
-                <Col xs={6}><SelectField id="edit-form-interests" name="interests" showInlineError multiple /></Col>
-                <Col xs={6}><SelectField id="edit-form-tags" name="tag" showInlineError /></Col>
+                <Col xs={6}><SelectField name="interests" checkboxes showInlineError /></Col>
+                <Col xs={6}><SelectField id="edit-form-tags" name="tag" checkboxes showInlineError /></Col>
               </Row>
               <Row>
                 <Col xs={6}>

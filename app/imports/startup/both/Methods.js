@@ -3,6 +3,9 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 import { Events } from '../../api/events/Events';
+import { Schedules } from '../../api/schedule/Schedules';
+import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
+import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -59,22 +62,67 @@ Meteor.methods({
 const updateEventMethod = 'Events.update';
 
 Meteor.methods({
-  'Events.update'({ owner, eventId, date, workouts, description }) {
-    Events.collection.update({ owner }, { $set: { owner, eventId, date, workouts, description } }, { upsert: true });
+  'Events.update'({ owner, date, workouts, description }) {
+    Events.collection.update({ owner }, { $set: { owner, date, workouts, description } }, { upsert: true });
   },
 });
 const createEventMethod = 'Events.create';
+
 Meteor.methods({
-  'Events.create'({ owner, eventId, date, workouts, description }) {
+  'Events.create'({ owner, date, workouts, description, maxSize }) {
     Events.collection.remove({ owner });
-    Events.collection.insert({ owner, eventId, date, workouts, description });
+    Events.collection.insert({ owner, date, workouts, description, maxSize });
   },
 });
 const removeEventMethod = 'Events.remove';
+
 Meteor.methods({
-  'Events.remove'({ owner }) {
+  'Events.remove'({ owner, eventId }) {
     Events.collection.remove({ owner });
+    ProfilesEvents.collection.remove({ eventId: eventId });
   },
 });
 
-export { updateProfileMethod, removeUserMethod, updateEventMethod, createEventMethod, removeEventMethod };
+const joinEventMethod = 'Events.join';
+
+Meteor.methods({
+  'Events.join'({ owner, currentSize, profile, eventId }) {
+    Events.collection.update({ owner }, { $set: { currentSize: currentSize + 1 } });
+    ProfilesEvents.collection.insert({ profile: profile, eventId: eventId });
+  },
+});
+
+const unjoinEventMethod = 'Events.unjoin';
+
+Meteor.methods({
+  'Events.unjoin'({ owner, currentSize, profile, eventId }) {
+    Events.collection.update({ owner }, { $set: { currentSize: currentSize - 1 } });
+    ProfilesEvents.collection.remove({ profile: profile, eventId: eventId });
+  },
+});
+
+const updateScheduleMethod = 'Schedules.update';
+
+Meteor.methods({
+  'Schedules.update'({ owner, day, task }) {
+    const dayField = `${day}.tasks`; // This will create a string like 'Monday.tasks'
+    Schedules.collection.update({ owner }, { $push: { [dayField]: task } }, { upsert: true });
+    ProfilesSchedules.collection.update({ profile: owner, scheduleDay: day }, { $set: { profile: owner, scheduleDay: day } }, { upsert: true });
+  },
+});
+const removeScheduleMethod = 'Schedules.remove';
+
+Meteor.methods({
+  'Schedules.remove'({ owner, day, tasks }) {
+    const updateField = {};
+    updateField[`${day}.tasks`] = tasks;
+    Schedules.collection.update({ owner }, { $set: updateField });
+    if (tasks && tasks.length > 0) {
+      ProfilesSchedules.collection.update({ profile: owner, scheduleDay: day }, { $set: { profile: owner, scheduleDay: day } }, { upsert: true });
+    } else {
+      ProfilesSchedules.collection.remove({ profile: owner, scheduleDay: day });
+    }
+  },
+});
+
+export { updateProfileMethod, removeUserMethod, updateEventMethod, createEventMethod, removeEventMethod, updateScheduleMethod, removeScheduleMethod, joinEventMethod, unjoinEventMethod };

@@ -32,7 +32,7 @@ const EditEvent = () => {
 
     // Append the email to the data object. Ensure userEmail is not undefined.
     if (userEmail) {
-      const dataWithEmail = { ...data, owner: userEmail, eventId: Meteor.user()?._id };
+      const dataWithEmail = { ...data, owner: userEmail };
       Meteor.call(updateEventMethod, dataWithEmail, (error) => {
         if (error) {
           swal('Error', error.message, 'error');
