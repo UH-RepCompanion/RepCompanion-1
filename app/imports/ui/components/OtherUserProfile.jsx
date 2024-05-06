@@ -1,39 +1,25 @@
 import { Card, Col, Image, Row, Container, Table } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Discord, Facebook, Instagram, Linkedin, Snapchat, Twitter } from 'react-bootstrap-icons';
 import { pageStyle } from '../pages/pageStyles';
+import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
 
-const OtherUserProfile = ({ profile }) => {
+const OtherUserProfileCard = ({ profile }) => {
 // Function to determine border color based on the profile's tag
-  const [imageVisibility, setImageVisibility] = useState(() => ({
-    cell1: JSON.parse(localStorage.getItem('cell1Visible')) || false,
-    cell2: JSON.parse(localStorage.getItem('cell2Visible')) || false,
-    cell3: JSON.parse(localStorage.getItem('cell3Visible')) || false,
-    cell4: JSON.parse(localStorage.getItem('cell4Visible')) || false,
-    cell5: JSON.parse(localStorage.getItem('cell5Visible')) || false,
-    cell6: JSON.parse(localStorage.getItem('cell6Visible')) || false,
-    cell7: JSON.parse(localStorage.getItem('cell7Visible')) || false,
-  }));
+  const renderWorkoutIcon = (day) => {
+    // Fetch the schedule for the current user
+    const userSchedule = ProfilesSchedules.collection.find({ profile: profile.email }).fetch();
 
-  // Update local storage whenever image visibility state changes
-  useEffect(() => {
-    localStorage.setItem('cell1Visible', JSON.stringify(imageVisibility.cell1));
-    localStorage.setItem('cell2Visible', JSON.stringify(imageVisibility.cell2));
-    localStorage.setItem('cell3Visible', JSON.stringify(imageVisibility.cell3));
-    localStorage.setItem('cell4Visible', JSON.stringify(imageVisibility.cell4));
-    localStorage.setItem('cell5Visible', JSON.stringify(imageVisibility.cell5));
-    localStorage.setItem('cell6Visible', JSON.stringify(imageVisibility.cell6));
-    localStorage.setItem('cell7Visible', JSON.stringify(imageVisibility.cell7));
-  }, [imageVisibility]);
-
-  // Function to toggle the visibility of the image for a specific cell
-  const toggleImageVisibility = (cellName) => {
-    setImageVisibility((prevState) => ({
-      ...prevState,
-      [cellName]: !prevState[cellName],
-    }));
+    // Check if the schedule exists for the user and the specified day
+    if (userSchedule.some(d => d.scheduleDay === day)) {
+      return (
+        <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
+      );
+    }
+    return null;
   };
+
   const renderIconForSocialLink = (platform, link) => {
     if (link) {
       let IconComponent;
@@ -122,17 +108,7 @@ const OtherUserProfile = ({ profile }) => {
                 </Col>
               </Row>
               <Row>
-                <Col xs={6}>
-                  {profile?.interests.length > 1 ? (
-                    <Card.Text style={{ marginBottom: '0px' }}>
-                      <strong>Interests:</strong> {profile?.interests.join(', ')}
-                    </Card.Text>
-                  ) : (
-                    <Card.Text style={{ marginBottom: '0px' }}>
-                      <strong>Interests:</strong> {profile.interests}
-                    </Card.Text>
-                  )}
-                </Col>
+                <Col xs={6}><Card.Text style={{ marginBottom: '0px' }}><strong>Interests:</strong> {profile?.interests.join(', ')}</Card.Text></Col>
                 <Col xs={6}><Card.Text style={{ marginBottom: '0px', color: 'black' }}><strong>Tags:</strong> {profile?.tag}</Card.Text></Col>
               </Row>
               <Row>
@@ -154,72 +130,44 @@ const OtherUserProfile = ({ profile }) => {
                         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
                         <td
                           style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer', height: '50px' }}
-                          onClick={() => toggleImageVisibility('cell1')} // Add onClick handler
                         >
-                          {/* Render image conditionally based on visibility state */}
-                          {imageVisibility.cell1 && (
-                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
-                          )}
+                          {renderWorkoutIcon('Sunday')}
                         </td>
                         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
                         <td
-                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
-                          onClick={() => toggleImageVisibility('cell2')} // Add onClick handler
+                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer', height: '50px' }}
                         >
-                          {/* Render image conditionally based on visibility state */}
-                          {imageVisibility.cell2 && (
-                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
-                          )}
+                          {renderWorkoutIcon('Monday')}
                         </td>
                         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
                         <td
-                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
-                          onClick={() => toggleImageVisibility('cell3')} // Add onClick handler
+                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer', height: '50px' }}
                         >
-                          {/* Render image conditionally based on visibility state */}
-                          {imageVisibility.cell3 && (
-                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
-                          )}
+                          {renderWorkoutIcon('Tuesday')}
                         </td>
                         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
                         <td
-                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
-                          onClick={() => toggleImageVisibility('cell4')} // Add onClick handler
+                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer', height: '50px' }}
                         >
-                          {/* Render image conditionally based on visibility state */}
-                          {imageVisibility.cell4 && (
-                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
-                          )}
+                          {renderWorkoutIcon('Wednesday')}
                         </td>
                         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
                         <td
-                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
-                          onClick={() => toggleImageVisibility('cell5')} // Add onClick handler
+                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer', height: '50px' }}
                         >
-                          {/* Render image conditionally based on visibility state */}
-                          {imageVisibility.cell5 && (
-                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
-                          )}
+                          {renderWorkoutIcon('Thursday')}
                         </td>
                         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
                         <td
-                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
-                          onClick={() => toggleImageVisibility('cell6')} // Add onClick handler
+                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer', height: '50px' }}
                         >
-                          {/* Render image conditionally based on visibility state */}
-                          {imageVisibility.cell6 && (
-                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
-                          )}
+                          {renderWorkoutIcon('Friday')}
                         </td>
                         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
                         <td
-                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer' }}
-                          onClick={() => toggleImageVisibility('cell7')} // Add onClick handler
+                          style={{ backgroundColor: 'lightcyan', border: '1px solid black', cursor: 'pointer', height: '50px' }}
                         >
-                          {/* Render image conditionally based on visibility state */}
-                          {imageVisibility.cell7 && (
-                            <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
-                          )}
+                          {renderWorkoutIcon('Saturday')}
                         </td>
                       </tr>
                     </tbody>
@@ -234,7 +182,7 @@ const OtherUserProfile = ({ profile }) => {
   );
 };
 
-OtherUserProfile.propTypes = {
+OtherUserProfileCard.propTypes = {
   profile: PropTypes.shape({
     firstName: PropTypes.string,
     lastName: PropTypes.string,
@@ -254,4 +202,4 @@ OtherUserProfile.propTypes = {
   }).isRequired,
 };
 
-export default OtherUserProfile;
+export default OtherUserProfileCard;

@@ -25,7 +25,7 @@ import AddEvent from '../pages/AddEvent';
 import LandingPage from '../pages/LandingPage';
 import UserEvent from '../pages/UserEvent';
 import UserSchedule from '../pages/UserSchedule';
-import ViewUserProfile from '../pages/TestPage';
+import ViewUserProfile from '../pages/ViewOtherProfilePage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {

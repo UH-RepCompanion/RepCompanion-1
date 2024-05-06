@@ -5,8 +5,9 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Container, Row } from 'react-bootstrap';
 import { Events } from '../../api/events/Events';
+import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
 import { pageStyle } from './pageStyles';
-import OtherUserProfile from '../components/OtherUserProfile';
+import OtherUserProfileCard from '../components/OtherUserProfile';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import OtherUserEventCard from '../components/OtherUserEventCard';
@@ -23,13 +24,14 @@ const ViewUserProfile = () => {
 
   const { ready, event, participant } = useTracker(() => {
     const userEmail = Meteor.user()?.username;
+    const sub1 = Meteor.subscribe(ProfilesSchedules.userPublicationName);
     const sub2 = Meteor.subscribe(Events.userPublicationName);
     const sub3 = Meteor.subscribe(ProfilesEvents.userPublicationName);
     const ownerUsername = profile?.email;
     const userEvent = Events.collection.findOne({ owner: ownerUsername });
     const joinedEvents = ProfilesEvents.collection.find({ profile: userEmail }).fetch();
     return {
-      ready: sub2.ready() && sub3.ready(),
+      ready: sub1.ready() && sub2.ready() && sub3.ready(),
       event: userEvent,
       participant: joinedEvents,
     };
@@ -43,7 +45,7 @@ const ViewUserProfile = () => {
   return ready ? (
     <Container id="profile-page" className="d-flex flex-column justify-content-center align-items-center infofooter" style={pageStyle}>
       <Row>
-        <OtherUserProfile profile={profile} />
+        <OtherUserProfileCard profile={profile} />
       </Row>
       <Row>
         {event ? <OtherUserEventCard profile={profile} event={event} isParticipant={isParticipant} /> : <h2 style={{ color: 'white' }}>No Event</h2>}
