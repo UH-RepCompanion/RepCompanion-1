@@ -5,6 +5,7 @@ import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 import { Events } from '../../api/events/Events';
 import { Schedules } from '../../api/schedule/Schedules';
 import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
+import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -66,26 +67,42 @@ Meteor.methods({
   },
 });
 const createEventMethod = 'Events.create';
+
 Meteor.methods({
-  'Events.create'({ owner, date, workouts, description }) {
+  'Events.create'({ owner, date, workouts, description, maxSize }) {
     Events.collection.remove({ owner });
-    Events.collection.insert({ owner, date, workouts, description });
+    Events.collection.insert({ owner, date, workouts, description, maxSize });
   },
 });
 const removeEventMethod = 'Events.remove';
+
 Meteor.methods({
-  'Events.remove'({ owner }) {
+  'Events.remove'({ owner, eventId }) {
     Events.collection.remove({ owner });
+    ProfilesEvents.collection.remove({ eventId: eventId });
+  },
+});
+
+const joinEventMethod = 'Events.join';
+
+Meteor.methods({
+  'Events.join'({ owner, currentSize, profile, eventId }) {
+    Events.collection.update({ owner }, { $set: { currentSize: currentSize + 1 } });
+    ProfilesEvents.collection.insert({ profile: profile, eventId: eventId });
+  },
+});
+
+const unjoinEventMethod = 'Events.unjoin';
+
+Meteor.methods({
+  'Events.unjoin'({ owner, currentSize, profile, eventId }) {
+    Events.collection.update({ owner }, { $set: { currentSize: currentSize - 1 } });
+    ProfilesEvents.collection.remove({ profile: profile, eventId: eventId });
   },
 });
 
 const updateScheduleMethod = 'Schedules.update';
 
-/**
- * The server-side Profiles.update Meteor Method is called by the client-side EditProfile page after pushing the update button.
- * Its purpose is to update the Profiles, ProfilesInterests, and ProfilesProjects collections to reflect the
- * updated situation specified by the user.
- */
 Meteor.methods({
   'Schedules.update'({ owner, day, task }) {
     const dayField = `${day}.tasks`; // This will create a string like 'Monday.tasks'
@@ -94,6 +111,7 @@ Meteor.methods({
   },
 });
 const removeScheduleMethod = 'Schedules.remove';
+
 Meteor.methods({
   'Schedules.remove'({ owner, day, tasks }) {
     const updateField = {};
@@ -107,4 +125,4 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, removeUserMethod, updateEventMethod, createEventMethod, removeEventMethod, updateScheduleMethod, removeScheduleMethod };
+export { updateProfileMethod, removeUserMethod, updateEventMethod, createEventMethod, removeEventMethod, updateScheduleMethod, removeScheduleMethod, joinEventMethod, unjoinEventMethod };
