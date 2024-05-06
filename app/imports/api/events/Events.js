@@ -42,6 +42,8 @@ class EventsCollection {
         allowedValues: this.allowedWorkouts,
       },
       description: { type: String, optional: true },
+      currentSize: { type: Number, defaultValue: 0 },
+      maxSize: { type: Number, optional: false },
     });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);

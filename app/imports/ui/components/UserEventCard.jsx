@@ -10,11 +10,8 @@ import { removeEventMethod } from '../../startup/both/Methods';
 import { pageStyle } from '../pages/pageStyles';
 
 const deleteEvent = (userEvent) => {
-  // Created by chatgpt
-
-  // Append the email to the data object. Ensure userEmail is not undefined.
   if (userEvent) {
-    Meteor.call(removeEventMethod, userEvent, (error) => {
+    Meteor.call(removeEventMethod, userEvent, userEvent._id, (error) => {
       if (error) {
         swal('Error', error.message, 'error');
       } else {
@@ -46,9 +43,16 @@ const UserEventCard = ({ event, profile }) => (
               <div className="alert alert-success" role="alert">
                 This is a success alert—check it out! <Check style={{ width: '20px', height: '25px' }} />
               </div>
-              <Badge className="fw-lighter">
-                <Calendar style={{ marginRight: '5px' }} />{format(new Date(event.date), 'EEEE, MMMM d, yyyy')}
-              </Badge>
+              <Row>
+                <Col xs={3}>
+                  <Badge className="fw-lighter">
+                    <Calendar style={{ marginRight: '5px' }} />{format(new Date(event.date), 'EEEE, MMMM d, yyyy')}
+                  </Badge>
+                </Col>
+                <Col xs={9} className="justify-content-end d-flex">
+                  <div>{event.currentSize}/{event.maxSize}</div>
+                </Col>
+              </Row>
               <hr />
               <p className="fw-lighter">
                 Created by {profile.firstName} {profile.lastName} {format(new Date(event.createdAt), 'EEEE, MMMM d, yyyy')} <PencilSquare />
@@ -73,6 +77,8 @@ UserEventCard.propTypes = {
     workouts: PropTypes.arrayOf(PropTypes.string),
     date: PropTypes.instanceOf(Date),
     createdAt: PropTypes.instanceOf(Date),
+    currentSize: PropTypes.number,
+    maxSize: PropTypes.number,
   }).isRequired,
   profile: PropTypes.shape({
     firstName: PropTypes.string,
