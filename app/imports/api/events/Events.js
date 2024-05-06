@@ -19,7 +19,6 @@ class EventsCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       owner: { type: String, index: true, unique: true },
-      eventId: { type: String, index: true, unique: true },
       date: Date,
       createdAt: {
         type: Date,
