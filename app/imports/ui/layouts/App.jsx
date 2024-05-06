@@ -24,8 +24,8 @@ import Events from '../pages/EventFilter';
 import AddEvent from '../pages/AddEvent';
 import LandingPage from '../pages/LandingPage';
 import UserEvent from '../pages/UserEvent';
-import TestPage from '../pages/TestPage';
 import UserSchedule from '../pages/UserSchedule';
+import ViewUserProfile from '../pages/TestPage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -44,7 +44,7 @@ const App = () => {
           <Route path="/profiles" element={<Profiles />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/userevent" element={<UserEvent />} />
-          <Route path="/test-page" element={<TestPage />} />
+          <Route path="/view-user-profile" element={<ViewUserProfile />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />

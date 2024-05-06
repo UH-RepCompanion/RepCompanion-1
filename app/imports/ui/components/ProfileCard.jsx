@@ -60,7 +60,7 @@ const ProfileCard = ({ profile }) => {
               </Card.Text>
             </div>
           </div>
-          <Link to={`/test-page/?${profileQueryString}`} className="btn btn-outline-success mt-auto" onClick={profile}>View Profile</Link>
+          <Link to={`/view-user-profile/?${profileQueryString}`} className="btn btn-outline-success mt-auto" onClick={profile}>View Profile</Link>
         </Card.Body>
       </Card>
     </Col>
