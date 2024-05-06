@@ -4,16 +4,16 @@ import React from 'react';
 import { Discord, Facebook, Instagram, Linkedin, Snapchat, Twitter } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 import { pageStyle } from '../pages/pageStyles';
-import { Schedules } from '../../api/schedule/Schedules';
+import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
 
 const UserProfileCard = ({ profile }) => {
 // Function to determine border color based on the profile's tag
   const renderWorkoutIcon = (day) => {
     // Fetch the schedule for the current user
-    const userSchedule = Schedules.collection.findOne({ owner: profile.email });
+    const userSchedule = ProfilesSchedules.collection.find({ profile: profile.email }).fetch();
 
     // Check if the schedule exists for the user and the specified day
-    if (userSchedule && userSchedule[day] && userSchedule[day].tasks && userSchedule[day].tasks.length > 0) {
+    if (userSchedule.some(d => d.scheduleDay === day)) {
       return (
         <Image src="../images/purple-dumbbell-icon.png" style={{ width: '30px', height: 'auto' }} />
       );
