@@ -2,6 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
+import { Link } from 'react-router-dom';
 import { Profiles } from '../../api/profiles/Profiles';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
@@ -29,7 +30,11 @@ const ProfilesPage = () => {
     <Container>
       <Container id="finder-page" style={pageStyle}>
         <Row xs={1} md={2} lg={3} className="g-2" style={{ paddingTop: '10px' }}>
-          {profileData.map((profile, index) => <ProfileCard key={index} profile={profile} />)}
+          {profileData.map((profile, index) => (
+            <Link key={index} to={`/${profile.firstName}`}>
+              <ProfileCard key={index} profile={profile} />
+            </Link>
+          ))}
         </Row>
       </Container>
       <Container id="event-page" style={pageStyle}>

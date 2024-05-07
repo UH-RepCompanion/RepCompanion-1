@@ -1,12 +1,11 @@
-import { Card, Col, Image, Button, Row, Container, Table } from 'react-bootstrap';
+import { Card, Col, Image, Row, Container, Table } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Discord, Facebook, Instagram, Linkedin, Snapchat, Twitter } from 'react-bootstrap-icons';
-import { Link } from 'react-router-dom';
 import { pageStyle } from '../pages/pageStyles';
 import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
 
-const UserProfileCard = ({ profile }) => {
+const OtherUserProfileCard = ({ profile }) => {
 // Function to determine border color based on the profile's tag
   const renderWorkoutIcon = (day) => {
     // Fetch the schedule for the current user
@@ -174,7 +173,6 @@ const UserProfileCard = ({ profile }) => {
                     </tbody>
                   </Table>
                 </Container>
-                <Button className="text-start mt-5" variant="dark" id="edit-profile-button" style={{ position: 'absolute', bottom: '10px', left: '465px', color: 'white', width: '120px' }} as={Link} to="/editprofile">Edit Profile</Button>
               </Row>
             </Card.Body>
           </Card>
@@ -184,7 +182,7 @@ const UserProfileCard = ({ profile }) => {
   );
 };
 
-UserProfileCard.propTypes = {
+OtherUserProfileCard.propTypes = {
   profile: PropTypes.shape({
     firstName: PropTypes.string,
     lastName: PropTypes.string,
@@ -204,4 +202,4 @@ UserProfileCard.propTypes = {
   }).isRequired,
 };
 
-export default UserProfileCard;
+export default OtherUserProfileCard;

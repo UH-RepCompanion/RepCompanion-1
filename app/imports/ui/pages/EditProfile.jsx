@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AutoForm, TextField, LongTextField, SelectField, SubmitField } from 'uniforms-bootstrap5';
 import { Container, Col, Card, Row } from 'react-bootstrap';
 import swal from 'sweetalert';
@@ -7,6 +7,7 @@ import SimpleSchema from 'simpl-schema';
 import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
 import { useTracker } from 'meteor/react-meteor-data';
+import { Navigate } from 'react-router-dom';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { updateProfileMethod } from '../../startup/both/Methods';
@@ -35,7 +36,7 @@ const makeSchema = (allInterests, allTags) => new SimpleSchema({
 
 /* Renders the EditProfile Page: what appears after the user logs in. */
 const EditProfile = () => {
-
+  const [redirect, setRedirect] = useState(false);
   /* On submit, insert the data. */
   const submit = (data) => {
     // Created by chatgpt
@@ -49,6 +50,7 @@ const EditProfile = () => {
           swal('Error', error.message, 'error');
         } else {
           swal('Success', 'Profile updated successfully', 'success');
+          setRedirect(true);
         }
       });
     } else {
@@ -76,6 +78,9 @@ const EditProfile = () => {
   const interests = _.pluck(ProfilesInterests.collection.find({ profile: email }).fetch(), 'interest');
   const profile = Profiles.collection.findOne({ email });
   const model = _.extend({}, profile, { interests, tags });
+  if (redirect) {
+    return (<Navigate to="/home" />);
+  }
   return ready ? (
     <Container id="edit-profile-page" className="justify-content-center" style={pageStyle}>
       <Col>
