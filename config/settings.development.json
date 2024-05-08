@@ -109,7 +109,7 @@
         "Strength Training"
       ],
       "tag": "Newbie",
-      "picture": "",
+      "picture": "https://github.com/philipmjohnson.png",
       "email": "samdoan@hawaii.edu"
     },
     {
@@ -121,7 +121,7 @@
         "Cardio"
       ],
       "tag": "Intermediate",
-      "picture": "",
+      "picture": "https://github.com/philipmjohnson.png",
       "email": "mcape@hawaii.edu"
     },
     {
@@ -135,7 +135,7 @@
         "Core Training"
       ],
       "tag": "Advanced",
-      "picture": "",
+      "picture": "https://github.com/philipmjohnson.png",
       "email": "darius01@gmail.com"
     },
     {
@@ -148,7 +148,7 @@
         "Core Training"
       ],
       "tag": "Intermediate",
-      "picture": "",
+      "picture": "https://github.com/philipmjohnson.png",
       "email": "cashb15@gmail.com"
     },
     {
@@ -161,7 +161,7 @@
         "Strength Training"
       ],
       "tag": "Advanced",
-      "picture": "",
+      "picture": "https://github.com/philipmjohnson.png",
       "email": "tamuras6@hawaii.edu"
     },
     {
@@ -175,7 +175,7 @@
         "Core Training"
       ],
       "tag": "Intermediate",
-      "picture": "",
+      "picture": "https://github.com/philipmjohnson.png",
       "email": "kavehesfahni@gmail.com"
     },
     {
@@ -186,10 +186,10 @@
       "interests": [
         "Strength Training",
         "Core Training",
-        "Powerlifting"
+        "Power Lifting"
       ],
       "tag": "Advanced",
-      "picture": "",
+      "picture": "https://github.com/philipmjohnson.png",
       "email": "athlu808@gmail.com"
     },
     {
@@ -202,7 +202,7 @@
         "Core Training"
       ],
       "tag": "Intermediate",
-      "picture": "",
+      "picture": "https://github.com/philipmjohnson.png",
       "email": "sammysmith@hawaii.edu"
     },
     {
@@ -215,7 +215,7 @@
         "Core Training"
       ],
       "tag": "Advanced",
-      "picture": "",
+      "picture": "https://github.com/philipmjohnson.png",
       "email": "a_parayn2@gmail.com"
     },
     {
@@ -227,7 +227,7 @@
         "Strength Training"
       ],
       "tag": "Advanced",
-      "picture": "",
+      "picture": "https://github.com/philipmjohnson.png",
       "email": "markuswu02@gmail.com"
     },
     {
@@ -240,7 +240,7 @@
         "Yoga"
       ],
       "tag": "Beginner",
-      "picture": "",
+      "picture": "https://github.com/philipmjohnson.png",
       "email": "tessiec@gmail.com"
     },
     {
@@ -254,7 +254,7 @@
         "Strength"
       ],
       "tag": "Intermediate",
-      "picture": "",
+      "picture": "https://github.com/philipmjohnson.png",
       "email": "julietomas12@gmail.com"
     },
     {
@@ -268,7 +268,7 @@
         "Strength"
       ],
       "tag": "Intermediate",
-      "picture": "",
+      "picture": "https://github.com/philipmjohnson.png",
       "email": "evanmonk9@gmail.com"
     },
     {
@@ -282,7 +282,7 @@
         "Strength Training"
       ],
       "tag": "Advanced",
-      "picture": "",
+      "picture": "https://github.com/philipmjohnson.png",
       "email": "victoriam12@gmail.com"
     },
     {
@@ -294,13 +294,13 @@
         "Strength Training"
       ],
       "tag": "Advanced",
-      "picture": "",
+      "picture": "https://github.com/philipmjohnson.png",
       "email": "kennynguyen408@gmail.com"
     }
   ],
   "defaultEvents": [
     {
-      "description": "Join me for an intensive workshop where I'll share my passion for strength training and core conditioning. We'll focus on powerlifting techniques and core exercises to enhance strength and support paddle sports activities. Expect a mix of strength-building and cardio exercises tailored to boost your endurance and physical capabilities.",
+      "description": "Join me for an intensive workshop where I'll share my passion for strength training and core conditioning. We'll focus on techniques and core exercises to enhance strength and support paddle sports activities. Expect a mix of strength-building and cardio exercises tailored to boost your endurance and physical capabilities.",
       "workouts": [
         "Dumbbells",
         "Treadmill",
@@ -313,60 +313,153 @@
     {
       "description": "I'm excited to lead a core and cardio session aimed at fitness enthusiasts interested in serious scuba diving. We'll tackle intensive HIIT and core exercises that simulate the challenges of underwater activities. Prepare for a dynamic workout that boosts both core strength and cardiovascular health.",
       "workouts": [
-        "Leg Press",
-        "Smith Machine",
-        "Cable Machine"
+        "Resistance Bands",
+        "Stair Climber",
+        "Kettlebells"
       ],
-      "date": "2024-09-25T07:30:00.000Z",
-      "owner": "henric@hawaii.edu",
+      "date": "2024-04-27T07:30:00.000Z",
+      "owner": "evanmonk9@gmail.com",
       "eventId": "2"
     },
     {
       "description": "Hey! I am looking for a buddy for a strength training session that focuses on building muscle and enhancing strength. I want to tackle essential lifts such as squats, deadlifts, and bench presses. If you're up for a challenge and keen to bulk up, let's lift and grow stronger together!",
       "workouts": [
-        "Leg Press",
-        "Smith Machine",
-        "Cable Machine"
+        "Lat Pulldown",
+        "Weight Bench",
+        "Pull Up Bar"
       ],
-      "date": "2024-09-25T07:30:00.000Z",
-      "owner": "henric@hawaii.edu",
+      "date": "2024-02-20T07:30:00.000Z",
+      "owner": "a_parayn2@gmail.com",
       "eventId": "2"
     },
     {
-      "description": "changeMe",
+      "description": "Hi! I'm in search of a workout partner who is serious about fitness and strength training. My routine includes exercises with the leg press, kettlebells, and the cable machine. If you're eager to build muscle and improve your overall fitness, let's team up and keep each other motivated. Looking forward to crushing our goals together!",
       "workouts": [
-        "Leg Press",
-        "Smith Machine",
+        "Kettlebells",
+        "Rowing Machine",
         "Cable Machine"
       ],
-      "date": "2024-09-25T07:30:00.000Z",
-      "owner": "henric@hawaii.edu",
+      "date": "2024-06-21T07:30:00.000Z",
+      "owner": "mcape@hawaii.edu",
       "eventId": "2"
     },
     {
-      "description": "changeMe",
+      "description": "Hello! I'm on the lookout for a fitness enthusiast to join me for dynamic gym sessions. I focus on a mix of strength and cardio workouts using the weight bench, elliptical machine, and resistance bands. If you're driven and ready to take your fitness to the next level, let's support each other and make every workout count",
       "workouts": [
-        "Leg Press",
-        "Smith Machine",
-        "Cable Machine"
+        "Resistance Bands",
+        "Elliptical Machine",
+        "Weight Bench"
       ],
-      "date": "2024-09-25T07:30:00.000Z",
-      "owner": "henric@hawaii.edu",
+      "date": "2024-05-26T07:30:00.000Z",
+      "owner": "darius01@gmail.com",
       "eventId": "2"
     },
     {
-      "description": "changeMe",
+      "description": "Hey there! I'm looking for a gym buddy who enjoys varied workouts and pushing their limits. My training involves using the treadmill, medicine balls, and the leg curl machine. If you're passionate about getting fit and want a partner to stay motivated with, let's connect and achieve our fitness goals together",
       "workouts": [
-        "Leg Press",
-        "Smith Machine",
-        "Cable Machine"
+        "Treadmill",
+        "Medicine Balls",
+        "Leg Curl"
       ],
-      "date": "2024-09-25T07:30:00.000Z",
-      "owner": "henric@hawaii.edu",
+      "date": "2024-05-05T07:30:00.000Z",
+      "owner": "kennynguyen408@gmail.com",
       "eventId": "2"
     }
   ],
   "defaultSchedules": [
+    {
+      "days": ["Monday", "Wednesday", "Friday"],
+      "owner": "johnson@hawaii.edu",
+      "Monday": {
+        "tasks": [
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          }
+        ]
+      },
+      "Wednesday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          }
+        ]
+      },
+      "Friday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 2
+          }
+        ]
+      }
+    },
     {
       "days": ["Monday", "Wednesday", "Friday"],
       "owner": "johnson@hawaii.edu",

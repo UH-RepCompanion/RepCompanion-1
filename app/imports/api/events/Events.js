@@ -29,6 +29,7 @@ class EventsCollection {
         'Hack Squat Machine',
         'Ab Machine',
         'Back Extensions',
+        'Powerlifting',
       ];
     // The name of this collection.
     this.name = 'EventsCollection';
