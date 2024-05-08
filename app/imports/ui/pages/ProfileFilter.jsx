@@ -12,14 +12,13 @@ import ProfileCard from '../components/ProfileCard';
 
 const ProfileFilter = () => {
 
-  const [interestFilter, setInterestFilter] = useState('all interests');
-  const [tagFilter, setTagFilter] = useState('all tags');
-  const [scheduleDayFilter, setScheduleDayFilter] = useState('all days');
-  const [displayedProfiles, setDisplayedProfiles] = useState(6);
+  const [interestFilter, setInterestFilter] = useState('All Interests');
+  const [tagFilter, setTagFilter] = useState('All Tags');
+  const [scheduleDayFilter, setScheduleDayFilter] = useState('All Days');
 
-  const interests = ['all interests'].concat(Profiles.allowedInterests);
-  const tags = ['all tags'].concat(Profiles.allowedTags);
-  const scheduleDays = ['all days'].concat('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+  const interests = ['All Interests'].concat(Profiles.allowedInterests);
+  const tags = ['All Tags'].concat(Profiles.allowedTags);
+  const scheduleDays = ['All Days'].concat('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
 
   const { ready } = useTracker(() => {
     const sub1 = Meteor.subscribe(Profiles.userPublicationName);
@@ -35,19 +34,19 @@ const ProfileFilter = () => {
     let profilesList = Profiles.collection.find().fetch(); // Start with all profiles.
 
     // Filter by interests if a specific interest is selected
-    if (interestFilter !== 'all interests') {
+    if (interestFilter !== 'All Interests') {
       const filteredByInterest = ProfilesInterests.collection.find({ interest: interestFilter }).map(doc => doc.profile);
       profilesList = profilesList.filter(profile => filteredByInterest.includes(profile.email));
     }
 
     // Filter by tags if a specific tag is selected
-    if (tagFilter !== 'all tags') {
+    if (tagFilter !== 'All Tags') {
       const filteredByTag = ProfilesTags.collection.find({ tag: tagFilter }).map(doc => doc.profile);
       profilesList = profilesList.filter(profile => filteredByTag.includes(profile.email));
     }
 
     // Filter by schedule days if a specific day is selected
-    if (scheduleDayFilter !== 'all days') {
+    if (scheduleDayFilter !== 'All Days') {
       const filteredByDay = ProfilesSchedules.collection.find({ scheduleDay: scheduleDayFilter }).map(doc => doc.profile);
       profilesList = profilesList.filter(profile => filteredByDay.includes(profile.email));
     }
@@ -56,18 +55,12 @@ const ProfileFilter = () => {
   };
 
   const resetFilters = () => {
-    setInterestFilter('all interests');
-    setTagFilter('all tags');
-    setScheduleDayFilter('all days');
-    setDisplayedProfiles(6);
-  };
-
-  const loadMore = () => {
-    setDisplayedProfiles((prevCount) => prevCount + 6);
+    setInterestFilter('All Interests');
+    setTagFilter('All Tags');
+    setScheduleDayFilter('All Days');
   };
 
   const filteredProfiles = filterProfiles();
-  const visibleProfiles = filteredProfiles.slice(0, displayedProfiles);
 
   return ready ? (
     <Container id="browse-profiles-page" className="py-3">
@@ -150,22 +143,13 @@ const ProfileFilter = () => {
           <div>{(filteredProfiles.length === 0) ?
             <h2>No profiles match this filtering</h2>
             : (
-              <>
-                <Row xs={1} md={2} lg={3} className="g-2">
-                  {visibleProfiles.map((profile, index) => (
-                    <Col key={index}>
-                      <ProfileCard profile={profile} />
-                    </Col>
-                  ))}
-                </Row>
-                {displayedProfiles < filteredProfiles.length && (
-                  <Row className="justify-content-center mt-4">
-                    <Button onClick={loadMore} variant="outline-primary" style={{ width: 'fit-content' }}>
-                      Load More
-                    </Button>
-                  </Row>
-                )}
-              </>
+              <Row xs={1} md={2} lg={3} className="g-2">
+                {filteredProfiles.map((profile, index) => (
+                  <Col key={index}>
+                    <ProfileCard profile={profile} />
+                  </Col>
+                ))}
+              </Row>
             )}
           </div>
         </Col>
