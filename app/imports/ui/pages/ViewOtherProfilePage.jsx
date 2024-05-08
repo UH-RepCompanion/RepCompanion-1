@@ -11,6 +11,8 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import OtherUserEventCard from '../components/OtherUserEventCard';
 import { Profiles } from '../../api/profiles/Profiles';
+import { Schedules } from '../../api/schedule/Schedules';
+import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
 
 const ViewUserProfile = () => {
   const location = useLocation();
@@ -27,11 +29,13 @@ const ViewUserProfile = () => {
     const sub1 = Meteor.subscribe(Profiles.userPublicationName);
     const sub2 = Meteor.subscribe(Events.userPublicationName);
     const sub3 = Meteor.subscribe(ProfilesEvents.userPublicationName);
+    const sub4 = Meteor.subscribe(Schedules.userPublicationName);
+    const sub5 = Meteor.subscribe(ProfilesSchedules.userPublicationName);
     const ownerUsername = profile?.email;
     const userEvent = Events.collection.findOne({ owner: ownerUsername });
     const joinedEvents = ProfilesEvents.collection.find({ profile: userEmail }).fetch();
     return {
-      ready: sub1.ready() && sub2.ready() && sub3.ready(),
+      ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
       event: userEvent,
       participant: joinedEvents,
     };

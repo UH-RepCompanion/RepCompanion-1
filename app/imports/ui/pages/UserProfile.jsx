@@ -14,7 +14,7 @@ import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 
 const UserProfile = () => {
   const { ready, profile, event } = useTracker(() => {
-    const sub = Meteor.subscribe(Profiles.userPublicationName);
+    const sub1 = Meteor.subscribe(Profiles.userPublicationName);
     const sub2 = Meteor.subscribe(Events.userPublicationName);
     const sub3 = Meteor.subscribe(Schedules.userPublicationName);
     const sub4 = Meteor.subscribe(ProfilesSchedules.userPublicationName);
@@ -23,7 +23,7 @@ const UserProfile = () => {
     const userEvent = Events.collection.findOne({ owner: Meteor.user()?.username });
     const userSchedule = Schedules.collection.findOne({ owner: Meteor.user()?.username });
     return {
-      ready: sub.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
+      ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
       email: Meteor.user()?.username,
       profile: userProfile,
       event: userEvent,
