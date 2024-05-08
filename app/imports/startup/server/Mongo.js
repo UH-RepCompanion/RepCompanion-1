@@ -29,7 +29,7 @@ function addProfile({ firstName, lastName, bio, major, interests, tag, picture, 
 }
 function addEvent({ owner, description, workouts, date, createdAt }) {
   console.log(`Defining event ${owner}`);
-  Events.collection.insert({ owner, description, workouts, date, createdAt, maxSize: 3 });
+  Events.collection.insert({ owner, description, workouts, date, createdAt, maxSize: 4 });
 }
 function addSchedule({ owner, days, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday }) {
   console.log(`Defining schedule ${owner}`);

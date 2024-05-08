@@ -1,5 +1,5 @@
 import React from 'react';
-import { AutoForm, TextField, LongTextField, SelectField, SubmitField } from 'uniforms-bootstrap5';
+import { AutoForm, TextField, LongTextField, SelectField, SubmitField, HiddenField } from 'uniforms-bootstrap5';
 import { Container, Col, Card, Row } from 'react-bootstrap';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -20,6 +20,7 @@ const makeSchema = (allWorkouts) => new SimpleSchema({
   date: { type: Date, label: 'Date' },
   workouts: { type: Array, label: 'Workouts', optional: true },
   'workouts.$': { type: String, allowedValues: allWorkouts },
+  maxSize: { type: Number, label: 'Number of People', optional: false },
 });
 
 /* Renders the EditEvent Page: what appears after the user logs in. */
@@ -88,6 +89,7 @@ const EditEvent = () => {
               <Row>
                 <Col xs={6}><SelectField name="workouts" showInlineError multiple /></Col>
               </Row>
+              <HiddenField name="maxSize" showInLineError />
               <SubmitField id={ComponentIDs.homeFormSubmit} value="Update" />
             </Card.Body>
           </Card>

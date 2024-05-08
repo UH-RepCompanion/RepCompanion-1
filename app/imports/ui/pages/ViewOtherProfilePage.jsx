@@ -5,12 +5,12 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Container, Row } from 'react-bootstrap';
 import { Events } from '../../api/events/Events';
-import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
 import { pageStyle } from './pageStyles';
 import OtherUserProfileCard from '../components/OtherUserProfile';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import OtherUserEventCard from '../components/OtherUserEventCard';
+import { Profiles } from '../../api/profiles/Profiles';
 
 const ViewUserProfile = () => {
   const location = useLocation();
@@ -24,7 +24,7 @@ const ViewUserProfile = () => {
 
   const { ready, event, participant } = useTracker(() => {
     const userEmail = Meteor.user()?.username;
-    const sub1 = Meteor.subscribe(ProfilesSchedules.userPublicationName);
+    const sub1 = Meteor.subscribe(Profiles.userPublicationName);
     const sub2 = Meteor.subscribe(Events.userPublicationName);
     const sub3 = Meteor.subscribe(ProfilesEvents.userPublicationName);
     const ownerUsername = profile?.email;
