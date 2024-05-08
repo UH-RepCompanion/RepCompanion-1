@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Profiles } from '../../api/profiles/Profiles';
@@ -11,7 +11,6 @@ import UserEventCard from '../components/UserEventCard';
 import { Schedules } from '../../api/schedule/Schedules';
 import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
 import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
-import OtherUserEventCard from '../components/OtherUserEventCard';
 
 const UserProfile = () => {
   const { ready, profile, event } = useTracker(() => {
