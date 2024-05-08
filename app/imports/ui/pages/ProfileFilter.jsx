@@ -63,7 +63,7 @@ const ProfileFilter = () => {
   const filteredProfiles = filterProfiles();
 
   return ready ? (
-    <Container id="browse-profiles-page" className="py-3">
+    <Container id="finder-page" className="py-3">
       <h2 className="text-white">Find Profiles:</h2>
       <Row className="justify-content-center">
         <Col>
@@ -82,7 +82,6 @@ const ProfileFilter = () => {
                   <Dropdown>
                     <Dropdown.Toggle
                       variant="outline-dark"
-                      id="dropdown-location"
                       style={{ border: 'none', fontSize: '1rem', padding: '0.2rem 0.4rem' }}
                     >
                       {interestFilter !== 'all locations' ? interestFilter : 'All Locations'}
@@ -100,7 +99,6 @@ const ProfileFilter = () => {
                   <Dropdown>
                     <Dropdown.Toggle
                       variant="outline-dark"
-                      id="dropdown-taste"
                       style={{ border: 'none', fontSize: '1rem', padding: '0.2rem 0.4rem' }}
                     >
                       {tagFilter !== 'all tastes' ? tagFilter : 'All Tastes'}
@@ -118,7 +116,6 @@ const ProfileFilter = () => {
                   <Dropdown>
                     <Dropdown.Toggle
                       variant="outline-dark"
-                      id="dropdown-instrument"
                       style={{ border: 'none', fontSize: '1rem', padding: '0.2rem 0.4rem' }}
                     >
                       {scheduleDayFilter !== 'all instruments' ? scheduleDayFilter : 'All Instruments'}
