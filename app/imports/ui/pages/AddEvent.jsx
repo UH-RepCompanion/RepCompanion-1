@@ -1,5 +1,5 @@
 import React from 'react';
-import { AutoForm, TextField, LongTextField, SelectField, SubmitField, NumField } from 'uniforms-bootstrap5';
+import { AutoForm, TextField, LongTextField, SelectField, SubmitField } from 'uniforms-bootstrap5';
 import { Container, Col, Card, Row } from 'react-bootstrap';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -84,7 +84,7 @@ const AddEvent = () => {
                   <LongTextField id="event-form-description" name="description" placeholder="Describe your workout routine." />
                   <Row>
                     <Col xs={6}><SelectField id="event-form-workout" name="workouts" showInlineError multiple /></Col>
-                    <Col xs={2}><TextField id="event-form-size" name="maxSize" showInlineError multiple /></Col>
+                    <Col xs={2}><TextField id="event-form-size" name="maxSize" placeholder="Maximum of 4" showInlineError multiple /></Col>
                   </Row>
                   <SubmitField id="add-button" value="Add" />
                 </Card.Body>
