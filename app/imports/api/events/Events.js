@@ -11,7 +11,25 @@ class EventsCollection {
         'Weight Bench',
         'Leg Press',
         'Smith Machine',
-        'Cable Machine'];
+        'Cable Machine',
+        'Elliptical Machine',
+        'Stationary Bike',
+        'Rowing Machine',
+        'Kettlebells',
+        'Medicine Balls',
+        'Yoga',
+        'Pull Up Bar',
+        'Resistance Bands',
+        'Stair Climber',
+        'Lat Pulldown',
+        'Leg Extension',
+        'Leg Curl',
+        'Leg Abduction Machine',
+        'Arc Trainer',
+        'Hack Squat Machine',
+        'Ab Machine',
+        'Back Extensions',
+      ];
     // The name of this collection.
     this.name = 'EventsCollection';
     // Define the Mongo collection.

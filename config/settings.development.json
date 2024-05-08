@@ -98,6 +98,204 @@
       "tag": "Intermediate",
       "picture": "https://sergey-negrashov.github.io/images/serge.jpg",
       "email": "sin8@hawaii.edu"
+    },
+    {
+      "firstName": "Sam",
+      "lastName": "Doan",
+      "bio": "Born and Raised in the Big Island. I like to play basketball and eat. ",
+      "major": "Computer Science",
+      "interests": [
+        "Cardio",
+        "Strength Training"
+      ],
+      "tag": "Newbie",
+      "picture": "",
+      "email": "samdoan@hawaii.edu"
+    },
+    {
+      "firstName": "Micaiah",
+      "lastName": "Cape",
+      "bio": "Born and raised in Hawaii. I ran my first marathon and my closest bathroom call was at 15 miles. ",
+      "major": "Computer Science",
+      "interests": [
+        "Cardio"
+      ],
+      "tag": "Intermediate",
+      "picture": "",
+      "email": "mcape@hawaii.edu"
+    },
+    {
+      "firstName": "Darius",
+      "lastName": "Dacquel",
+      "bio": "Born and raised in Hawaii and my favorite game is Valorant. I like to work out 3 days a week.",
+      "major": "Computer Science",
+      "interests": [
+        "Cardio",
+        "Strength Training",
+        "Core Training"
+      ],
+      "tag": "Advanced",
+      "picture": "",
+      "email": "darius01@gmail.com"
+    },
+    {
+      "firstName": "Cash",
+      "lastName": "Baker",
+      "bio": "Epic Gamer! Born and raised in Oahu and I love to workout Calisthenics.",
+      "major": "Computer Science",
+      "interests": [
+        "Strength Training",
+        "Core Training"
+      ],
+      "tag": "Intermediate",
+      "picture": "",
+      "email": "cashb15@gmail.com"
+    },
+    {
+      "firstName": "Shayde",
+      "lastName": "Tamura",
+      "bio": "Born and raised in Oahu and I ran two marathons. I love to work out!",
+      "major": "Computer Science",
+      "interests": [
+        "Cardio",
+        "Strength Training"
+      ],
+      "tag": "Advanced",
+      "picture": "",
+      "email": "tamuras6@hawaii.edu"
+    },
+    {
+      "firstName": "Kaveh",
+      "lastName": "Esfahni",
+      "bio": "Born in California but I grew up in different cities. I enjoy spending time with my friends and playing sports. Going to the beach and playing volleyball and swimming are the things I enjoy most.",
+      "major": "Psychology",
+      "interests": [
+        "Yoga",
+        "Strength Training",
+        "Core Training"
+      ],
+      "tag": "Intermediate",
+      "picture": "",
+      "email": "kavehesfahni@gmail.com"
+    },
+    {
+      "firstName": "Anthony",
+      "lastName": "Lu",
+      "bio": "Born on Oahu and I have competed in a few powerlifting competitions. On my free time I like to experiment with food in my kitchen.",
+      "major": "Business",
+      "interests": [
+        "Strength Training",
+        "Core Training",
+        "Powerlifting"
+      ],
+      "tag": "Advanced",
+      "picture": "",
+      "email": "athlu808@gmail.com"
+    },
+    {
+      "firstName": "Sam",
+      "lastName": "Smith",
+      "bio": "Born in California and moved to Hawaii. I love to surf with my friends and I've been into bouldering recently. I love cinnamon rolls! ",
+      "major": "Business",
+      "interests": [
+        "Strength Training",
+        "Core Training"
+      ],
+      "tag": "Intermediate",
+      "picture": "",
+      "email": "sammysmith@hawaii.edu"
+    },
+    {
+      "firstName": "TJ",
+      "lastName": "Parayno",
+      "bio": "Raised in San Jose and currently working for PG&E. I like to go to the gym when I have free time and run in the mornings. My favorite food to eat is Sushi.",
+      "major": "Engineering",
+      "interests": [
+        "Strength Training",
+        "Core Training"
+      ],
+      "tag": "Advanced",
+      "picture": "",
+      "email": "a_parayn2@gmail.com"
+    },
+    {
+      "firstName": "Markus",
+      "lastName": "Wu",
+      "bio": "Born and raised in Oahu and I consistently go to the gym after work. On my free time I like to spend time with my friends and eat.",
+      "major": "Economics",
+      "interests": [
+        "Strength Training"
+      ],
+      "tag": "Advanced",
+      "picture": "",
+      "email": "markuswu02@gmail.com"
+    },
+    {
+      "firstName": "Tessie",
+      "lastName": "Carranza",
+      "bio": "I went to San Jose State University and studied education. I became a teacher and teach at a local elementary school. In my free time I love to hike on trails and eat lunch at the top of a hike.",
+      "major": "Education",
+      "interests": [
+        "Cardio",
+        "Yoga"
+      ],
+      "tag": "Beginner",
+      "picture": "",
+      "email": "tessiec@gmail.com"
+    },
+    {
+      "firstName": "Julie",
+      "lastName": "Thomas",
+      "bio": "I am from Arizona and transferred to UHM from a community college. When I was back home I loved going to rock climbing gyms with my friends. My favorite thing to eat ever are loco mocos!",
+      "major": "Psychology",
+      "interests": [
+        "Cardio",
+        "Core Training",
+        "Strength"
+      ],
+      "tag": "Intermediate",
+      "picture": "",
+      "email": "julietomas12@gmail.com"
+    },
+    {
+      "firstName": "Evan",
+      "lastName": "Monk",
+      "bio": "Born and raised on the big island but moved to oahu after high school. I loved spearfishing and surfing. I also like to chill on the beach and have a bbq.",
+      "major": "Engineering",
+      "interests": [
+        "Cardio",
+        "Core Training",
+        "Strength"
+      ],
+      "tag": "Intermediate",
+      "picture": "",
+      "email": "evanmonk9@gmail.com"
+    },
+    {
+      "firstName": "Victoria",
+      "lastName": "Madison",
+      "bio": "I’m from Long Beach California and I love to play beach volleyball. It became a hobby that I’ve been doing since I was in elementary school. My dad is the Womens volleyball coach for Cal State Long Beach and I’m here to study Biology.",
+      "major": "Biology",
+      "interests": [
+        "Cardio",
+        "Core Training",
+        "Strength Training"
+      ],
+      "tag": "Advanced",
+      "picture": "",
+      "email": "victoriam12@gmail.com"
+    },
+    {
+      "firstName": "Kenny",
+      "lastName": "Nguyen",
+      "bio": "I’m from San Jose California and I enjoy going to the gym with my friends. On my free time i play golf and hope to play for my college team. I’ve been playing since I was young since my grandpa runs a golf shop.",
+      "major": "Engineering",
+      "interests": [
+        "Strength Training"
+      ],
+      "tag": "Advanced",
+      "picture": "",
+      "email": "kennynguyen408@gmail.com"
     }
   ],
   "defaultEvents": [
@@ -114,6 +312,50 @@
     },
     {
       "description": "I'm excited to lead a core and cardio session aimed at fitness enthusiasts interested in serious scuba diving. We'll tackle intensive HIIT and core exercises that simulate the challenges of underwater activities. Prepare for a dynamic workout that boosts both core strength and cardiovascular health.",
+      "workouts": [
+        "Leg Press",
+        "Smith Machine",
+        "Cable Machine"
+      ],
+      "date": "2024-09-25T07:30:00.000Z",
+      "owner": "henric@hawaii.edu",
+      "eventId": "2"
+    },
+    {
+      "description": "Hey! I am looking for a buddy for a strength training session that focuses on building muscle and enhancing strength. I want to tackle essential lifts such as squats, deadlifts, and bench presses. If you're up for a challenge and keen to bulk up, let's lift and grow stronger together!",
+      "workouts": [
+        "Leg Press",
+        "Smith Machine",
+        "Cable Machine"
+      ],
+      "date": "2024-09-25T07:30:00.000Z",
+      "owner": "henric@hawaii.edu",
+      "eventId": "2"
+    },
+    {
+      "description": "changeMe",
+      "workouts": [
+        "Leg Press",
+        "Smith Machine",
+        "Cable Machine"
+      ],
+      "date": "2024-09-25T07:30:00.000Z",
+      "owner": "henric@hawaii.edu",
+      "eventId": "2"
+    },
+    {
+      "description": "changeMe",
+      "workouts": [
+        "Leg Press",
+        "Smith Machine",
+        "Cable Machine"
+      ],
+      "date": "2024-09-25T07:30:00.000Z",
+      "owner": "henric@hawaii.edu",
+      "eventId": "2"
+    },
+    {
+      "description": "changeMe",
       "workouts": [
         "Leg Press",
         "Smith Machine",

@@ -4,7 +4,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
 import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import { BoxArrowRight, Calendar, PersonFill, PersonPlusFill, PersonSquare } from 'react-bootstrap-icons';
+import { BoxArrowRight, Calendar, PersonFill, PersonPlusFill, PersonSquare, PlusCircleFill } from 'react-bootstrap-icons';
 
 const NavBar = () => {
   const { currentUser } = useTracker(() => ({
@@ -22,7 +22,7 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
             {currentUser ? ([
-              <NavDropdown title="Event" id="navbar-event-dropdown">
+              <NavDropdown title={<span><PlusCircleFill /> Event</span>} id="navbar-event-dropdown">
                 <NavDropdown.Item id="navbar-add-event" as={NavLink} to="/addevent">Add Event</NavDropdown.Item>
                 <NavDropdown.Item id="navbar-list-event" as={NavLink} to="/events">Events</NavDropdown.Item>
               </NavDropdown>,
