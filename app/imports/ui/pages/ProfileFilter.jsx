@@ -1,86 +1,158 @@
-import React, { useState, useEffect } from 'react';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
-import SimpleSchema from 'simpl-schema';
-import { Container, Card, Row } from 'react-bootstrap';
+import { Col, Container, Row, Card, Dropdown, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { _ } from 'meteor/underscore';
-import { AutoForm, SelectField, SubmitField } from 'uniforms-bootstrap5';
+import { Funnel } from 'react-bootstrap-icons';
+import LoadingSpinner from '../components/LoadingSpinner';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
-import LoadingSpinner from '../components/LoadingSpinner';
-import { useStickyState } from '../utilities/StickyState';
-import { pageStyle } from './pageStyles';
-import { ComponentIDs } from '../utilities/ids';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
+import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
 import ProfileCard from '../components/ProfileCard';
 
-/* Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = (allInterests) => new SimpleSchema({
-  interests: { type: Array, label: 'Interests', optional: true },
-  'interests.$': { type: String, allowedValues: allInterests },
-});
-
-function getProfileData(email) {
-  const data = Profiles.collection.findOne({ email });
-  const interests = _.pluck(ProfilesInterests.collection.find({ profile: email }).fetch(), 'interest');
-  const tags = _.pluck(ProfilesTags.collection.find({ profile: email }).fetch(), 'tag');
-  return _.extend({}, data, { interests, tags });
-}
-
 const ProfileFilter = () => {
-  const [interests, setInterests] = useStickyState('interests', []);
-  const [profileData, setProfileData] = useState([]);
 
-  const { ready, profileInterests, allProfiles } = useTracker(() => {
+  const [interestFilter, setInterestFilter] = useState('All Interests');
+  const [tagFilter, setTagFilter] = useState('All Tags');
+  const [scheduleDayFilter, setScheduleDayFilter] = useState('All Days');
+
+  const interests = ['All Interests'].concat(Profiles.allowedInterests);
+  const tags = ['All Tags'].concat(Profiles.allowedTags);
+  const scheduleDays = ['All Days'].concat('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+
+  const { ready } = useTracker(() => {
     const sub1 = Meteor.subscribe(Profiles.userPublicationName);
     const sub2 = Meteor.subscribe(ProfilesInterests.userPublicationName);
     const sub3 = Meteor.subscribe(ProfilesTags.userPublicationName);
+    const sub4 = Meteor.subscribe(ProfilesSchedules.userPublicationName);
     return {
-      ready: sub1.ready() && sub2.ready() && sub3.ready(),
-      profileInterests: ProfilesInterests.collection.find().fetch(),
-      allProfiles: Profiles.collection.find().fetch(),
+      ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready(),
     };
   }, []);
 
-  const submit = (data) => {
-    setInterests(data.interests || []);
-    const filteredEmails = data.interests?.length > 0
-      ? _.uniq(_.pluck(profileInterests.filter(pI => data.interests.includes(pI.interest)), 'profile'))
-      : _.uniq(_.pluck(allProfiles, 'email'));
-    setProfileData(filteredEmails.map(email => getProfileData(email)));
+  const filterProfiles = () => {
+    let profilesList = Profiles.collection.find().fetch(); // Start with all profiles.
+
+    // Filter by interests if a specific interest is selected
+    if (interestFilter !== 'All Interests') {
+      const filteredByInterest = ProfilesInterests.collection.find({ interest: interestFilter }).map(doc => doc.profile);
+      profilesList = profilesList.filter(profile => filteredByInterest.includes(profile.email));
+    }
+
+    // Filter by tags if a specific tag is selected
+    if (tagFilter !== 'All Tags') {
+      const filteredByTag = ProfilesTags.collection.find({ tag: tagFilter }).map(doc => doc.profile);
+      profilesList = profilesList.filter(profile => filteredByTag.includes(profile.email));
+    }
+
+    // Filter by schedule days if a specific day is selected
+    if (scheduleDayFilter !== 'All Days') {
+      const filteredByDay = ProfilesSchedules.collection.find({ scheduleDay: scheduleDayFilter }).map(doc => doc.profile);
+      profilesList = profilesList.filter(profile => filteredByDay.includes(profile.email));
+    }
+
+    return profilesList; // Return the list of profiles that match all selected filters.
   };
 
-  useEffect(() => {
-    // Load all profiles initially
-    if (ready && interests.length === 0) {
-      setProfileData(allProfiles.map(profile => getProfileData(profile.email)));
-    }
-  }, [ready, allProfiles]);
+  const resetFilters = () => {
+    setInterestFilter('All Interests');
+    setTagFilter('All Tags');
+    setScheduleDayFilter('All Days');
+  };
 
-  const allInterests = Profiles.allowedInterests;
-  const formSchema = makeSchema(allInterests);
-  const bridge = new SimpleSchema2Bridge(formSchema);
+  const filteredProfiles = filterProfiles();
 
   return ready ? (
-    <Container id="finder-page" style={pageStyle}>
-      <AutoForm schema={bridge} onSubmit={data => submit(data)} model={{ interests }}>
-        <Card>
-          <Card.Body id={ComponentIDs.filterFormInterests}>
-            <SelectField
-              name="interests"
-              multiple
-              placeholder="Interests"
-              checkboxes
-              transform={label => ` ${label}`} // Adds a space before the label text
-            />
-            <SubmitField id={ComponentIDs.filterFormSubmit} value="Submit" />
-          </Card.Body>
-        </Card>
-      </AutoForm>
-
-      <Row xs={1} md={2} lg={3} className="g-2" style={{ paddingTop: '10px' }}>
-        {profileData.map((profile, index) => <ProfileCard key={index} profile={profile} />)}
+    <Container id="browse-profiles-page" className="py-3">
+      <h2 className="text-white">Find Profiles:</h2>
+      <Row className="justify-content-center">
+        <Col>
+          <Card className="p-3 mb-3">
+            <div className="filter-card">
+              <Row>
+                <Col className="text-start">
+                  <h5>
+                    <span style={{ paddingRight: '0.2em' }}>
+                      <Funnel />
+                    </span>
+                    Sort by:
+                  </h5>
+                </Col>
+                <Col>
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      variant="outline-dark"
+                      id="dropdown-location"
+                      style={{ border: 'none', fontSize: '1rem', padding: '0.2rem 0.4rem' }}
+                    >
+                      {interestFilter !== 'all locations' ? interestFilter : 'All Locations'}
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu style={{ fontSize: '0.8rem' }}>
+                      {interests.map((interest, index) => (
+                        <Dropdown.Item key={index} onClick={() => setInterestFilter(interest)}>
+                          {interest}
+                        </Dropdown.Item>
+                      ))}
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Col>
+                <Col>
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      variant="outline-dark"
+                      id="dropdown-taste"
+                      style={{ border: 'none', fontSize: '1rem', padding: '0.2rem 0.4rem' }}
+                    >
+                      {tagFilter !== 'all tastes' ? tagFilter : 'All Tastes'}
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu style={{ fontSize: '0.8rem' }}>
+                      {tags.map((tag, index) => (
+                        <Dropdown.Item key={index} onClick={() => setTagFilter(tag)}>
+                          {tag}
+                        </Dropdown.Item>
+                      ))}
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Col>
+                <Col>
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      variant="outline-dark"
+                      id="dropdown-instrument"
+                      style={{ border: 'none', fontSize: '1rem', padding: '0.2rem 0.4rem' }}
+                    >
+                      {scheduleDayFilter !== 'all instruments' ? scheduleDayFilter : 'All Instruments'}
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu style={{ fontSize: '0.8rem' }}>
+                      {scheduleDays.map((scheduleDay, index) => (
+                        <Dropdown.Item key={index} onClick={() => setScheduleDayFilter(scheduleDay)}>
+                          {scheduleDay}
+                        </Dropdown.Item>
+                      ))}
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Col>
+                <Col className="mb-1">
+                  <Button onClick={resetFilters} variant="outline-secondary" style={{ fontSize: '1rem', padding: '0.2rem 0.4rem' }}>
+                    Reset Filters
+                  </Button>
+                </Col>
+              </Row>
+            </div>
+          </Card>
+          <div>{(filteredProfiles.length === 0) ?
+            <h2>No profiles match this filtering</h2>
+            : (
+              <Row xs={1} md={2} lg={3} className="g-2">
+                {filteredProfiles.map((profile, index) => (
+                  <Col key={index}>
+                    <ProfileCard profile={profile} />
+                  </Col>
+                ))}
+              </Row>
+            )}
+          </div>
+        </Col>
       </Row>
     </Container>
   ) : <LoadingSpinner />;
