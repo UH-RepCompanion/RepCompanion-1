@@ -74,7 +74,7 @@ const UserEventCard = ({ event, profile }) => {
               <Card.Text>
                 <Container className="py-1">
                   <Row>
-                    <Col xs={3}>
+                    <Col xs={3} className="align-items-center justify-content-center d-flex">
                       <OverlayTrigger
                         placement="top"
                         overlay={(
@@ -83,7 +83,8 @@ const UserEventCard = ({ event, profile }) => {
                           </Tooltip>
                         )}
                       >
-                        <div className="image-border"><Image
+                        <div><Image
+                          className="image-border"
                           src={profile.picture}
                           alt="Profile"
                           width={60}
@@ -106,7 +107,8 @@ const UserEventCard = ({ event, profile }) => {
                               </Tooltip>
                             )}
                           >
-                            <div className="image-border"><Image
+                            <div><Image
+                              className="image-border"
                               src={profileEvent.picture}
                               alt="Profile"
                               width={50}

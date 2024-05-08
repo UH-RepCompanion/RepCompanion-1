@@ -32,7 +32,7 @@ const EventsPage = () => {
         {events.map((event, index) => {
           const isParticipant = participant.some(p => p.eventId === event._id);
           const participantsProfiles = ProfilesEvents.collection.find({ eventId: event._id }).fetch();
-          return <EventCard key={events._id} event={event} profile={profiles[index]} isParticipant={isParticipant} participantsProfiles={participantsProfiles} />;
+          return <EventCard key={event._id} event={event} profile={profiles[index]} isParticipant={isParticipant} participantsProfiles={participantsProfiles} />;
         })}
       </Row>
     </Container>
