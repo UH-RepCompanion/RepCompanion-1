@@ -10,7 +10,7 @@ import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
 import ProfileCard from '../components/ProfileCard';
 
-const ProfileFilter = () => {
+const BrowseProfiles = () => {
 
   const [interestFilter, setInterestFilter] = useState('all interests');
   const [tagFilter, setTagFilter] = useState('all tags');
@@ -80,7 +80,7 @@ const ProfileFilter = () => {
                 <Col className="text-start">
                   <h5>
                     <span style={{ paddingRight: '0.2em' }}>
-                      <Funnel />
+                      <Funnel/>
                     </span>
                     Sort by:
                   </h5>
@@ -154,7 +154,7 @@ const ProfileFilter = () => {
                 <Row xs={1} md={2} lg={3} className="g-2">
                   {visibleProfiles.map((profile, index) => (
                     <Col key={index}>
-                      <ProfileCard profile={profile} />
+                      <ProfileCard profile={profile}/>
                     </Col>
                   ))}
                 </Row>
@@ -171,7 +171,7 @@ const ProfileFilter = () => {
         </Col>
       </Row>
     </Container>
-  ) : <LoadingSpinner />;
+  ) : <LoadingSpinner/>;
 };
 
-export default ProfileFilter;
+export default BrowseProfiles;
