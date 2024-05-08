@@ -61,7 +61,7 @@ class EventsCollection {
       },
       description: { type: String, optional: true },
       currentSize: { type: Number, defaultValue: 0 },
-      maxSize: { type: Number, optional: false },
+      maxSize: { type: Number, max: 4, optional: false },
     });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);

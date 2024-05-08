@@ -1,5 +1,5 @@
 import React from 'react';
-import { AutoForm, TextField, LongTextField, SelectField, SubmitField, NumField } from 'uniforms-bootstrap5';
+import { AutoForm, TextField, LongTextField, SelectField, SubmitField } from 'uniforms-bootstrap5';
 import { Container, Col, Card, Row } from 'react-bootstrap';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -12,6 +12,7 @@ import { pageStyle } from './pageStyles';
 import { Events } from '../../api/events/Events';
 import { Profiles } from '../../api/profiles/Profiles';
 import UserEvent from './UserEvent';
+import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 
 /* Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allWorkouts) => new SimpleSchema({
@@ -45,13 +46,14 @@ const AddEvent = () => {
   const { ready, event, profile } = useTracker(() => {
     const sub1 = Meteor.subscribe(Events.userPublicationName);
     const sub2 = Meteor.subscribe(Profiles.userPublicationName);
+    const sub3 = Meteor.subscribe(ProfilesEvents.userPublicationName);
     const userEmail = Meteor.user()?.username;
     // Fetch the event data associated with the user
     const eventData = Events.collection.findOne({ owner: userEmail });
     const profileData = Profiles.collection.findOne({ email: userEmail });
     if (!eventData) {
       return {
-        ready: sub1.ready(),
+        ready: sub1.ready() && sub2.ready() && sub3.ready(),
         event: {
           date: new Date().toISOString().substring(0, 10), // Convert date to YYYY-MM-DD format
         },
@@ -84,7 +86,7 @@ const AddEvent = () => {
                   <LongTextField id="event-form-description" name="description" placeholder="Describe your workout routine." />
                   <Row>
                     <Col xs={6}><SelectField id="event-form-workout" name="workouts" showInlineError multiple /></Col>
-                    <Col xs={2}><TextField id="event-form-size" name="maxSize" showInlineError multiple /></Col>
+                    <Col xs={2}><TextField id="event-form-size" name="maxSize" placeholder="Maximum of 4" showInlineError multiple /></Col>
                   </Row>
                   <SubmitField id="add-button" value="Add" />
                 </Card.Body>

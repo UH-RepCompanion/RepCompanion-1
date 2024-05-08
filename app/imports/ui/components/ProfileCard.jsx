@@ -1,4 +1,4 @@
-import { Badge, Card, Col, Image } from 'react-bootstrap';
+import { Badge, Card, Col, Image, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -44,7 +44,7 @@ const ProfileCard = ({ profile }) => {
           <Card.Title>{profile.firstName} {profile.lastName}</Card.Title>
           <Card.Subtitle><span className="date">{profile.major}</span><Mortarboard /></Card.Subtitle>
         </Card.Header>
-        <Card.Body className="d-flex flex-column">
+        <Card.Body className="d-flex flex-column" style={{ height: '325px', maxHeight: '325px', overflowY: 'auto' }}>
           <div className="flex-grow-1 d-flex flex-column justify-content-center">
             <Card.Text>
               <h5>Interest</h5>
@@ -60,7 +60,13 @@ const ProfileCard = ({ profile }) => {
               </Card.Text>
             </div>
           </div>
-          <Link to={`/view-user-profile/?${profileQueryString}`} className="btn btn-outline-success mt-auto" onClick={profile}>View Profile</Link>
+          <div className="mt-auto">
+            <Row>
+              <Col className="d-flex justify-content-center">
+                <Link to={`/view-user-profile/?${profileQueryString}`} className="btn btn-outline-success w-100" onClick={profile}>View Profile</Link>
+              </Col>
+            </Row>
+          </div>
         </Card.Body>
       </Card>
     </Col>

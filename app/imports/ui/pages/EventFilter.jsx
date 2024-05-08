@@ -23,6 +23,7 @@ const EventsPage = () => {
       events: allEvents,
       profiles: allProfiles,
       participant: joinedEvents,
+
     };
   }, []);
   return ready ? (
@@ -30,7 +31,8 @@ const EventsPage = () => {
       <Row xs={1} md={2} lg={3} className="g-2">
         {events.map((event, index) => {
           const isParticipant = participant.some(p => p.eventId === event._id);
-          return <EventCard key={events._id} event={event} profile={profiles[index]} isParticipant={isParticipant} />;
+          const participantsProfiles = ProfilesEvents.collection.find({ eventId: event._id }).fetch();
+          return <EventCard key={events._id} event={event} profile={profiles[index]} isParticipant={isParticipant} participantsProfiles={participantsProfiles} />;
         })}
       </Row>
     </Container>
