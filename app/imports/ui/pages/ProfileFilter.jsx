@@ -138,7 +138,7 @@ const ProfileFilter = () => {
             </div>
           </Card>
           <div>{(filteredProfiles.length === 0) ?
-            <h2>No profiles match this filtering</h2>
+            <h2 style={{ color: 'white' }}>No profiles match this filtering</h2>
             : (
               <Row xs={1} md={2} lg={3} className="g-2">
                 {filteredProfiles.map((profile, index) => (

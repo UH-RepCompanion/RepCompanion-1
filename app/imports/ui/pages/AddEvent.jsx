@@ -12,6 +12,7 @@ import { pageStyle } from './pageStyles';
 import { Events } from '../../api/events/Events';
 import { Profiles } from '../../api/profiles/Profiles';
 import UserEvent from './UserEvent';
+import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 
 /* Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allWorkouts) => new SimpleSchema({
@@ -45,13 +46,14 @@ const AddEvent = () => {
   const { ready, event, profile } = useTracker(() => {
     const sub1 = Meteor.subscribe(Events.userPublicationName);
     const sub2 = Meteor.subscribe(Profiles.userPublicationName);
+    const sub3 = Meteor.subscribe(ProfilesEvents.userPublicationName);
     const userEmail = Meteor.user()?.username;
     // Fetch the event data associated with the user
     const eventData = Events.collection.findOne({ owner: userEmail });
     const profileData = Profiles.collection.findOne({ email: userEmail });
     if (!eventData) {
       return {
-        ready: sub1.ready(),
+        ready: sub1.ready() && sub2.ready() && sub3.ready(),
         event: {
           date: new Date().toISOString().substring(0, 10), // Convert date to YYYY-MM-DD format
         },
