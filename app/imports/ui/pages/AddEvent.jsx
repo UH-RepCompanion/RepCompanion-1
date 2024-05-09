@@ -14,20 +14,17 @@ import { Profiles } from '../../api/profiles/Profiles';
 import UserEvent from './UserEvent';
 import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 
-/* Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allWorkouts) => new SimpleSchema({
   owner: { type: String, label: 'Owner', optional: true },
-  description: { type: String, label: 'Description', optional: true },
-  date: { type: Date, label: 'Date' },
-  workouts: { type: Array, label: 'Workouts', optional: true },
+  description: { type: String, label: 'Description', optional: false },
+  date: { type: Date, label: 'Date', optional: false },
+  workouts: { type: Array, label: 'Workouts', optional: false },
   'workouts.$': { type: String, allowedValues: allWorkouts },
   maxSize: { type: Number, label: 'Number of People', optional: false },
 });
 
-/* Renders the EditEvent Page: what appears after the user logs in. */
 const AddEvent = () => {
   const submit = (data) => {
-    // Created by chatgpt
     const userEmail = Meteor.user()?.username;
     if (userEmail) {
       const dataWithEmail = { ...data, owner: userEmail, eventId: Meteor.user()?._id };
@@ -48,14 +45,13 @@ const AddEvent = () => {
     const sub2 = Meteor.subscribe(Profiles.userPublicationName);
     const sub3 = Meteor.subscribe(ProfilesEvents.userPublicationName);
     const userEmail = Meteor.user()?.username;
-    // Fetch the event data associated with the user
     const eventData = Events.collection.findOne({ owner: userEmail });
     const profileData = Profiles.collection.findOne({ email: userEmail });
     if (!eventData) {
       return {
         ready: sub1.ready() && sub2.ready() && sub3.ready(),
         event: {
-          date: new Date().toISOString().substring(0, 10), // Convert date to YYYY-MM-DD format
+          date: new Date().toISOString().substring(0, 10),
         },
       };
     }
@@ -66,7 +62,6 @@ const AddEvent = () => {
       profile: profileData,
     };
   }, []);
-  // Create the form schema for uniforms. Need to determine all interests and projects for muliselect list.
   const allWorkouts = Events.allowedWorkouts;
   const formSchema = makeSchema(allWorkouts);
   const bridge = new SimpleSchema2Bridge(formSchema);
