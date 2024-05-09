@@ -123,6 +123,8 @@ body .navbar {
   border: 3px solid #166D3B;
   border-radius: 50%;
   padding: 0px;
+  width: 150px;
+  height: 150px;
 }
 
 .icon {
