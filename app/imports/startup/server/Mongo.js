@@ -7,6 +7,7 @@ import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { Events } from '../../api/events/Events';
 import { Schedules } from '../../api/schedule/Schedules';
 import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
+import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 /** Define a user in the Meteor accounts package. This enables login. Username is the email address. */
 function createUser(email, role) {
   const userID = Accounts.createUser({ username: email, email, password: 'foo' });
@@ -27,9 +28,10 @@ function addProfile({ firstName, lastName, bio, major, interests, tag, picture, 
   ProfilesTags.collection.insert({ profile: email, tag });
   // Make sure interests are defined in the Interests collection if they weren't already.
 }
-function addEvent({ owner, description, workouts, date, createdAt }) {
+function addEvent({ owner, description, workouts, date, createdAt, eventId, participants, maxSize }) {
   console.log(`Defining event ${owner}`);
-  Events.collection.insert({ owner, description, workouts, date, createdAt, maxSize: 4 });
+  Events.collection.insert({ owner, description, workouts, date, createdAt, currentSize: participants.length, maxSize: maxSize, _id: eventId });
+  participants.map(p => ProfilesEvents.collection.insert({ profile: p, eventId: eventId }));
 }
 function addSchedule({ owner, days, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday }) {
   console.log(`Defining schedule ${owner}`);

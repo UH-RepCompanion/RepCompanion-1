@@ -9,6 +9,8 @@ import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
 import ProfileCard from '../components/ProfileCard';
+import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
+import { Events } from '../../api/events/Events';
 
 const ProfileFilter = () => {
 
@@ -25,8 +27,11 @@ const ProfileFilter = () => {
     const sub2 = Meteor.subscribe(ProfilesInterests.userPublicationName);
     const sub3 = Meteor.subscribe(ProfilesTags.userPublicationName);
     const sub4 = Meteor.subscribe(ProfilesSchedules.userPublicationName);
+
+    const sub5 = Meteor.subscribe(ProfilesEvents.userPublicationName);
+    const sub6 = Meteor.subscribe(Events.userPublicationName);
     return {
-      ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready(),
+      ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready() && sub6.ready(),
     };
   }, []);
 

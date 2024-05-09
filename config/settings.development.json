@@ -290,7 +290,9 @@
       ],
       "date": "2024-04-25T09:00:00.000Z",
       "owner": "johnson@hawaii.edu",
-      "eventId": "1"
+      "eventId": "1",
+      "participants": ["henric@hawaii.edu", "sin8@hawaii.edu", "cmoore@hawaii.edu", "achriste@hawaii.edu"],
+      "maxSize": 4
     },
     {
       "description": "I'm excited to lead a core and cardio session aimed at fitness enthusiasts interested in serious scuba diving. We'll tackle intensive HIIT and core exercises that simulate the challenges of underwater activities. Prepare for a dynamic workout that boosts both core strength and cardiovascular health.",
@@ -301,7 +303,9 @@
       ],
       "date": "2024-04-27T07:30:00.000Z",
       "owner": "evanmonk9@gmail.com",
-      "eventId": "2"
+      "eventId": "2",
+      "participants": ["johnson@hawaii.edu", "leighj@hawaii.edu"],
+      "maxSize": 3
     },
     {
       "description": "Hey! I am looking for a buddy for a strength training session that focuses on building muscle and enhancing strength. I want to tackle essential lifts such as squats, deadlifts, and bench presses. If you're up for a challenge and keen to bulk up, let's lift and grow stronger together!",
@@ -312,7 +316,9 @@
       ],
       "date": "2024-02-20T07:30:00.000Z",
       "owner": "a_parayn2@gmail.com",
-      "eventId": "2"
+      "eventId": "3",
+      "participants": ["mcape@hawaii.edu", "sammysmith@hawaii.edu"],
+      "maxSize": 3
     },
     {
       "description": "Hi! I'm in search of a workout partner who is serious about fitness and strength training. My routine includes exercises with the leg press, kettlebells, and the cable machine. If you're eager to build muscle and improve your overall fitness, let's team up and keep each other motivated. Looking forward to crushing our goals together!",
@@ -322,8 +328,10 @@
         "Cable Machine"
       ],
       "date": "2024-06-21T07:30:00.000Z",
+      "eventId": "4",
       "owner": "mcape@hawaii.edu",
-      "eventId": "2"
+      "participants": ["markuswu02@gmail.com", "tessiec@gmail.com", "athlu808@gmail.com", "julietomas12@gmail.com"],
+      "maxSize": 4
     },
     {
       "description": "Hello! I'm on the lookout for a fitness enthusiast to join me for dynamic gym sessions. I focus on a mix of strength and cardio workouts using the weight bench, elliptical machine, and resistance bands. If you're driven and ready to take your fitness to the next level, let's support each other and make every workout count",
@@ -334,7 +342,9 @@
       ],
       "date": "2024-05-26T07:30:00.000Z",
       "owner": "darius01@gmail.com",
-      "eventId": "2"
+      "eventId": "5",
+      "participants": ["victoriam12@gmail.com", "kennynguyen408@gmail.com", "evanmonk9@gmail.com"],
+      "maxSize": 4
     },
     {
       "description": "Hey there! I'm looking for a gym buddy who enjoys varied workouts and pushing their limits. My training involves using the treadmill, medicine balls, and the leg curl machine. If you're passionate about getting fit and want a partner to stay motivated with, let's connect and achieve our fitness goals together",
@@ -345,137 +355,79 @@
       ],
       "date": "2024-05-05T07:30:00.000Z",
       "owner": "kennynguyen408@gmail.com",
-      "eventId": "2"
+      "eventId": "6",
+      "participants": ["kavehesfahni@gmail.com", "tamuras6@hawaii.edu"],
+      "maxSize": 4
     }
   ],
   "defaultSchedules": [
     {
-      "days": ["Monday", "Wednesday", "Friday"],
+      "days": ["Tuesday", "Thursday", "Saturday"],
       "owner": "johnson@hawaii.edu",
-      "Monday": {
+      "Tuesday": {
         "tasks": [
           {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
           },
           {
-            "workout": "Dumbbells",
+            "workout": "Medicine Balls",
             "sets": 3,
-            "reps": 2
+            "reps": 10
           },
           {
-            "workout": "Dumbbells",
+            "workout": "Resistance Bands",
             "sets": 3,
-            "reps": 2
-          },
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
-          },
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
-          },
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
+            "reps": 20
           }
         ]
       },
-      "Wednesday": {
+      "Thursday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 15
+          },
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 10
+          }
+        ]
+      },
+      "Saturday": {
         "time": "1:30",
         "tasks": [
           {
             "workout": "Dumbbells",
             "sets": 3,
-            "reps": 2
+            "reps": 5
           },
           {
-            "workout": "Dumbbells",
+            "workout": "Barbell",
             "sets": 3,
-            "reps": 2
-          },
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
-          }
-        ]
-      },
-      "Friday": {
-        "time": "1:30",
-        "tasks": [
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
-          },
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
-          },
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
-          },
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
-          },
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
-          },
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
+            "reps": 12
           }
         ]
       }
     },
     {
       "days": ["Monday", "Wednesday", "Friday"],
-      "owner": "johnson@hawaii.edu",
+      "owner": "henric@hawaii.edu",
       "Monday": {
         "tasks": [
           {
-            "workout": "Dumbbells",
+            "workout": "Barbell",
             "sets": 3,
-            "reps": 2
+            "reps": 12
           },
           {
-            "workout": "Dumbbells",
+            "workout": "Leg Press",
             "sets": 3,
-            "reps": 2
-          },
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
-          },
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
-          },
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
-          },
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
+            "reps": 15
           }
         ]
       },
@@ -483,19 +435,14 @@
         "time": "1:30",
         "tasks": [
           {
-            "workout": "Dumbbells",
+            "workout": "Medicine Balls",
             "sets": 3,
-            "reps": 2
+            "reps": 8
           },
           {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
-          },
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
           }
         ]
       },
@@ -505,35 +452,895 @@
           {
             "workout": "Dumbbells",
             "sets": 3,
-            "reps": 2
+            "reps": 4
           },
           {
-            "workout": "Dumbbells",
+            "workout": "Resistance Bands",
             "sets": 3,
-            "reps": 2
-          },
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
-          },
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
-          },
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
-          },
-          {
-            "workout": "Dumbbells",
-            "sets": 3,
-            "reps": 2
+            "reps": 20
           }
         ]
       }
-    }],
+    },
+    {
+      "days": ["Tuesday", "Thursday", "Sunday"],
+      "owner": "cmoore@hawaii.edu",
+      "Tuesday": {
+        "tasks": [
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 18
+          },
+          {
+            "workout": "Medicine Balls",
+            "sets": 3,
+            "reps": 10
+          }
+        ]
+      },
+      "Thursday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 8
+          },
+          {
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
+          }
+        ]
+      },
+      "Sunday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 6
+          },
+          {
+            "workout": "Resistance Bands",
+            "sets": 3,
+            "reps": 25
+          }
+        ]
+      }
+    },
+    {
+      "days": ["Monday", "Friday", "Sunday"],
+      "owner": "leighj@hawaii.edu",
+      "Monday": {
+        "tasks": [
+          {
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 5
+          }
+        ]
+      },
+      "Friday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 20
+          },
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 10
+          }
+        ]
+      },
+      "Sunday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Medicine Balls",
+            "sets": 3,
+            "reps": 12
+          },
+          {
+            "workout": "Resistance Bands",
+            "sets": 3,
+            "reps": 18
+          }
+        ]
+      }
+    },
+    {
+      "days": ["Wednesday", "Friday", "Saturday"],
+      "owner": "sin8@hawaii.edu",
+      "Wednesday": {
+        "tasks": [
+          {
+            "workout": "Resistance Bands",
+            "sets": 3,
+            "reps": 15
+          },
+          {
+            "workout": "Medicine Balls",
+            "sets": 3,
+            "reps": 8
+          }
+        ]
+      },
+      "Friday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 12
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 5
+          }
+        ]
+      },
+      "Saturday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 18
+          },
+          {
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
+          }
+        ]
+      }
+    },
+    {
+      "days": ["Tuesday", "Thursday", "Saturday"],
+      "owner": "samdoan1@hawaii.edu",
+      "Tuesday": {
+        "tasks": [
+          {
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
+          },
+          {
+            "workout": "Medicine Balls",
+            "sets": 3,
+            "reps": 10
+          },
+          {
+            "workout": "Resistance Bands",
+            "sets": 3,
+            "reps": 20
+          }
+        ]
+      },
+      "Thursday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 15
+          },
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 10
+          }
+        ]
+      },
+      "Saturday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 5
+          },
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 12
+          }
+        ]
+      }
+    },
+    {
+      "days": ["Monday", "Wednesday", "Friday"],
+      "owner": "mcape@hawaii.edu",
+      "Monday": {
+        "tasks": [
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 12
+          },
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 15
+          }
+        ]
+      },
+      "Wednesday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Medicine Balls",
+            "sets": 3,
+            "reps": 8
+          },
+          {
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
+          }
+        ]
+      },
+      "Friday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 4
+          },
+          {
+            "workout": "Resistance Bands",
+            "sets": 3,
+            "reps": 20
+          }
+        ]
+      }
+    },
+    {
+      "days": ["Tuesday", "Thursday", "Sunday"],
+      "owner": "darius01@gmail.com",
+      "Tuesday": {
+        "tasks": [
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 18
+          },
+          {
+            "workout": "Medicine Balls",
+            "sets": 3,
+            "reps": 10
+          }
+        ]
+      },
+      "Thursday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 8
+          },
+          {
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
+          }
+        ]
+      },
+      "Sunday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 6
+          },
+          {
+            "workout": "Resistance Bands",
+            "sets": 3,
+            "reps": 25
+          }
+        ]
+      }
+    },
+    {
+      "days": ["Monday", "Friday", "Sunday"],
+      "owner": "cashb15@gmail.com",
+      "Monday": {
+        "tasks": [
+          {
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 5
+          }
+        ]
+      },
+      "Friday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 20
+          },
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 10
+          }
+        ]
+      },
+      "Sunday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Medicine Balls",
+            "sets": 3,
+            "reps": 12
+          },
+          {
+            "workout": "Resistance Bands",
+            "sets": 3,
+            "reps": 18
+          }
+        ]
+      }
+    },
+    {
+      "days": ["Wednesday", "Friday", "Saturday"],
+      "owner": "tamuras6@hawaii.edu",
+      "Wednesday": {
+        "tasks": [
+          {
+            "workout": "Resistance Bands",
+            "sets": 3,
+            "reps": 15
+          },
+          {
+            "workout": "Medicine Balls",
+            "sets": 3,
+            "reps": 8
+          }
+        ]
+      },
+      "Friday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 12
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 5
+          }
+        ]
+      },
+      "Saturday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 18
+          },
+          {
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
+          }
+        ]
+      }
+    },
+    {
+      "days": ["Tuesday", "Thursday", "Saturday"],
+      "owner": "kavehesfahni@gmail.com",
+      "Tuesday": {
+        "tasks": [
+          {
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
+          },
+          {
+            "workout": "Medicine Balls",
+            "sets": 3,
+            "reps": 10
+          },
+          {
+            "workout": "Resistance Bands",
+            "sets": 3,
+            "reps": 20
+          }
+        ]
+      },
+      "Thursday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 15
+          },
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 10
+          }
+        ]
+      },
+      "Saturday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 5
+          },
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 12
+          }
+        ]
+      }
+    },
+    {
+      "days": ["Monday", "Wednesday", "Friday"],
+      "owner": "athlu808@gmail.com",
+      "Monday": {
+        "tasks": [
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 12
+          },
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 15
+          }
+        ]
+      },
+      "Wednesday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Medicine Balls",
+            "sets": 3,
+            "reps": 8
+          },
+          {
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
+          }
+        ]
+      },
+      "Friday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 4
+          },
+          {
+            "workout": "Resistance Bands",
+            "sets": 3,
+            "reps": 20
+          }
+        ]
+      }
+    },
+    {
+      "days": ["Tuesday", "Thursday", "Sunday"],
+      "owner": "sammysmith@hawaii.edu",
+      "Tuesday": {
+        "tasks": [
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 18
+          },
+          {
+            "workout": "Medicine Balls",
+            "sets": 3,
+            "reps": 10
+          }
+        ]
+      },
+      "Thursday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 8
+          },
+          {
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
+          }
+        ]
+      },
+      "Sunday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 6
+          },
+          {
+            "workout": "Resistance Bands",
+            "sets": 3,
+            "reps": 25
+          }
+        ]
+      }
+    },
+    {
+      "days": ["Monday", "Friday", "Sunday"],
+      "owner": "a_parayn2@gmail.com",
+      "Monday": {
+        "tasks": [
+          {
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 5
+          }
+        ]
+      },
+      "Friday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 20
+          },
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 10
+          }
+        ]
+      },
+      "Sunday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Medicine Balls",
+            "sets": 3,
+            "reps": 12
+          },
+          {
+            "workout": "Resistance Bands",
+            "sets": 3,
+            "reps": 18
+          }
+        ]
+      }
+    },
+    {
+      "days": ["Wednesday", "Friday", "Saturday"],
+      "owner": "markuswu02@gmail.com",
+      "Wednesday": {
+        "tasks": [
+          {
+            "workout": "Resistance Bands",
+            "sets": 3,
+            "reps": 15
+          },
+          {
+            "workout": "Medicine Balls",
+            "sets": 3,
+            "reps": 8
+          }
+        ]
+      },
+      "Friday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 12
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 5
+          }
+        ]
+      },
+      "Saturday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 18
+          },
+          {
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
+          }
+        ]
+      }
+    },
+    {
+      "days": ["Tuesday", "Thursday", "Saturday"],
+      "owner": "tessiec@gmail.com",
+      "Tuesday": {
+        "tasks": [
+          {
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
+          },
+          {
+            "workout": "Medicine Balls",
+            "sets": 3,
+            "reps": 10
+          },
+          {
+            "workout": "Resistance Bands",
+            "sets": 3,
+            "reps": 20
+          }
+        ]
+      },
+      "Thursday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 15
+          },
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 10
+          }
+        ]
+      },
+      "Saturday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 5
+          },
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 12
+          }
+        ]
+      }
+    },
+    {
+      "days": ["Monday", "Wednesday", "Friday"],
+      "owner": "julietomas12@gmail.com",
+      "Monday": {
+        "tasks": [
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 12
+          },
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 15
+          }
+        ]
+      },
+      "Wednesday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Medicine Balls",
+            "sets": 3,
+            "reps": 8
+          },
+          {
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
+          }
+        ]
+      },
+      "Friday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 4
+          },
+          {
+            "workout": "Resistance Bands",
+            "sets": 3,
+            "reps": 20
+          }
+        ]
+      }
+    },
+    {
+      "days": ["Tuesday", "Thursday", "Sunday"],
+      "owner": "evanmonk9@gmail.com",
+      "Tuesday": {
+        "tasks": [
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 18
+          },
+          {
+            "workout": "Medicine Balls",
+            "sets": 3,
+            "reps": 10
+          }
+        ]
+      },
+      "Thursday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 8
+          },
+          {
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
+          }
+        ]
+      },
+      "Sunday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 6
+          },
+          {
+            "workout": "Resistance Bands",
+            "sets": 3,
+            "reps": 25
+          }
+        ]
+      }
+    },
+    {
+      "days": ["Monday", "Friday", "Sunday"],
+      "owner": "victoriam12@gmail.com",
+      "Monday": {
+        "tasks": [
+          {
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 5
+          }
+        ]
+      },
+      "Friday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 20
+          },
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 10
+          }
+        ]
+      },
+      "Sunday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Medicine Balls",
+            "sets": 3,
+            "reps": 12
+          },
+          {
+            "workout": "Resistance Bands",
+            "sets": 3,
+            "reps": 18
+          }
+        ]
+      }
+    },
+    {
+      "days": ["Wednesday", "Friday", "Saturday"],
+      "owner": "kennynguyen408@gmail.com",
+      "Wednesday": {
+        "tasks": [
+          {
+            "workout": "Resistance Bands",
+            "sets": 3,
+            "reps": 15
+          },
+          {
+            "workout": "Medicine Balls",
+            "sets": 3,
+            "reps": 8
+          }
+        ]
+      },
+      "Friday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Barbell",
+            "sets": 3,
+            "reps": 12
+          },
+          {
+            "workout": "Dumbbells",
+            "sets": 3,
+            "reps": 5
+          }
+        ]
+      },
+      "Saturday": {
+        "time": "1:30",
+        "tasks": [
+          {
+            "workout": "Leg Press",
+            "sets": 3,
+            "reps": 18
+          },
+          {
+            "workout": "Stair Climber",
+            "sets": 1,
+            "reps": 1
+          }
+        ]
+      }
+    }
+  ],
   "loadAssetsFile":  false
 }
