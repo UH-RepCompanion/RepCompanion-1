@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
@@ -8,8 +8,9 @@ import { Events } from '../../api/events/Events';
 import EventCard from '../components/EventCard';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
-/* Renders the Profile Collection as a set of Cards. */
+
 const EventsPage = () => {
+  const [showParticipating, setShowParticipating] = useState(false);
   const { ready, participant, profiles, events } = useTracker(() => {
     const sub = Meteor.subscribe(Events.userPublicationName);
     const sub2 = Meteor.subscribe(Profiles.userPublicationName);
@@ -26,10 +27,24 @@ const EventsPage = () => {
 
     };
   }, []);
+
+  const toggleEventSet = () => {
+    setShowParticipating(!showParticipating);
+  };
+
+  const displayedEvents = showParticipating ? participant.map(p => events.find(e => e._id === p.eventId)) : events;
+
   return ready ? (
     <Container id="event-page" style={pageStyle}>
+      <Row className="py-3">
+        <Col xs={2}>
+          <Button onClick={toggleEventSet}>
+            {showParticipating ? 'Show All Events' : 'Show Joined Events'}
+          </Button>
+        </Col>
+      </Row>
       <Row xs={1} md={2} lg={3} className="g-2">
-        {events.map((event, index) => {
+        {displayedEvents.map((event, index) => {
           const isParticipant = participant.some(p => p.eventId === event._id);
           const participantsProfiles = ProfilesEvents.collection.find({ eventId: event._id }).fetch();
           return <EventCard key={event._id} event={event} profile={profiles[index]} isParticipant={isParticipant} participantsProfiles={participantsProfiles} />;
