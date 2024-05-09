@@ -1,8 +1,8 @@
 import { Selector } from 'testcafe';
 
-class UserEventPage {
+class SchedulePage {
   constructor() {
-    this.pageId = '#event-page';
+    this.pageId = '#schedule-page';
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -10,11 +10,6 @@ class UserEventPage {
   async isDisplayed(testController) {
     await testController.expect(this.pageSelector.exists).ok();
   }
-
-  async joinEvent(testController) {
-    await testController.click('#join-button');
-    await testController.click('button.swal-button.swal-button--confirm');
-  }
 }
 
-export const userEventPage = new UserEventPage();
+export const schedulePage = new SchedulePage();

@@ -73,7 +73,7 @@ const AddEvent = () => {
 
   if (ready) {
     return !event._id ? (
-      <Container className="d-flex flex-column justify-content-center align-items-center infofooter">
+      <Container id="add-event-page" className="d-flex flex-column justify-content-center align-items-center infofooter">
         <Container id="add-event-page" className="justify-content-center" style={pageStyle}>
           <Col>
             <Col className="justify-content-center text-center"><h2 style={{ color: 'white' }}>Your Event</h2></Col>

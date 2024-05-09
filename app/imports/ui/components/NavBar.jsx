@@ -52,7 +52,7 @@ const NavBar = () => {
                   {' '}
                   Profile
                 </NavDropdown.Item>
-                <NavDropdown.Item as={NavLink} to="/userSchedule">
+                <NavDropdown.Item id="navbar-schedule" as={NavLink} to="/userSchedule">
                   <Calendar />
                   {' '}
                   Schedule

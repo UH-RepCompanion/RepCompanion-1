@@ -26,7 +26,7 @@ const UserSchedule = () => {
     };
   }, []);
   return ready ? (
-    <Container id="profile-page" className="d-flex flex-column justify-content-center align-items-center infofooter" style={pageStyle}>
+    <Container id="schedule-page" className="d-flex flex-column justify-content-center align-items-center infofooter" style={pageStyle}>
       <Row>
         <Col><UserScheduleCard scheduleData={schedule} profile={profile} /></Col>
         <Col><AddToSchedule owner={email} /></Col>

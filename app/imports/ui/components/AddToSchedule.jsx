@@ -46,7 +46,7 @@ const AddToSchedule = ({ owner }) => {
   };
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   return (
-    <Container className="py-3">
+    <Container id="add-schedule-form" className="py-3">
       <Row className="justify-content-center">
         <Col xs={12} md={10}>
           <Card>
@@ -55,21 +55,21 @@ const AddToSchedule = ({ owner }) => {
               <AutoForm schema={bridge} onSubmit={data => submit(data)}>
                 <Row>
                   <Col xs={12} sm={6} md={4}>
-                    <SelectField name="day" placeholder="Select Day" showInlineError />
+                    <SelectField id="day-form" name="day" placeholder="Select Day" showInlineError />
                   </Col>
                   <Col xs={12} sm={6} md={4}>
-                    <TextField name="workout" placeholder="Workout" />
+                    <TextField id="workout-form" name="workout" placeholder="Workout" />
                   </Col>
                   <Col xs={6} sm={3} md={2}>
-                    <TextField name="sets" placeholder="Sets" />
+                    <TextField id="sets-form" name="sets" placeholder="Sets" />
                   </Col>
                   <Col xs={6} sm={3} md={2}>
-                    <TextField name="reps" placeholder="Reps" />
+                    <TextField id="reps-form" name="reps" placeholder="Reps" />
                   </Col>
                 </Row>
                 <Row>
                   <Col xs={12}>
-                    <SubmitField value="Submit" />
+                    <SubmitField id="submit-button" value="Submit" />
                     <ErrorsField />
                     <HiddenField name="owner" value={owner} />
                   </Col>

@@ -20,9 +20,10 @@ class UserAddEventPage {
   }
 
   /** Signs up a new user, then checks to see that they are logged in by checking the navbar. */
-  async addEvent(testController, description, workout) {
+  async addEvent(testController, description, workout, maxSize) {
     await testController.typeText('#event-form-description', description);
     await this.selectWorkout(testController, workout);
+    await testController.typeText('#event-form-size', maxSize);
     await testController.click('#add-button input.btn.btn-primary');
     await testController.click('button.swal-button.swal-button--confirm');
   }
