@@ -32,7 +32,6 @@ class EditProfilePage {
     await testController.typeText('#edit-form-bio', bio);
     await testController.typeText('#edit-form-major', major);
     await this.selectInterests(testController, interests);
-    await this.selectTag(testController, tag);
     await testController.typeText('#edit-form-picture-link', picture);
     await testController.click('#edit-form-update input.btn.btn-primary');
     await testController.click('button.swal-button.swal-button--confirm');

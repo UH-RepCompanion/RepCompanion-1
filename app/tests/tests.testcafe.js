@@ -9,6 +9,8 @@ import { profileUserPage } from './profile.page';
 import { userAddEventPage } from './add.event.page';
 import { userAboutPage } from './about.page';
 import { userEventPage } from './event.page';
+import { schedulePage } from './schedule.page';
+import { addScheduleForm } from './add.schedule.form';
 
 /* global fixture:false, test:false */
 
@@ -20,7 +22,7 @@ const credentialsOne = {
   lastName: 'Test',
   bio: 'test test test',
   major: 'Computer Science',
-  interests: 'Cardio',
+  interests: 'Yoga',
   tag: 'Newbie',
   picture: 'test',
 };
@@ -40,6 +42,14 @@ const credentialsTwo = {
 const credentialsEvent = {
   description: 'flat bench, inclined bench, chest flies, triceps',
   workout: 'Barbell',
+  maxSize: '3',
+};
+
+const credentialsSchedule = {
+  day: 'Sunday',
+  workout: 'flat-bench',
+  sets: '5',
+  reps: '10',
 };
 
 fixture('uh-repcompanion localhost test with default db')
@@ -48,7 +58,7 @@ fixture('uh-repcompanion localhost test with default db')
 test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
 });
-test.skip('Test that a new account can be registered', async (testController) => {
+test('Test that a new account can be registered', async (testController) => {
   await navBar.gotoSignUpPage(testController);
   await signupPage.signupUser(testController, credentialsTwo.username, credentialsTwo.password);
   await navBar.isLoggedIn(testController, credentialsTwo.username);
@@ -58,7 +68,7 @@ test.skip('Test that a new account can be registered', async (testController) =>
   await signoutPage.isDisplayed(testController);
 });
 
-test.skip('Test editing an existing profile', async (testController) => {
+test('Test editing an existing profile', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
   await navBar.gotoProfilePage(testController);
@@ -74,14 +84,15 @@ test('Test that the event list page will show', async (testController) => {
   await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
   await navBar.gotoListEventPage(testController);
   await userEventPage.isDisplayed(testController);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
 });
 
-test.skip('Test that an event can be added', async (testController) => {
+test('Test that an event can be added', async (testController) => {
   await navBar.gotoSignInPage(testController);
-  await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
+  await signinPage.signin(testController, credentialsTwo.username, credentialsTwo.password);
   await navBar.gotoAddEventPage(testController);
-  await userAddEventPage.addEvent(testController, credentialsEvent.description, credentialsEvent.workout);
-  await navBar.isLoggedIn(testController, credentialsOne.username);
+  await userAddEventPage.addEvent(testController, credentialsEvent.description, credentialsEvent.workout, credentialsEvent.maxSize);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
@@ -99,9 +110,36 @@ test('Test that the finder page shows up', async (testController) => {
   await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
   await navBar.gotoFinderPage(testController);
   await finderPage.isDisplayed(testController);
+  await navBar.isLoggedIn(testController, credentialsOne.username);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
 });
 
 test('Test that the About page shows up', async (testController) => {
   await navBar.gotoAboutPage(testController);
   await userAboutPage.isDisplayed(testController);
+});
+
+test('Test that the schedule page shows up', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
+  await navBar.gotoSchedulePage(testController);
+  await schedulePage.isDisplayed(testController);
+});
+
+test('Test that you can add an event to the schedule page', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
+  await navBar.gotoSchedulePage(testController);
+  await schedulePage.isDisplayed(testController);
+  await addScheduleForm.isDisplayed(testController);
+  await addScheduleForm.addSchedule(testController, credentialsSchedule.day, credentialsSchedule.workout, credentialsSchedule.sets, credentialsSchedule.reps);
+});
+
+test('Test that you can join an existing event', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
+  await navBar.gotoListEventPage(testController);
+  await userEventPage.isDisplayed(testController);
+  await userEventPage.joinEvent(testController);
 });

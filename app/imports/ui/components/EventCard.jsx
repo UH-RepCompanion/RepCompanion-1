@@ -40,7 +40,7 @@ const EventCard = ({ event, profile, isParticipant, participantsProfiles }) => (
             <Col sx={3}><h5>Circuit <Image style={{ width: '35px', height: '40px' }} src="./images/circuit-workout.png" /></h5></Col>
             <Col sx={9} className="justify-content-end d-flex">
               {(event.owner !== Meteor.user()?.username) ? (
-                <Button onClick={() => joinEvent(isParticipant, event)} variant={isParticipant ? 'danger' : 'info'} style={{ color: 'white', width: '75px', height: '40px' }}>
+                <Button id="join-button" onClick={() => joinEvent(isParticipant, event)} variant={isParticipant ? 'danger' : 'info'} style={{ color: 'white', width: '75px', height: '40px' }}>
                   {isParticipant ? 'Unjoin' : 'Join'}
                 </Button>
               ) : (<div />)}

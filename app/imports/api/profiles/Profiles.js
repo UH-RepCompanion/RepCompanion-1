@@ -59,6 +59,7 @@ class ProfilesCollection {
       tag: {
         type: String,
         allowedValues: this.allowedTags,
+        defaultValue: 'Newbie', // Default tag value
       },
     });
     // Ensure collection documents obey schema.
