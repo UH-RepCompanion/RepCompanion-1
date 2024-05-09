@@ -90,7 +90,7 @@ const EditProfile = () => {
                 <Col xs={6}><TextField id="edit-form-picture-link" name="picture" showInlineError placeholder="URL to picture" /></Col>
               </Row>
               <Row>
-                <Col xs={6}><SelectField name="interests" checkboxes showInlineError /></Col>
+                <Col xs={6}><SelectField name="interests" multiple showInlineError /></Col>
                 <Col xs={6}><SelectField id="edit-form-tags" name="tag" checkboxes showInlineError /></Col>
               </Row>
               <Row>
