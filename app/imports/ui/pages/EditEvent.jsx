@@ -13,51 +13,43 @@ import { pageStyle } from './pageStyles';
 import { ComponentIDs, PageIDs } from '../utilities/ids';
 import { Events } from '../../api/events/Events';
 
-/* Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allWorkouts) => new SimpleSchema({
   owner: { type: String, label: 'Owner', optional: true },
-  description: { type: String, label: 'Description', optional: true },
-  date: { type: Date, label: 'Date' },
-  workouts: { type: Array, label: 'Workouts', optional: true },
+  description: { type: String, label: 'Description', optional: false },
+  date: { type: Date, label: 'Date', optional: false },
+  workouts: { type: Array, label: 'Workouts', optional: false },
   'workouts.$': { type: String, allowedValues: allWorkouts },
   maxSize: { type: Number, label: 'Number of People', optional: false },
 });
 
-/* Renders the EditEvent Page: what appears after the user logs in. */
 const EditEvent = () => {
 
-  /* On submit, insert the data. */
   const submit = (data) => {
-    // Created by chatgpt
     const userEmail = Meteor.user()?.username;
 
-    // Append the email to the data object. Ensure userEmail is not undefined.
     if (userEmail) {
       const dataWithEmail = { ...data, owner: userEmail };
       Meteor.call(updateEventMethod, dataWithEmail, (error) => {
         if (error) {
           swal('Error', error.message, 'error');
         } else {
-          swal('Success', 'Profile updated successfully', 'success');
+          swal('Success', 'Event updated successfully', 'success');
         }
       });
     } else {
-      // Handle the case where the email is somehow still undefined
       swal('Error', 'Email is undefined.', 'error');
     }
   };
   const { ready, event } = useTracker(() => {
-    // Ensure that minimongo is populated with all collections prior to running render().
     const sub1 = Meteor.subscribe(Events.userPublicationName);
     const userEmail = Meteor.user()?.username;
 
-    // Fetch the event data associated with the user
     const eventData = Events.collection.findOne({ owner: userEmail });
     if (!eventData) {
       return {
         ready: sub1.ready(),
         event: {
-          date: new Date().toISOString().substring(0, 10), // Convert date to YYYY-MM-DD format
+          date: new Date().toISOString().substring(0, 10),
         },
       };
     }
@@ -68,13 +60,10 @@ const EditEvent = () => {
     };
 
   }, []);
-  // Create the form schema for uniforms. Need to determine all interests and projects for muliselect list.
   const allWorkouts = Events.allowedWorkouts;
   const formSchema = makeSchema(allWorkouts);
   const bridge = new SimpleSchema2Bridge(formSchema);
-  // Now create the model with all the user information.
   const model = _.extend({}, event);
-  // eslint-disable-next-line no-nested-ternary
   return ready ? (
     <Container id={PageIDs.homePage} className="justify-content-center" style={pageStyle}>
       <Col>
