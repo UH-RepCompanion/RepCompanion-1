@@ -37,6 +37,7 @@ const ProfileCard = ({ profile }) => {
               style={{
                 borderRadius: '50%',
                 border: `3px solid ${borderColor}`, // Apply dynamic border color
+                objectFit: 'cover',
               }}
               roundedCircle
             />
