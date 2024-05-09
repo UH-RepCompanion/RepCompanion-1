@@ -181,7 +181,7 @@
     {
       "firstName": "Anthony",
       "lastName": "Lu",
-      "bio": "Born on Oahu and I have competed in a few powerlifting competitions. On my free time I like to experiment with food in my kitchen.",
+      "bio": "Born on Oahu and I have competed in a few power lifting competitions. On my free time I like to experiment with food in my kitchen.",
       "major": "Business",
       "interests": [
         "Strength Training",
@@ -239,7 +239,7 @@
         "Cardio",
         "Yoga"
       ],
-      "tag": "Beginner",
+      "tag": "Newbie",
       "picture": "https://github.com/philipmjohnson.png",
       "email": "tessiec@gmail.com"
     },
@@ -251,7 +251,7 @@
       "interests": [
         "Cardio",
         "Core Training",
-        "Strength"
+        "Strength Training"
       ],
       "tag": "Intermediate",
       "picture": "https://github.com/philipmjohnson.png",
@@ -265,7 +265,7 @@
       "interests": [
         "Cardio",
         "Core Training",
-        "Strength"
+        "Strength Training"
       ],
       "tag": "Intermediate",
       "picture": "https://github.com/philipmjohnson.png",
