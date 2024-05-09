@@ -28,9 +28,7 @@ Meteor.publish(Notes.adminPublicationName, function () {
   }
   return this.ready();
 });
-/** Define a publication to publish all interests. */
 
-/** Define a publication to publish all profiles. */
 Meteor.publish(Profiles.userPublicationName, () => Profiles.collection.find());
 
 /** Define a publication to publish this collection. */
