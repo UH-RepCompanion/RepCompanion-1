@@ -30,7 +30,7 @@ const makeSchema = (allInterests, allTags) => new SimpleSchema({
   socialLink6: { type: String, regEx: /^https:\/\/?twitter\.com\//, label: 'Twitter', optional: true },
   interests: { type: Array, label: 'Interests', optional: false },
   'interests.$': { type: String, allowedValues: allInterests },
-  tag: { type: String, allowedValues: allTags, label: 'Tags', optional: false },
+  tag: { type: String, allowedValues: allTags, defaultValue: 'Newbie', label: 'Tags', optional: false },
 });
 
 const EditProfile = () => {

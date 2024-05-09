@@ -58,7 +58,7 @@ fixture('uh-repcompanion localhost test with default db')
 test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
 });
-test.skip('Test that a new account can be registered', async (testController) => {
+test('Test that a new account can be registered', async (testController) => {
   await navBar.gotoSignUpPage(testController);
   await signupPage.signupUser(testController, credentialsTwo.username, credentialsTwo.password);
   await navBar.isLoggedIn(testController, credentialsTwo.username);
@@ -68,7 +68,7 @@ test.skip('Test that a new account can be registered', async (testController) =>
   await signoutPage.isDisplayed(testController);
 });
 
-test.only('Test editing an existing profile', async (testController) => {
+test('Test editing an existing profile', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
   await navBar.gotoProfilePage(testController);
@@ -84,14 +84,15 @@ test('Test that the event list page will show', async (testController) => {
   await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
   await navBar.gotoListEventPage(testController);
   await userEventPage.isDisplayed(testController);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
 });
 
 test('Test that an event can be added', async (testController) => {
   await navBar.gotoSignInPage(testController);
-  await signinPage.signin(testController, credentialsOne.username, credentialsOne.password);
+  await signinPage.signin(testController, credentialsTwo.username, credentialsTwo.password);
   await navBar.gotoAddEventPage(testController);
   await userAddEventPage.addEvent(testController, credentialsEvent.description, credentialsEvent.workout, credentialsEvent.maxSize);
-  await navBar.isLoggedIn(testController, credentialsOne.username);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
