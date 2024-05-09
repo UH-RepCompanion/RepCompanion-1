@@ -97,7 +97,11 @@ const OtherUserEventCard = ({ event, profile, isParticipant }) => {
                           alt="Profile"
                           width={60}
                           height={60}
-                          style={{ borderRadius: '50%' }}
+                          style={{
+                            borderRadius: '50%',
+                            border: '3px solid', // Apply dynamic border color
+                            objectFit: 'cover',
+                          }}
                           roundedCircle
                         />
                         </div>
@@ -121,7 +125,11 @@ const OtherUserEventCard = ({ event, profile, isParticipant }) => {
                               alt="Profile"
                               width={50}
                               height={50}
-                              style={{ borderRadius: '50%' }}
+                              style={{
+                                borderRadius: '50%',
+                                border: '3px solid', // Apply dynamic border color
+                                objectFit: 'cover',
+                              }}
                               roundedCircle
                             />
                             </div>

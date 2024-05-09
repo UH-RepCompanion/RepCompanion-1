@@ -1,6 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-import { Roles } from 'meteor/alanning:roles';
-import { Notes } from '../../api/note/Notes';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
@@ -10,24 +8,6 @@ import { ProfilesSchedules } from '../../api/profiles/ProfilesSchedules';
 import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 
 // User-level publication.
-// If logged in, then publish documents owned by this user. Otherwise, publish nothing.
-
-Meteor.publish(Notes.userPublicationName, function () {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Notes.collection.find({ owner: username });
-  }
-  return this.ready();
-});
-
-// Admin-level publication.
-// If logged in and with admin role, then publish all documents from all users. Otherwise, publish nothing.
-Meteor.publish(Notes.adminPublicationName, function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Notes.collection.find();
-  }
-  return this.ready();
-});
 
 Meteor.publish(Profiles.userPublicationName, () => Profiles.collection.find());
 
