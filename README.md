@@ -1,3 +1,3 @@
-[![ci-meteor-application-template-react](https://github.com/ics-software-engineering/meteor-application-template-react/actions/workflows/ci.yml/badge.svg)](https://github.com/ics-software-engineering/meteor-application-template-react/actions/workflows/ci.yml)
+[![ci-uh-repcompanion](https://github.com/UH-RepCompanion/RepCompanion-1/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/UH-RepCompanion/RepCompanion-1/actions/workflows/ci.yml)
 
 For details, please see https://uh-repcompanion.github.io/
