@@ -27,7 +27,6 @@ import UserEvent from '../pages/UserEvent';
 import UserSchedule from '../pages/UserSchedule';
 import ViewUserProfile from '../pages/ViewOtherProfilePage';
 
-/** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
   const { ready } = useTracker(() => {
     const rdy = Roles.subscription.ready();

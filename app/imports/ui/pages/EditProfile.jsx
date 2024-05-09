@@ -15,13 +15,12 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
 import { ProfilesTags } from '../../api/profiles/ProfilesTags';
 
-/* Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allInterests, allTags) => new SimpleSchema({
   email: { type: String, label: 'Email', optional: true },
-  firstName: { type: String, label: 'First', optional: true },
-  lastName: { type: String, label: 'Last', optional: true },
-  bio: { type: String, label: 'Biographical statement', optional: true },
-  major: { type: String, label: 'Major', optional: true },
+  firstName: { type: String, label: 'First', optional: false },
+  lastName: { type: String, label: 'Last', optional: false },
+  bio: { type: String, label: 'Biographical statement', optional: false },
+  major: { type: String, label: 'Major', optional: false },
   picture: { type: String, label: 'Picture URL', optional: true },
   socialLink1: { type: String, regEx: /^https:\/\/(www\.)?instagram\.com\//, label: 'Instagram', optional: true },
   socialLink2: { type: String, regEx: /^https:\/\/(www\.)?discord\.com\//, label: 'Discord', optional: true },
@@ -29,20 +28,16 @@ const makeSchema = (allInterests, allTags) => new SimpleSchema({
   socialLink4: { type: String, regEx: /^https:\/\/(www\.)?snapchat\.com\/add\//, label: 'Snapchat', optional: true },
   socialLink5: { type: String, regEx: /^https:\/\/(www\.)?facebook\.com\//, label: 'Facebook', optional: true },
   socialLink6: { type: String, regEx: /^https:\/\/?twitter\.com\//, label: 'Twitter', optional: true },
-  interests: { type: Array, label: 'Interests', optional: true },
+  interests: { type: Array, label: 'Interests', optional: false },
   'interests.$': { type: String, allowedValues: allInterests },
-  tag: { type: String, allowedValues: allTags, label: 'Tags' },
+  tag: { type: String, allowedValues: allTags, label: 'Tags', optional: false },
 });
 
-/* Renders the EditProfile Page: what appears after the user logs in. */
 const EditProfile = () => {
   const [redirect, setRedirect] = useState(false);
-  /* On submit, insert the data. */
   const submit = (data) => {
-    // Created by chatgpt
     const userEmail = Meteor.user()?.username;
 
-    // Append the email to the data object. Ensure userEmail is not undefined.
     if (userEmail) {
       const dataWithEmail = { ...data, email: userEmail };
       Meteor.call(updateProfileMethod, dataWithEmail, (error) => {
@@ -54,12 +49,10 @@ const EditProfile = () => {
         }
       });
     } else {
-      // Handle the case where the email is somehow still undefined
       swal('Error', 'Email is undefined.', 'error');
     }
   };
   const { ready, email } = useTracker(() => {
-    // Ensure that minimongo is populated with all collections prior to running render().
     const sub1 = Meteor.subscribe(Profiles.userPublicationName);
     const sub2 = Meteor.subscribe(ProfilesInterests.userPublicationName);
     const sub3 = Meteor.subscribe(ProfilesTags.userPublicationName);
@@ -68,12 +61,10 @@ const EditProfile = () => {
       email: Meteor.user()?.username,
     };
   }, []);
-  // Create the form schema for uniforms. Need to determine all interests and projects for muliselect list.
   const allInterests = Profiles.allowedInterests;
   const allTags = Profiles.allowedTags;
   const formSchema = makeSchema(allInterests, allTags);
   const bridge = new SimpleSchema2Bridge(formSchema);
-  // Now create the model with all the user information.
   const tags = _.pluck(ProfilesTags.collection.find({ profile: email }).fetch(), 'tag');
   const interests = _.pluck(ProfilesInterests.collection.find({ profile: email }).fetch(), 'interest');
   const profile = Profiles.collection.findOne({ email });
@@ -99,7 +90,7 @@ const EditProfile = () => {
                 <Col xs={6}><TextField id="edit-form-picture-link" name="picture" showInlineError placeholder="URL to picture" /></Col>
               </Row>
               <Row>
-                <Col xs={6}><SelectField id="interest-checkboxes" name="interests" checkboxes showInlineError /></Col>
+                <Col xs={6}><SelectField name="interests" multiple showInlineError /></Col>
                 <Col xs={6}><SelectField id="edit-form-tags" name="tag" checkboxes showInlineError /></Col>
               </Row>
               <Row>

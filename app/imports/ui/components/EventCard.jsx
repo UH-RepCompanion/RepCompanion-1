@@ -10,7 +10,6 @@ import { Profiles } from '../../api/profiles/Profiles';
 
 const joinEvent = (isParticipant, event) => {
   const data = { owner: event.owner, currentSize: event.currentSize, profile: Meteor.user()?.username, eventId: event._id };
-  // Append the email to the data object. Ensure userEmail is not undefined.
   if (!isParticipant && (event.currentSize < event.maxSize)) {
     Meteor.call(joinEventMethod, data, (error) => {
       if (error) {
@@ -28,7 +27,6 @@ const joinEvent = (isParticipant, event) => {
       }
     });
   } else {
-    // Handle the case where the email is somehow still undefined
     swal('Error', 'Cannot join', 'error');
   }
 };
@@ -73,7 +71,7 @@ const EventCard = ({ event, profile, isParticipant, participantsProfiles }) => (
           <div
             className="description-container"
             style={{
-              maxHeight: '100px', // Set this to your desired maximum height
+              maxHeight: '100px',
               minHeight: '100px',
               overflowY: 'auto',
             }}

@@ -5,7 +5,6 @@ import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
-// import { ComponentIDs, PageIDs } from '../utilities/ids';
 
 /*
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -31,16 +30,11 @@ const SignIn = () => {
         setRedirect(true);
       }
     });
-    // console.log('submit2', email, password, error, redirect);
   };
 
-  // Render the signin form.
-  // console.log('render', error, redirect);
-  // if correct authentication, redirect to page instead of login screen
   if (redirect) {
     return (<Navigate to="/home" />);
   }
-  // Otherwise return the Login form.
   return (
     <Container id="signin-page">
       <Row className="justify-content-center">

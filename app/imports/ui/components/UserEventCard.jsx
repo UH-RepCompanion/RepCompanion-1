@@ -21,7 +21,6 @@ const deleteEvent = (userEvent) => {
       }
     });
   } else {
-    // Handle the case where the email is somehow still undefined
     swal('Error', 'Event is undefined.', 'error');
   }
 };
@@ -63,7 +62,7 @@ const UserEventCard = ({ event, profile }) => {
                 <div
                   className="description-container"
                   style={{
-                    maxHeight: '100px', // Set this to your desired maximum height
+                    maxHeight: '100px',
                     minHeight: '100px',
                     overflowY: 'auto',
                   }}

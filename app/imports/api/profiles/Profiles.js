@@ -10,7 +10,20 @@ class ProfilesCollection {
         'Core Training',
         'Cardio',
         'Yoga',
-        'Balance Training'];
+        'Balance Training',
+        'Weightlifting',
+        'HITT',
+        'Pilates',
+        'Crossfit',
+        'Bodybuilding',
+        'Functional Training',
+        'Circuit Training',
+        'Martial Arts',
+        'Personal Training',
+        'Mobility',
+        'Sports Conditioning',
+        'Fitness Competitions',
+      ];
 
     this.allowedTags =
       ['Trainer',

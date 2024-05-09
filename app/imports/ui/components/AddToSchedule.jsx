@@ -8,7 +8,6 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { updateScheduleMethod } from '../../startup/both/Methods';
 
-// Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   day: {
     type: String,
@@ -23,7 +22,6 @@ const formSchema = new SimpleSchema({
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-/* Renders the AddStuff page for adding a document. */
 const AddToSchedule = ({ owner }) => {
   const submit = (data) => {
     const { day, workout, sets, reps } = data;
@@ -44,7 +42,6 @@ const AddToSchedule = ({ owner }) => {
       }
     });
   };
-  // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   return (
     <Container id="add-schedule-form" className="py-3">
       <Row className="justify-content-center">

@@ -21,8 +21,6 @@ const ProfilesPage = () => {
       ready: sub1.ready() && sub2.ready(),
     };
   }, []);
-  // There is a potential race condition. We might not be ready at this point.
-  // Need to ensure that getProfileData doesn't throw an error on line 18.
   const events = Events.collection.find({}).fetch();
   const profiles = events.map(event => Profiles.collection.findOne({ email: event.owner }));
   const profileData = Profiles.collection.find({}).fetch();
